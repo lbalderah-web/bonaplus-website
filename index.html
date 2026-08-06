@@ -4,17 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0754c8">
+  <meta name="color-scheme" content="light">
   <meta name="description" content="Productos Bonaplus: fabricación dominicana y venta al por mayor para distribuidores y vendedores en toda la República Dominicana.">
   <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.bonaplus.com.do/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_DO">
   <meta property="og:site_name" content="Productos Bonaplus">
+  <meta property="og:url" content="https://www.bonaplus.com.do/">
   <meta property="og:title" content="Productos Bonaplus | Venta al por mayor">
   <meta property="og:description" content="Productos de limpieza y cuidado personal, fabricados en República Dominicana desde 2002.">
-  <meta property="og:image" content="assets/truck-clean.jpg">
+  <meta property="og:image" content="https://www.bonaplus.com.do/assets/truck-clean.jpg">
+  <meta property="og:image:alt" content="Camión de distribución nacional de Productos Bonaplus">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Productos Bonaplus | Venta al por mayor">
+  <meta name="twitter:description" content="Productos de limpieza y cuidado personal, fabricados en República Dominicana desde 2002.">
+  <meta name="twitter:image" content="https://www.bonaplus.com.do/assets/truck-clean.jpg">
   <title>Productos Bonaplus | Venta al por mayor</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,9 +34,12 @@
     "@type":"Organization",
     "name":"Industria Plus B&G",
     "brand":"Productos Bonaplus",
+    "url":"https://www.bonaplus.com.do/",
+    "logo":"https://www.bonaplus.com.do/assets/logo.png",
     "foundingDate":"2002",
     "telephone":"+1-809-379-1396",
     "email":"industriaplusbyg@gmail.com",
+    "areaServed":"DO",
     "address":{"@type":"PostalAddress","streetAddress":"C. Pedro Correa","postalCode":"10901","addressLocality":"Santo Domingo","addressCountry":"DO"}
   }
   </script>
@@ -36,8 +47,8 @@
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
-    <a class="brand" href="#inicio" aria-label="Bonaplus, ir al inicio"><img src="assets/logo.png" alt="Productos Bonaplus" width="290" height="156"></a>
-    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+    <a class="brand" href="#inicio" aria-label="Bonaplus, ir al inicio"><img src="assets/logo.png" alt="Productos Bonaplus" width="290" height="156" decoding="async"></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
     <nav class="nav" id="mainNav" aria-label="Navegación principal">
       <a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#nosotros">Nosotros</a><a href="#como-comprar">Cómo comprar</a><a href="#contacto">Contacto</a>
     </nav>
@@ -58,7 +69,7 @@
       </div>
       <div class="hero-visual reveal">
         <div class="hero-glow"></div>
-        <img src="assets/truck-clean.jpg" alt="Camión de distribución nacional de Productos Bonaplus" width="1200" height="900" fetchpriority="high">
+        <img src="assets/truck-clean.jpg" alt="Camión de distribución nacional de Productos Bonaplus" width="1200" height="900" fetchpriority="high" decoding="async">
       </div>
     </section>
 
@@ -78,13 +89,13 @@
       <div class="product-grid" id="productGrid"></div>
       <div class="cart-panel" id="cartPanel" aria-live="polite">
         <div class="cart-copy"><p class="eyebrow">Solicitud de pedido</p><h3>Tu selección</h3><p id="cartSummary">Aún no has agregado productos.</p></div>
-        <button class="button button-primary" id="sendOrder" disabled>Completar solicitud</button>
+        <button class="button button-primary" id="sendOrder" type="button" disabled>Completar solicitud</button>
       </div>
     </section>
 
     <section id="nosotros" class="about section-padding">
       <div class="section-shell about-grid">
-        <div class="about-image reveal"><img src="assets/products-collage.jpeg" alt="Variedad de productos Bonaplus" loading="lazy" width="1080" height="1080"></div>
+        <div class="about-image reveal"><img src="assets/products-collage.jpeg" alt="Variedad de productos Bonaplus" loading="lazy" decoding="async" width="1080" height="1080"></div>
         <div class="about-copy reveal">
           <p class="eyebrow">Industria Plus B&amp;G</p><h2>Fabricamos para mover negocios.</h2>
           <p>Desde 2002 producimos artículos de limpieza y cuidado personal con enfoque en disponibilidad, servicio y relaciones comerciales de largo plazo.</p>
@@ -112,7 +123,7 @@
 
   <footer id="contacto" class="footer">
     <div class="section-shell footer-grid">
-      <div class="footer-brand"><img src="assets/logo.png" alt="Productos Bonaplus" width="290" height="156"><p>Productos de limpieza y cuidado personal para distribuidores y vendedores en toda la República Dominicana.</p></div>
+      <div class="footer-brand"><img src="assets/logo.png" alt="Productos Bonaplus" width="290" height="156" loading="lazy" decoding="async"><p>Productos de limpieza y cuidado personal para distribuidores y vendedores en toda la República Dominicana.</p></div>
       <div><h3>Contacto</h3><p><a href="tel:+18093791396">(809) 379-1396</a></p><p><a href="mailto:industriaplusbyg@gmail.com">industriaplusbyg@gmail.com</a></p></div>
       <div><h3>Ubicación</h3><p>C. Pedro Correa<br>Santo Domingo 10901</p><a class="footer-link" href="https://www.google.com/maps/search/?api=1&query=C.%20Pedro%20Correa%2C%20Santo%20Domingo%2010901" target="_blank" rel="noopener noreferrer">Ver en el mapa →</a></div>
       <div><h3>Horario</h3><p>Lunes a viernes<br>8:00 a. m. – 6:00 p. m.</p></div>
@@ -130,7 +141,7 @@
       <div class="form-grid">
         <label>Nombre y apellido<input id="customerName" name="name" autocomplete="name" required></label>
         <label>Empresa o negocio<input id="businessName" name="organization" autocomplete="organization"></label>
-        <label>Teléfono<input id="customerPhone" name="phone" type="tel" autocomplete="tel" required></label>
+        <label>Teléfono<input id="customerPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
         <label>Provincia o ciudad<input id="customerCity" name="city" autocomplete="address-level1" required></label>
       </div>
       <label>Comentarios<textarea id="customerNotes" rows="3" placeholder="Zona de entrega, fecha estimada u otra información."></textarea></label>
@@ -140,6 +151,6 @@
   </dialog>
 
   <noscript><div class="noscript">Para utilizar el selector de productos, activa JavaScript. También puedes escribirnos directamente al (809) 379-1396.</div></noscript>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
