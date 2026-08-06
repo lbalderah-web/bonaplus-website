@@ -77,9 +77,14 @@ orderForm.addEventListener('submit',event=>{
   orderModal.close();
 });
 const toggle=document.querySelector('.menu-toggle'); const nav=document.querySelector('.nav');
-toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open'); toggle.setAttribute('aria-expanded',String(open)); toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')});
-nav.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}});
+function setMenuOpen(open){
+  nav.classList.toggle('open',open);
+  toggle.setAttribute('aria-expanded',String(open));
+  toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+}
+toggle.addEventListener('click',()=>setMenuOpen(!nav.classList.contains('open')));
+nav.addEventListener('click',event=>{if(event.target.closest('a')) setMenuOpen(false)});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){setMenuOpen(false);toggle.focus()}});
 renderProducts(); updateCart();
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
