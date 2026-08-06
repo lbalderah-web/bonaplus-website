@@ -1,31 +1,4 @@
-.brand img {
-  width: 158px;
-  height: 76px;
-  object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 3px 8px rgba(6, 21, 56, 0.08));
-}
-
-.footer-brand img {
-  width: 178px;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.18));
-}
-
 @media (max-width: 600px) {
-  .brand img {
-    width: 122px;
-    height: 62px;
-  }
-
-  .footer-brand img {
-    width: 164px;
-    margin-bottom: 18px;
-  }
-
   .hero-points {
     width: fit-content;
     margin: 0 auto;
