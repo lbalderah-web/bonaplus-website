@@ -1,3 +1,39 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.footer a {
+  overflow-wrap: anywhere;
+}
+
+.nav.open {
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (hover: none) {
+  .button:hover,
+  .product-card:hover {
+    transform: none;
+  }
+
+  .product-card:hover .product-image img {
+    transform: none;
+  }
+}
+
 @media (max-width: 600px) {
   .hero-points {
     width: fit-content;
@@ -15,5 +51,18 @@
 
   .hero-points span::before {
     flex: 0 0 23px;
+  }
+
+  .nav.open {
+    max-height: calc(100vh - 92px);
+  }
+
+  .footer-grid {
+    gap: 34px;
+  }
+
+  .footer p,
+  .footer a {
+    max-width: 100%;
   }
 }
