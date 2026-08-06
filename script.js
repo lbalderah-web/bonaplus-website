@@ -16,6 +16,7 @@ const summary = document.getElementById('cartSummary');
 const sendButton = document.getElementById('sendOrder');
 const orderModal = document.getElementById('orderModal');
 const orderForm = document.getElementById('orderForm');
+const modalClose = orderModal.querySelector('.modal-close');
 const orderNotice = document.getElementById('orderNotice');
 
 function renderProducts(){
@@ -54,6 +55,13 @@ grid.addEventListener('click',event=>{
   updateCart();
 });
 sendButton.addEventListener('click',()=>{ if(typeof orderModal.showModal==='function') orderModal.showModal(); else orderModal.setAttribute('open',''); });
+modalClose.addEventListener('click',()=>orderModal.close());
+orderModal.addEventListener('click',event=>{
+  if(event.target !== orderModal) return;
+  const bounds=orderModal.getBoundingClientRect();
+  const inside=event.clientX>=bounds.left && event.clientX<=bounds.right && event.clientY>=bounds.top && event.clientY<=bounds.bottom;
+  if(!inside) orderModal.close();
+});
 orderForm.addEventListener('submit',event=>{
   event.preventDefault();
   if(!orderForm.reportValidity()) return;
