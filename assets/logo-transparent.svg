@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 990" role="img" aria-labelledby="title desc">
+  <title id="title">Productos Bonaplus</title>
+  <desc id="desc">Logotipo transparente de Productos Bonaplus en azul y rojo.</desc>
+  <polygon points="750,10 865,230 1065,120 1045,305 1450,310 1245,475 1490,600 1190,655 1300,770 1085,765 965,930 820,785 745,980 655,805 525,945 400,770 165,775 285,655 20,595 245,470 55,315 450,305 430,120 630,230" fill="none" stroke="#30349a" stroke-width="38" stroke-linejoin="miter"/>
+  <polygon points="745,115 835,300 1005,210 995,345 1320,355 1165,480 1325,585 1115,630 1195,715 1045,710 955,850 820,735 745,875 660,745 545,860 450,710 305,715 385,625 180,585 335,475 190,355 500,340 490,215 655,305" fill="none" stroke="#ed1c24" stroke-width="16" stroke-linejoin="miter"/>
+  <text x="750" y="420" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700" fill="#30349a">Productos</text>
+  <text x="750" y="610" text-anchor="middle" font-family="Arial Black, Impact, Arial, sans-serif" font-size="160" font-weight="900" letter-spacing="8" fill="#ed1c24" stroke="#30349a" stroke-width="14" paint-order="stroke">BONAPLUS</text>
+</svg>
