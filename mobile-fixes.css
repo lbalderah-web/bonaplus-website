@@ -1,3 +1,10 @@
+.brand img,
+.footer-brand img {
+  background: url("assets/logo-transparent.svg") center / contain no-repeat;
+  opacity: 1;
+  object-position: 9999px 9999px;
+}
+
 @media (max-width: 600px) {
   .hero-points {
     width: fit-content;
