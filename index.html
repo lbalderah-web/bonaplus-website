@@ -121,11 +121,11 @@
 
   <a class="floating-whatsapp" href="https://wa.me/18093791396?text=Hola%20Bonaplus,%20quiero%20informaci%C3%B3n%20para%20realizar%20un%20pedido%20al%20por%20mayor." target="_blank" rel="noopener noreferrer" aria-label="Contactar a Bonaplus por WhatsApp">WA</a>
 
-  <dialog class="order-modal" id="orderModal" aria-labelledby="orderTitle">
+  <dialog class="order-modal" id="orderModal" aria-labelledby="orderTitle" aria-describedby="orderIntro">
     <form method="dialog" class="modal-card" id="orderForm">
-      <button class="modal-close" value="cancel" aria-label="Cerrar">×</button>
+      <button type="button" class="modal-close" aria-label="Cerrar formulario de pedido">×</button>
       <p class="eyebrow">Solicitud al por mayor</p><h2 id="orderTitle">Completa tus datos</h2>
-      <p class="modal-intro">Usaremos esta información únicamente para preparar el mensaje de WhatsApp.</p>
+      <p class="modal-intro" id="orderIntro">Usaremos esta información únicamente para preparar el mensaje de WhatsApp.</p>
       <div class="form-grid">
         <label>Nombre y apellido<input id="customerName" name="name" autocomplete="name" required></label>
         <label>Empresa o negocio<input id="businessName" name="organization" autocomplete="organization"></label>
