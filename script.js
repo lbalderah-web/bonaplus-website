@@ -86,5 +86,7 @@ toggle.addEventListener('click',()=>setMenuOpen(!nav.classList.contains('open'))
 nav.addEventListener('click',event=>{if(event.target.closest('a')) setMenuOpen(false)});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){setMenuOpen(false);toggle.focus()}});
 renderProducts(); updateCart();
+const heroTitle = document.querySelector('.hero h1');
+if (heroTitle) heroTitle.innerHTML = 'Calidad que se nota.<br><span>Confianza que construye.</span>';
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
