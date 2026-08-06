@@ -22,13 +22,13 @@ const orderNotice = document.getElementById('orderNotice');
 function renderProducts(){
   grid.innerHTML = products.map(product => `
     <article class="product-card reveal">
-      <div class="product-image"><img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" width="900" height="1200"></div>
+      <div class="product-image"><img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" decoding="async" width="900" height="1200"></div>
       <div class="product-content">
         <h3>${product.name}</h3><p>${product.size}</p>
         <button class="details-button" data-action="toggle" data-id="${product.id}" aria-expanded="false" aria-controls="controls-${product.id}">Agregar al pedido</button>
         <div class="quantity-row" id="controls-${product.id}" hidden>
-          <div class="quantity"><button data-action="minus" data-id="${product.id}" aria-label="Restar una caja de ${product.name}">−</button><span id="qty-${product.id}">0</span><button data-action="plus" data-id="${product.id}" aria-label="Agregar una caja de ${product.name}">+</button></div>
-          <button class="add-button" data-action="add10" data-id="${product.id}">+10 cajas</button>
+          <div class="quantity" role="group" aria-label="Cantidad de cajas de ${product.name}"><button data-action="minus" data-id="${product.id}" aria-label="Restar una caja de ${product.name}">−</button><span id="qty-${product.id}" aria-live="polite" aria-atomic="true">0</span><button data-action="plus" data-id="${product.id}" aria-label="Agregar una caja de ${product.name}">+</button></div>
+          <button class="add-button" data-action="add10" data-id="${product.id}" aria-label="Agregar diez cajas de ${product.name}">+10 cajas</button>
         </div>
       </div>
     </article>`).join('');
