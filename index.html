@@ -5,22 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0754c8">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Productos Bonaplus: fabricación dominicana y venta al por mayor para distribuidores y vendedores en toda la República Dominicana.">
-  <meta name="robots" content="index,follow">
+  <meta name="description" content="Bonaplus fabrica y distribuye cloro, vinagre, lavaplatos, shampoo, rinse y más para negocios y distribuidores en República Dominicana.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://www.bonaplus.com.do/">
+  <link rel="alternate" hreflang="es-do" href="https://www.bonaplus.com.do/">
+  <link rel="alternate" hreflang="x-default" href="https://www.bonaplus.com.do/">
+  <link rel="sitemap" type="application/xml" href="https://www.bonaplus.com.do/sitemap.xml">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_DO">
   <meta property="og:site_name" content="Productos Bonaplus">
   <meta property="og:url" content="https://www.bonaplus.com.do/">
-  <meta property="og:title" content="Productos Bonaplus | Venta al por mayor">
-  <meta property="og:description" content="Productos de limpieza y cuidado personal, fabricados en República Dominicana desde 2002.">
+  <meta property="og:title" content="Bonaplus República Dominicana | Productos al por mayor">
+  <meta property="og:description" content="Productos de limpieza y cuidado personal fabricados en República Dominicana para distribuidores y negocios.">
   <meta property="og:image" content="https://www.bonaplus.com.do/assets/truck-clean.jpg">
   <meta property="og:image:alt" content="Camión de distribución nacional de Productos Bonaplus">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Productos Bonaplus | Venta al por mayor">
-  <meta name="twitter:description" content="Productos de limpieza y cuidado personal, fabricados en República Dominicana desde 2002.">
+  <meta name="twitter:title" content="Bonaplus República Dominicana | Productos al por mayor">
+  <meta name="twitter:description" content="Productos de limpieza y cuidado personal fabricados en República Dominicana para distribuidores y negocios.">
   <meta name="twitter:image" content="https://www.bonaplus.com.do/assets/truck-clean.jpg">
-  <title>Productos Bonaplus | Venta al por mayor</title>
+  <title>Bonaplus República Dominicana | Productos al por mayor</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,16 +35,41 @@
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Industria Plus B&G",
-    "brand":"Productos Bonaplus",
-    "url":"https://www.bonaplus.com.do/",
-    "logo":"https://www.bonaplus.com.do/assets/logo.png",
-    "foundingDate":"2002",
-    "telephone":"+1-809-379-1396",
-    "email":"industriaplusbyg@gmail.com",
-    "areaServed":"DO",
-    "address":{"@type":"PostalAddress","streetAddress":"C. Pedro Correa","postalCode":"10901","addressLocality":"Santo Domingo","addressCountry":"DO"}
+    "@graph":[
+      {
+        "@type":"Organization",
+        "@id":"https://www.bonaplus.com.do/#organization",
+        "name":"Industria Plus B&G",
+        "alternateName":"Productos Bonaplus",
+        "brand":{"@type":"Brand","name":"Bonaplus"},
+        "url":"https://www.bonaplus.com.do/",
+        "logo":"https://www.bonaplus.com.do/assets/logo.png",
+        "foundingDate":"2002",
+        "telephone":"+1-809-379-1396",
+        "email":"industriaplusbyg@gmail.com",
+        "areaServed":{"@type":"Country","name":"República Dominicana"},
+        "address":{"@type":"PostalAddress","streetAddress":"C. Pedro Correa","postalCode":"10901","addressLocality":"Santo Domingo","addressCountry":"DO"},
+        "contactPoint":{"@type":"ContactPoint","telephone":"+1-809-379-1396","contactType":"sales","areaServed":"DO","availableLanguage":["es"]}
+      },
+      {
+        "@type":"WebSite",
+        "@id":"https://www.bonaplus.com.do/#website",
+        "url":"https://www.bonaplus.com.do/",
+        "name":"Productos Bonaplus",
+        "publisher":{"@id":"https://www.bonaplus.com.do/#organization"},
+        "inLanguage":"es-DO"
+      },
+      {
+        "@type":"WebPage",
+        "@id":"https://www.bonaplus.com.do/#webpage",
+        "url":"https://www.bonaplus.com.do/",
+        "name":"Bonaplus República Dominicana | Productos al por mayor",
+        "description":"Productos Bonaplus para negocios, distribuidores y vendedores al por mayor en República Dominicana.",
+        "isPartOf":{"@id":"https://www.bonaplus.com.do/#website"},
+        "about":{"@id":"https://www.bonaplus.com.do/#organization"},
+        "inLanguage":"es-DO"
+      }
+    ]
   }
   </script>
 </head>
@@ -84,7 +113,7 @@
       <div class="section-heading reveal">
         <p class="eyebrow">Nuestro catálogo</p>
         <h2>Soluciones para cada necesidad</h2>
-        <p>Selecciona los productos y la cantidad aproximada de cajas. Los precios se coordinan de forma privada según volumen, disponibilidad y destino.</p>
+        <p>Encuentra productos Bonaplus como cloro, vinagre, lavaplatos, vainilla, líquido para calzado, desinfectante, rinse y shampoo. Selecciona los productos y la cantidad aproximada de cajas; los precios se coordinan de forma privada según volumen, disponibilidad y destino.</p>
       </div>
       <div class="product-grid" id="productGrid"></div>
       <div class="cart-panel" id="cartPanel" aria-live="polite">
