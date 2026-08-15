@@ -174,7 +174,7 @@
         <label>Provincia o ciudad<input id="customerCity" name="city" autocomplete="address-level1" required></label>
       </div>
       <label>Comentarios<textarea id="customerNotes" rows="3" placeholder="Zona de entrega, fecha estimada u otra información."></textarea></label>
-      <div class="order-notice" id="orderNotice"></div>
+      <div class="order-notice" id="orderNotice" role="status" aria-live="polite" aria-atomic="true"></div>
       <button class="button button-whatsapp modal-submit" value="default">Abrir pedido en WhatsApp</button>
     </form>
   </dialog>
