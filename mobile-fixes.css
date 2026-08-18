@@ -70,7 +70,7 @@ a {
 
   .hero-copy {
     text-align: left;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 
   .hero h1 {
@@ -98,7 +98,7 @@ a {
     width: 100%;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px 16px;
   }
 
@@ -110,7 +110,7 @@ a {
     line-height: 1.25;
   }
 
-  .hero-points span:last-child {
+  .hero-points span:nth-child(3):last-child {
     grid-column: 1 / -1;
   }
 
@@ -146,11 +146,31 @@ a {
   }
 
   .trust {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 8px;
   }
 
   .trust article {
-    padding: 21px 22px;
+    min-width: 0;
+    padding: 20px 18px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .trust article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .trust article:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .trust strong {
+    font-size: 1.22rem;
+  }
+
+  .trust span {
+    line-height: 1.35;
   }
 
   .section-heading {
@@ -248,7 +268,7 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .hero-points span:last-child {
+  .hero-points span:nth-child(3):last-child {
     grid-column: auto;
   }
 
