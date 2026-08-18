@@ -62,12 +62,15 @@ a {
   }
 
   .hero {
+    display: block;
+    min-height: 0;
     padding-top: 34px;
-    gap: 26px;
+    padding-bottom: 34px;
   }
 
   .hero-copy {
     text-align: left;
+    margin-bottom: 28px;
   }
 
   .hero h1 {
@@ -116,18 +119,30 @@ a {
   }
 
   .hero:before {
-    inset: 56% -16px 0 -16px;
+    inset: auto -16px 0 -16px;
+    height: 46%;
     border-radius: 26px;
   }
 
   .hero-visual {
-    min-height: auto;
-    padding: 12px 0 0;
+    min-height: 0;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: block;
   }
 
   .hero-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
     max-height: none;
+    margin: 0 auto;
     border-radius: 18px;
+  }
+
+  .hero-glow {
+    inset: 4% 0 0;
   }
 
   .trust {
