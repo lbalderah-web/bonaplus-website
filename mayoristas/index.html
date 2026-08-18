@@ -62,7 +62,8 @@
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <a class="brand" href="../" aria-label="Bonaplus, ir al inicio"><img src="../assets/logo.png" alt="Productos Bonaplus" width="290" height="156" decoding="async"></a>
-    <nav class="nav" aria-label="Navegación principal">
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="mainNav" aria-label="Navegación principal">
       <a href="../">Inicio</a>
       <a href="../#productos">Productos</a>
       <a href="../#nosotros">Nosotros</a>
@@ -130,5 +131,20 @@
     </div>
     <div class="section-shell footer-bottom"><span>© 2026 Industria Plus B&amp;G. Todos los derechos reservados.</span><span>Fabricado en República Dominicana.</span></div>
   </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/18093791396?text=Hola%20Bonaplus,%20quiero%20informaci%C3%B3n%20sobre%20productos%20al%20por%20mayor." target="_blank" rel="noopener noreferrer" aria-label="Contactar a Bonaplus por WhatsApp">WA</a>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('mainNav');
+    const setMenuOpen = open => {
+      if (!toggle || !nav) return;
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
+    toggle?.addEventListener('click', () => setMenuOpen(!nav?.classList.contains('open')));
+    nav?.addEventListener('click', event => { if (event.target.closest('a')) setMenuOpen(false); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenuOpen(false); });
+  </script>
 </body>
 </html>
