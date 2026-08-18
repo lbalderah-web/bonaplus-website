@@ -42,7 +42,7 @@ function renderProducts() {
             <span id="qty-${product.id}" aria-live="polite" aria-atomic="true">0</span>
             <button type="button" data-action="plus" data-id="${product.id}" aria-label="Agregar una caja de ${product.name}">+</button>
           </div>
-          <button type="button" class="add-button" data-action="add10" data-id="${product.id}" aria-label="Agregar diez cajas de ${product.name}">+10 cajas</button>
+          <button type="button" class="add-button" data-action="add100" data-id="${product.id}" aria-label="Agregar cien cajas de ${product.name}">+100 cajas</button>
         </div>
       </div>
     </article>`).join('');
@@ -124,7 +124,7 @@ if (grid) {
     if (action === 'toggle') openControls(id, button);
     if (action === 'plus') quantities[id] += 1;
     if (action === 'minus') quantities[id] = Math.max(0, quantities[id] - 1);
-    if (action === 'add10') quantities[id] += 10;
+    if (action === 'add100') quantities[id] += 100;
 
     updateCart();
   });
