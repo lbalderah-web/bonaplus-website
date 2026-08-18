@@ -19,7 +19,7 @@ These identity rules are permanent unless the owner explicitly changes them:
 - Keep both identities clearly connected so searches for either `Bonaplus` or `Industria Plus B&G` can lead users to the official Bonaplus website.
 - Prefer `WebSite`/site-name signals for **Bonaplus** and `Organization`/publisher/company signals for **Industria Plus B&G**.
 - Structured data may explicitly connect Industria Plus B&G to the Bonaplus brand, but should not confuse the public-facing site name.
-- International SEO may invite wholesale or distributor inquiries from abroad, but must not claim that Bonaplus currently exports worldwide or has international distribution unless the owner verifies that claim.
+- The public website is Spanish-only unless the owner explicitly authorizes another language version in the future.
 
 ## Approved brand and business rules
 
@@ -46,8 +46,8 @@ The official site is indexed in Google. Ongoing SEO should prioritize growth rat
 - Improve non-branded Dominican wholesale rankings.
 - Improve individual product/category search visibility using the approved catalog.
 - Maintain and improve local SEO and the association between the Bonaplus brand and Industria Plus B&G.
-- Maintain `/mayoristas/` for Spanish wholesale discovery and `/en/` for English/international discovery.
-- Keep hreflang, canonical, sitemap, structured-data and internal-link relationships correct.
+- Maintain `/mayoristas/` for Spanish wholesale discovery.
+- Keep canonical, sitemap, structured-data and internal-link relationships correct.
 - Build useful product landing pages when they add genuine search value; use unique copy and never invent specifications or publish prices.
 - Improve page speed, Core Web Vitals, accessibility, mobile usability, security and conversion flow.
 - Avoid low-value daily code churn; make changes only when they materially improve the site or search visibility.
@@ -93,5 +93,5 @@ Approval is required before:
 - Check console/runtime errors and failed deployments.
 - Check robots.txt, sitemap.xml and canonical metadata.
 - Check image loading and page weight.
-- Check search visibility for `Bonaplus`, `Industria Plus B&G`, priority Dominican wholesale terms, product-category terms and relevant English international terms.
+- Check search visibility for `Bonaplus`, `Industria Plus B&G`, priority Dominican wholesale terms and product-category terms.
 - Document every material change with a clear Git commit message.
