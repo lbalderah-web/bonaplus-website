@@ -1,16 +1,16 @@
 'use strict';
 
 const products = [
-  { id: 'cloro', name: 'Cloro (Mediano)', size: '150 ml', image: 'assets/product-art/cloro.jpg' },
-  { id: 'vinagre', name: 'Vinagre (Mediano)', size: '150 ml', image: 'assets/product-art/vinagre.jpg' },
-  { id: 'lavaplatos', name: 'Lavaplatos', size: '150 ml', image: 'assets/product-art/lavaplatos.jpg' },
+  { id: 'cloro', name: 'Cloro (Mediano)', size: '150 ml', image: 'assets/product-art/cloro.jpg', page: '/productos/cloro/' },
+  { id: 'vinagre', name: 'Vinagre (Mediano)', size: '150 ml', image: 'assets/product-art/vinagre.jpg', page: '/productos/vinagre/' },
+  { id: 'lavaplatos', name: 'Lavaplatos', size: '150 ml', image: 'assets/product-art/lavaplatos.jpg', page: '/productos/lavaplatos/' },
   { id: 'vainilla', name: 'Vainilla', size: '90 ml', image: 'assets/product-art/vainilla.jpg' },
   { id: 'calzado', name: 'Líquido para Calzado', size: '90 ml', image: 'assets/product-art/calzado.jpg' },
   { id: 'desinfectante', name: 'Desinfectante', size: '90 ml', image: 'assets/product-art/desinfectante.jpg' },
   { id: 'rinse150', name: 'Rinse (Mediano)', size: '150 ml', image: 'assets/product-art/rinse.avif' },
   { id: 'rinse90', name: 'Rinse (Pequeño)', size: '90 ml', image: 'assets/product-art/rinse.avif' },
-  { id: 'shampoo150', name: 'Shampoo (Mediano)', size: '150 ml', image: 'assets/product-art/shampoo.avif' },
-  { id: 'shampoo90', name: 'Shampoo (Pequeño)', size: '90 ml', image: 'assets/product-art/shampoo.avif' }
+  { id: 'shampoo150', name: 'Shampoo (Mediano)', size: '150 ml', image: 'assets/product-art/shampoo.avif', page: '/productos/shampoo/' },
+  { id: 'shampoo90', name: 'Shampoo (Pequeño)', size: '90 ml', image: 'assets/product-art/shampoo.avif', page: '/productos/shampoo/' }
 ];
 
 const quantities = Object.fromEntries(products.map(product => [product.id, 0]));
@@ -33,7 +33,7 @@ function renderProducts() {
         <img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" decoding="async" width="900" height="1200">
       </div>
       <div class="product-content">
-        <h3>${product.name}</h3>
+        <h3>${product.page ? `<a href="${product.page}" aria-label="Ver información de ${product.name} Bonaplus al por mayor">${product.name}</a>` : product.name}</h3>
         <p>${product.size}</p>
         <button type="button" class="details-button" data-action="toggle" data-id="${product.id}" aria-expanded="false" aria-controls="controls-${product.id}">Agregar al pedido</button>
         <div class="quantity-row" id="controls-${product.id}" hidden>
