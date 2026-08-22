@@ -7,8 +7,8 @@ const products = [
   { id: 'vainilla', name: 'Vainilla', size: '90 ml', image: 'assets/product-art/vainilla.jpg' },
   { id: 'calzado', name: 'Líquido para Calzado', size: '90 ml', image: 'assets/product-art/calzado.jpg' },
   { id: 'desinfectante', name: 'Desinfectante', size: '90 ml', image: 'assets/product-art/desinfectante.jpg' },
-  { id: 'rinse150', name: 'Rinse (Mediano)', size: '150 ml', image: 'assets/product-art/rinse.avif' },
-  { id: 'rinse90', name: 'Rinse (Pequeño)', size: '90 ml', image: 'assets/product-art/rinse.avif' },
+  { id: 'rinse150', name: 'Rinse (Mediano)', size: '150 ml', image: 'assets/product-art/rinse.avif', page: '/productos/rinse/' },
+  { id: 'rinse90', name: 'Rinse (Pequeño)', size: '90 ml', image: 'assets/product-art/rinse.avif', page: '/productos/rinse/' },
   { id: 'shampoo150', name: 'Shampoo (Mediano)', size: '150 ml', image: 'assets/product-art/shampoo.avif', page: '/productos/shampoo/' },
   { id: 'shampoo90', name: 'Shampoo (Pequeño)', size: '90 ml', image: 'assets/product-art/shampoo.avif', page: '/productos/shampoo/' }
 ];
