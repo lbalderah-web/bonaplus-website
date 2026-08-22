@@ -75,6 +75,9 @@ function updateCart() {
   products.forEach(product => {
     const quantityElement = document.getElementById(`qty-${product.id}`);
     if (quantityElement) quantityElement.textContent = quantities[product.id];
+
+    const minusButton = grid?.querySelector(`button[data-action="minus"][data-id="${product.id}"]`);
+    if (minusButton) minusButton.disabled = quantities[product.id] === 0;
   });
 }
 
