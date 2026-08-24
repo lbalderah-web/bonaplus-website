@@ -78,6 +78,11 @@ function updateCart() {
 
     const minusButton = grid?.querySelector(`button[data-action="minus"][data-id="${product.id}"]`);
     if (minusButton) minusButton.disabled = quantities[product.id] === 0;
+
+    const toggleButton = grid?.querySelector(`button[data-action="toggle"][data-id="${product.id}"]`);
+    if (toggleButton?.getAttribute('aria-expanded') === 'true') {
+      toggleButton.textContent = quantities[product.id] > 0 ? 'Producto agregado' : 'Agregar al pedido';
+    }
   });
 }
 
