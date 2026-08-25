@@ -5,7 +5,7 @@ const products = [
   { id: 'vinagre', name: 'Vinagre (Mediano)', size: '150 ml', image: 'assets/product-art/vinagre.jpg', page: '/productos/vinagre/' },
   { id: 'lavaplatos', name: 'Lavaplatos', size: '150 ml', image: 'assets/product-art/lavaplatos.jpg', page: '/productos/lavaplatos/' },
   { id: 'vainilla', name: 'Vainilla', size: '90 ml', image: 'assets/product-art/vainilla.jpg', page: '/productos/vainilla/' },
-  { id: 'calzado', name: 'Líquido para Calzado', size: '90 ml', image: 'assets/product-art/calzado.jpg' },
+  { id: 'calzado', name: 'Líquido para Calzado', size: '90 ml', image: 'assets/product-art/calzado.jpg', page: '/productos/calzado/' },
   { id: 'desinfectante', name: 'Desinfectante', size: '90 ml', image: 'assets/product-art/desinfectante.jpg' },
   { id: 'rinse150', name: 'Rinse (Mediano)', size: '150 ml', image: 'assets/product-art/rinse.avif', page: '/productos/rinse/' },
   { id: 'rinse90', name: 'Rinse (Pequeño)', size: '90 ml', image: 'assets/product-art/rinse.avif', page: '/productos/rinse/' },
