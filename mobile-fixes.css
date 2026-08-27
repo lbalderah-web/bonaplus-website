@@ -23,6 +23,36 @@ a {
   overscroll-behavior: contain;
 }
 
+.about {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(7, 84, 200, .06), transparent 30%),
+    linear-gradient(180deg, #f8faff 0%, #f6f8fc 100%);
+}
+
+.about-image {
+  position: relative;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid rgba(7, 84, 200, .10);
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(10, 35, 78, .12);
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  content: url("assets/products-collage-2026.webp");
+  border-radius: 21px;
+  box-shadow: none;
+}
+
+.about-copy {
+  max-width: 570px;
+}
+
 @media (hover: none) {
   .button:hover,
   .product-card:hover {
@@ -52,6 +82,17 @@ a {
 
   .hero-visual img {
     width: min(100%, 720px);
+    margin-inline: auto;
+  }
+
+  .about-copy {
+    order: 1;
+    max-width: 680px;
+  }
+
+  .about-image {
+    order: 2;
+    width: min(100%, 680px);
     margin-inline: auto;
   }
 }
@@ -220,7 +261,19 @@ a {
     padding: 21px;
   }
 
-  .about-image img,
+  .about-grid {
+    gap: 28px;
+  }
+
+  .about-image {
+    padding: 7px;
+    border-radius: 22px;
+  }
+
+  .about-image img {
+    border-radius: 16px;
+  }
+
   .cta {
     border-radius: 22px;
   }
