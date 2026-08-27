@@ -44,7 +44,6 @@ a {
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  content: url("assets/products-collage-2026.webp");
   border-radius: 21px;
   box-shadow: none;
 }
