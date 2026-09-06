@@ -16,6 +16,7 @@ const products = [
 const quantities = Object.fromEntries(products.map(product => [product.id, 0]));
 const grid = document.getElementById('productGrid');
 const summary = document.getElementById('cartSummary');
+const cartPanel = document.getElementById('cartPanel');
 const sendButton = document.getElementById('sendOrder');
 const orderModal = document.getElementById('orderModal');
 const orderForm = document.getElementById('orderForm');
@@ -26,17 +27,165 @@ const nav = document.querySelector('.nav');
 
 function renderProducts() {
   if (!grid) return;
-  grid.innerHTML = products.map(product => `
-    <article class="product-card reveal"><div class="product-image"><img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" decoding="async" width="900" height="1200"></div><div class="product-content"><h3>${product.page ? `<a href="${product.page}" aria-label="Ver información de ${product.name} Bonaplus al por mayor">${product.name}</a>` : product.name}</h3><p>${product.size}</p><button type="button" class="details-button" data-action="toggle" data-id="${product.id}" aria-expanded="false" aria-controls="controls-${product.id}">Agregar al pedido</button><div class="quantity-row" id="controls-${product.id}" hidden><div class="quantity" role="group" aria-label="Cantidad de cajas de ${product.name}"><button type="button" data-action="minus" data-id="${product.id}" aria-label="Restar una caja de ${product.name}">−</button><span id="qty-${product.id}" aria-live="polite" aria-atomic="true">0</span><button type="button" data-action="plus" data-id="${product.id}" aria-label="Agregar una caja de ${product.name}">+</button></div><button type="button" class="add-button" data-action="add100" data-id="${product.id}" aria-label="Agregar cien cajas de ${product.name}">+100 cajas</button></div></div></article>`).join('');
+  grid.innerHTML = products.map(product => {
+    const dimensions = product.id.startsWith('shampoo') ? [360, 480]
+      : product.id.startsWith('rinse') ? [720, 900]
+      : product.id === 'desinfectante' ? [240, 300]
+      : product.id === 'calzado' ? [1086, 1448] : [1024, 1536];
+    return `
+    <article class="product-card" id="card-${product.id}">
+      <a class="product-image" href="${product.page}" aria-label="Ver información de ${product.name} Bonaplus">
+        <img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" decoding="async" width="${dimensions[0]}" height="${dimensions[1]}">
+      </a>
+      <div class="product-content">
+        <h3><a href="${product.page}">${product.name}</a></h3>
+        <p>${product.size}</p>
+        <button type="button" class="details-button" data-action="toggle" data-id="${product.id}" aria-expanded="false" aria-controls="controls-${product.id}" aria-label="Añadir ${product.name} al pedido">Añadir al pedido</button>
+        <div class="quantity-row" id="controls-${product.id}" hidden>
+          <label class="quantity-label" for="qty-${product.id}">Cantidad de cajas</label>
+          <div class="quantity" role="group" aria-label="Cantidad de cajas de ${product.name}">
+            <button type="button" data-action="minus" data-id="${product.id}" aria-label="Restar una caja de ${product.name}">−</button>
+            <input id="qty-${product.id}" data-quantity="${product.id}" type="number" min="0" step="1" inputmode="numeric" value="0" aria-label="Cajas de ${product.name}">
+            <button type="button" data-action="plus" data-id="${product.id}" aria-label="Agregar una caja de ${product.name}">+</button>
+          </div>
+          <button type="button" class="add-button" data-action="add100" data-id="${product.id}" aria-label="Agregar cien cajas de ${product.name}">+100 cajas</button>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
 }
-function selectedProducts(){return products.filter(product=>quantities[product.id]>0)}
-function updateCart(){const selected=selectedProducts();const total=selected.reduce((sum,product)=>sum+quantities[product.id],0);if(summary)summary.textContent=selected.length?`${selected.length} producto${selected.length===1?'':'s'} seleccionado${selected.length===1?'':'s'} · ${total} caja${total===1?'':'s'} aproximada${total===1?'':'s'}.`:'Aún no has agregado productos.';if(sendButton)sendButton.disabled=selected.length===0;if(orderNotice)orderNotice.textContent=total>0&&total<400?`Tu selección suma ${total} cajas. Los pedidos habituales son de aproximadamente 400 cajas o más; nuestro equipo confirmará las condiciones aplicables.`:total>=400?`Tu selección suma ${total} cajas. El volumen está dentro del rango habitual de pedidos al por mayor.`:'';products.forEach(product=>{const q=document.getElementById(`qty-${product.id}`);if(q)q.textContent=quantities[product.id];const minus=grid?.querySelector(`button[data-action="minus"][data-id="${product.id}"]`);if(minus)minus.disabled=quantities[product.id]===0;const t=grid?.querySelector(`button[data-action="toggle"][data-id="${product.id}"]`);if(t?.getAttribute('aria-expanded')==='true')t.textContent=quantities[product.id]>0?'Producto agregado':'Agregar al pedido'})}
-function openControls(id,button){const controls=document.getElementById(`controls-${id}`);if(!controls||!button)return;controls.hidden=false;button.setAttribute('aria-expanded','true');button.textContent='Producto agregado';if(quantities[id]===0)quantities[id]=1}
-function openOrderModal(){if(!orderModal)return;if(typeof orderModal.showModal==='function')orderModal.showModal();else orderModal.setAttribute('open','');window.setTimeout(()=>document.getElementById('customerName')?.focus(),0)}
-function closeOrderModal(){if(!orderModal)return;if(typeof orderModal.close==='function'&&orderModal.open)orderModal.close();else orderModal.removeAttribute('open');sendButton?.focus()}
-if(grid)grid.addEventListener('click',event=>{const button=event.target.closest('button[data-action]');if(!button)return;const{id,action}=button.dataset;if(!id||!action||!(id in quantities))return;if(action==='toggle')openControls(id,button);if(action==='plus')quantities[id]+=1;if(action==='minus')quantities[id]=Math.max(0,quantities[id]-1);if(action==='add100')quantities[id]+=100;updateCart()});
-sendButton?.addEventListener('click',openOrderModal);modalClose?.addEventListener('click',closeOrderModal);
-orderModal?.addEventListener('click',event=>{if(event.target!==orderModal)return;const bounds=orderModal.getBoundingClientRect();const inside=event.clientX>=bounds.left&&event.clientX<=bounds.right&&event.clientY>=bounds.top&&event.clientY<=bounds.bottom;if(!inside)closeOrderModal()});
-orderForm?.addEventListener('submit',event=>{event.preventDefault();if(!orderForm.reportValidity())return;const selected=selectedProducts();if(!selected.length){closeOrderModal();return}const lines=selected.map(product=>`• ${product.name} (${product.size}): ${quantities[product.id]} cajas`);const total=selected.reduce((sum,product)=>sum+quantities[product.id],0);const name=document.getElementById('customerName')?.value.trim()||'';const business=document.getElementById('businessName')?.value.trim()||'';const phone=document.getElementById('customerPhone')?.value.trim()||'';const city=document.getElementById('customerCity')?.value.trim()||'';const notes=document.getElementById('customerNotes')?.value.trim()||'';const text=`Hola Bonaplus, quiero solicitar una cotización para un pedido al por mayor.\n\nDATOS DEL CLIENTE\nNombre: ${name}\nNegocio: ${business||'No indicado'}\nTeléfono: ${phone}\nProvincia/Ciudad: ${city}\n\nPRODUCTOS\n${lines.join('\n')}\n\nTotal aproximado: ${total} cajas\nComentarios: ${notes||'Ninguno'}\n\nPor favor, ayúdenme a coordinar precios, disponibilidad y envío.`;window.open(`https://wa.me/18093791396?text=${encodeURIComponent(text)}`,'_blank','noopener,noreferrer');closeOrderModal()});
-function setMenuOpen(open){if(!nav||!toggle)return;nav.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú')}
-toggle?.addEventListener('click',()=>setMenuOpen(!nav?.classList.contains('open')));nav?.addEventListener('click',event=>{if(event.target.closest('a'))setMenuOpen(false)});document.addEventListener('click',event=>{if(!nav?.classList.contains('open'))return;if(nav.contains(event.target)||toggle?.contains(event.target))return;setMenuOpen(false)});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav?.classList.contains('open')){setMenuOpen(false);toggle?.focus()}});window.addEventListener('resize',()=>{if(window.innerWidth>880&&nav?.classList.contains('open'))setMenuOpen(false)});renderProducts();updateCart();const revealElements=document.querySelectorAll('.reveal');if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}})},{threshold:.08});revealElements.forEach(element=>observer.observe(element))}else revealElements.forEach(element=>element.classList.add('visible'));
+function selectedProducts() {
+  return products.filter(product => quantities[product.id] > 0);
+}
+function normalizeQuantity(value) {
+  const amount = Number(value);
+  return Number.isFinite(amount) ? Math.min(Number.MAX_SAFE_INTEGER, Math.max(0, Math.trunc(amount))) : 0;
+}
+function updateCart(editingInput = null) {
+  const selected = selectedProducts();
+  const total = selected.reduce((sum, product) => sum + quantities[product.id], 0);
+  if (summary) summary.textContent = selected.length
+    ? `${selected.length} producto${selected.length === 1 ? '' : 's'} · ${total} caja${total === 1 ? '' : 's'}`
+    : 'Elige productos para comenzar.';
+  if (sendButton) sendButton.disabled = selected.length === 0;
+  cartPanel?.classList.toggle('has-items', selected.length > 0);
+  if (orderNotice) orderNotice.textContent = total > 0 && total < 400
+    ? `Tu selección suma ${total} cajas. Los pedidos habituales son de aproximadamente 400 cajas o más; nuestro equipo confirmará las condiciones aplicables.`
+    : total >= 400
+      ? `Tu selección suma ${total} cajas. El volumen está dentro del rango habitual de pedidos al por mayor.` : '';
+  products.forEach(product => {
+    const amount = quantities[product.id];
+    const input = document.getElementById(`qty-${product.id}`);
+    if (input && input !== editingInput) input.value = String(amount);
+    document.getElementById(`card-${product.id}`)?.classList.toggle('is-selected', amount > 0);
+    const minus = grid?.querySelector(`button[data-action="minus"][data-id="${product.id}"]`);
+    if (minus) minus.disabled = amount === 0;
+    const button = grid?.querySelector(`button[data-action="toggle"][data-id="${product.id}"]`);
+    if (button) {
+      button.textContent = amount > 0 ? 'En tu pedido' : 'Añadir al pedido';
+      button.setAttribute('aria-label', amount > 0 ? `Editar cantidad de ${product.name}` : `Añadir ${product.name} al pedido`);
+    }
+  });
+}
+function openControls(id, button) {
+  const controls = document.getElementById(`controls-${id}`);
+  if (!controls || !button) return;
+  controls.hidden = false;
+  button.setAttribute('aria-expanded', 'true');
+  if (quantities[id] === 0) quantities[id] = 1;
+  updateCart();
+  const input = document.getElementById(`qty-${id}`);
+  input?.focus({ preventScroll: true });
+  input?.select();
+}
+grid?.addEventListener('click', event => {
+  const button = event.target.closest('button[data-action]');
+  if (!button) return;
+  const { id, action } = button.dataset;
+  if (!id || !action || !(id in quantities)) return;
+  if (action === 'toggle') { openControls(id, button); return; }
+  if (action === 'plus') quantities[id] = normalizeQuantity(quantities[id] + 1);
+  if (action === 'minus') quantities[id] = normalizeQuantity(quantities[id] - 1);
+  if (action === 'add100') quantities[id] = normalizeQuantity(quantities[id] + 100);
+  updateCart();
+});
+function readQuantity(event) {
+  const input = event.target.closest('input[data-quantity]');
+  if (!input || !(input.dataset.quantity in quantities)) return;
+  quantities[input.dataset.quantity] = normalizeQuantity(input.value);
+  if (event.type !== 'input') input.value = String(quantities[input.dataset.quantity]);
+  updateCart(event.type === 'input' ? input : null);
+}
+grid?.addEventListener('input', readQuantity);
+grid?.addEventListener('change', readQuantity);
+grid?.addEventListener('focusout', readQuantity);
+
+function openOrderModal() {
+  if (!orderModal || !selectedProducts().length) return;
+  if (typeof orderModal.showModal === 'function') orderModal.showModal();
+  else orderModal.setAttribute('open', '');
+  window.setTimeout(() => document.getElementById('customerName')?.focus(), 0);
+}
+function closeOrderModal() {
+  if (!orderModal) return;
+  if (typeof orderModal.close === 'function' && orderModal.open) orderModal.close();
+  else orderModal.removeAttribute('open');
+  sendButton?.focus();
+}
+sendButton?.addEventListener('click', openOrderModal);
+modalClose?.addEventListener('click', closeOrderModal);
+orderModal?.addEventListener('cancel', event => { event.preventDefault(); closeOrderModal(); });
+orderModal?.addEventListener('click', event => {
+  if (event.target !== orderModal) return;
+  const bounds = orderModal.getBoundingClientRect();
+  const inside = event.clientX >= bounds.left && event.clientX <= bounds.right && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
+  if (!inside) closeOrderModal();
+});
+orderForm?.addEventListener('submit', event => {
+  event.preventDefault();
+  if (!orderForm.reportValidity()) return;
+  const selected = selectedProducts();
+  if (!selected.length) { closeOrderModal(); return; }
+  const lines = selected.map(product => `• ${product.name} (${product.size}): ${quantities[product.id]} cajas`);
+  const total = selected.reduce((sum, product) => sum + quantities[product.id], 0);
+  const name = document.getElementById('customerName')?.value.trim() || '';
+  const business = document.getElementById('businessName')?.value.trim() || '';
+  const phone = document.getElementById('customerPhone')?.value.trim() || '';
+  const city = document.getElementById('customerCity')?.value.trim() || '';
+  const notes = document.getElementById('customerNotes')?.value.trim() || '';
+  const text = `Hola Bonaplus, quiero solicitar una cotización para un pedido al por mayor.\n\nDATOS DEL CLIENTE\nNombre: ${name}\nNegocio: ${business || 'No indicado'}\nTeléfono: ${phone}\nProvincia/Ciudad: ${city}\n\nPRODUCTOS\n${lines.join('\n')}\n\nTotal aproximado: ${total} cajas\nComentarios: ${notes || 'Ninguno'}\n\nPor favor, ayúdenme a coordinar precios, disponibilidad y envío.`;
+  window.open(`https://wa.me/18093791396?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  closeOrderModal();
+});
+
+function setMenuOpen(open) {
+  if (!nav || !toggle) return;
+  nav.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+}
+toggle?.addEventListener('click', () => setMenuOpen(!nav?.classList.contains('open')));
+nav?.addEventListener('click', event => { if (event.target.closest('a')) setMenuOpen(false); });
+document.addEventListener('click', event => {
+  if (!nav?.classList.contains('open') || nav.contains(event.target) || toggle?.contains(event.target)) return;
+  setMenuOpen(false);
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && nav?.classList.contains('open')) { setMenuOpen(false); toggle?.focus(); }
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 880 && nav?.classList.contains('open')) setMenuOpen(false);
+});
+renderProducts();
+updateCart();
+const revealElements = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: .08 });
+  revealElements.forEach(element => observer.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add('visible'));
+}
