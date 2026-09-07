@@ -178,6 +178,11 @@ window.addEventListener('resize', () => {
 });
 renderProducts();
 updateCart();
+const requestedProductId = new URLSearchParams(window.location.search).get('producto');
+if (requestedProductId && requestedProductId in quantities) {
+  const requestedButton = grid?.querySelector(`button[data-action="toggle"][data-id="${requestedProductId}"]`);
+  openControls(requestedProductId, requestedButton);
+}
 const revealElements = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
