@@ -2,6 +2,13 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-08
+
+- Production baseline: Vercel production for `main` commit `c7c4b2e` was `READY`; no runtime errors were reported during the preceding 24 hours.
+- Search observation: an individual Dominican search check for `lavaplatos al por mayor` was dominated by dishwasher-appliance pages. Adding `líquido` surfaced relevant cleaning-product suppliers and retail catalogs, confirming that the official product page needed clearer intent.
+- Shipped: clarified the official product name and search metadata as `Lavaplatos líquido Bonaplus`; extended direct product-page handoff to the editable order builder across vinagre, lavaplatos, vainilla, líquido para calzado and desinfectante; added separate 150 ml and 90 ml handoffs for rinse and shampoo.
+- Measurement limitation: Google Search Console and first-party analytics were not available in this run, so no ranking, traffic or lead gain is claimed.
+
 ## 2026-09-07
 
 - Production baseline: Vercel production for `main` commit `739d3b6` was `READY`; no runtime errors were reported during the preceding 24 hours.
@@ -19,6 +26,6 @@ Concise record of shipped work, dated observations, available measurements and t
 ## Prioritized backlog
 
 1. Measure impressions, clicks and queries for `/productos-limpieza/` and `/productos/cloro/` when Search Console access is available; use those results to choose the next content improvement.
-2. Extend the product-page-to-order-builder handoff to other product pages after the cloro flow is verified in production.
+2. Complete accurate Open Graph and Twitter image dimensions and descriptions on product pages that still have partial metadata.
 3. Improve product-image resolution where a verified owner-approved higher-resolution source exists, especially the current low-resolution desinfectante artwork; preserve the image marked final in repository history until then.
 4. Seek owner approval before preparing any external directory or business-citation submissions; do not contact third parties autonomously.
