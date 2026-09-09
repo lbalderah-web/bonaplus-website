@@ -2,6 +2,13 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-09
+
+- Production baseline: Vercel production for `main` commit `b664ff4` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: an individual Dominican search check for `shampoo al por mayor República Dominicana` was dominated by international marketplaces and retail beauty suppliers; `rinse para cabello al por mayor República Dominicana` likewise surfaced social and retail listings rather than the official BONAPLUS product pages.
+- Shipped: strengthened the official Shampoo and Rinse pages with visible wholesale-buyer answers covering the two approved presentations, approximate order quantities and nationwide distribution; added matching `FAQPage` structured data, internal links to the buyer guide and catalog, and complete Twitter title, description and image-alt metadata.
+- Measurement limitation: Google Search Console and first-party analytics were not available in this run, so no ranking, traffic or lead gain is claimed.
+
 ## 2026-09-08
 
 - Production baseline: Vercel production for `main` commit `c7c4b2e` was `READY`; no runtime errors were reported during the preceding 24 hours.
@@ -26,6 +33,6 @@ Concise record of shipped work, dated observations, available measurements and t
 ## Prioritized backlog
 
 1. Measure impressions, clicks and queries for `/productos-limpieza/` and `/productos/cloro/` when Search Console access is available; use those results to choose the next content improvement.
-2. Complete accurate Open Graph and Twitter image dimensions and descriptions on product pages that still have partial metadata.
+2. Complete accurate Open Graph and Twitter image dimensions and descriptions on the remaining product pages that still have partial metadata.
 3. Improve product-image resolution where a verified owner-approved higher-resolution source exists, especially the current low-resolution desinfectante artwork; preserve the image marked final in repository history until then.
 4. Seek owner approval before preparing any external directory or business-citation submissions; do not contact third parties autonomously.
