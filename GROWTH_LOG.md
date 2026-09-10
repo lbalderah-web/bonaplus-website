@@ -2,6 +2,13 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-10
+
+- Production baseline: Vercel production for `main` commit `2b15e20` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: an individual Dominican search check for `productos de limpieza al por mayor República Dominicana` continued to surface distributors, catalog sites and social profiles rather than BONAPLUS product pages. A separate search for the Bonaplus–Industria Plus B&G identity did not resolve the official relationship reliably.
+- Shipped: completed accurate Open Graph and Twitter metadata for Líquido para Calzado, Lavaplatos, Vainilla, Vinagre and Desinfectante, including share titles, descriptions, image dimensions and accessible image text; refreshed sitemap modification dates for the affected pages.
+- Measurement limitation: Google Search Console and first-party analytics were not available in this run, so no ranking, traffic or lead gain is claimed.
+
 ## 2026-09-09
 
 - Production baseline: Vercel production for `main` commit `b664ff4` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
@@ -33,6 +40,6 @@ Concise record of shipped work, dated observations, available measurements and t
 ## Prioritized backlog
 
 1. Measure impressions, clicks and queries for `/productos-limpieza/` and `/productos/cloro/` when Search Console access is available; use those results to choose the next content improvement.
-2. Complete accurate Open Graph and Twitter image dimensions and descriptions on the remaining product pages that still have partial metadata.
-3. Improve product-image resolution where a verified owner-approved higher-resolution source exists, especially the current low-resolution desinfectante artwork; preserve the image marked final in repository history until then.
+2. Improve product-image resolution where a verified owner-approved higher-resolution source exists, especially the current low-resolution desinfectante artwork; preserve the image marked final in repository history until then.
+3. Strengthen another existing product page only when current search evidence supports useful, non-redundant buyer content.
 4. Seek owner approval before preparing any external directory or business-citation submissions; do not contact third parties autonomously.
