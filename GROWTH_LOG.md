@@ -2,6 +2,13 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-11
+
+- Production baseline: Vercel production for `main` commit `e6e1a60` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: an individual Dominican search check for `desinfectante al por mayor República Dominicana` surfaced social sellers rather than the official BONAPLUS page; a branded search for `Desinfectante Bonaplus` did not surface the official product page in the reviewed results.
+- Shipped: strengthened the official Desinfectante page with visible buyer answers about its approved 90 ml presentation, approximate wholesale quantities, private coordination and nationwide distribution; added matching `FAQPage` structured data and direct internal links to the cleaning-products hub and wholesale buyer guide.
+- Measurement limitation: Google Search Console and first-party analytics were not available in this run, so no ranking, traffic or lead gain is claimed.
+
 ## 2026-09-10
 
 - Production baseline: Vercel production for `main` commit `2b15e20` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
@@ -41,5 +48,5 @@ Concise record of shipped work, dated observations, available measurements and t
 
 1. Measure impressions, clicks and queries for `/productos-limpieza/` and `/productos/cloro/` when Search Console access is available; use those results to choose the next content improvement.
 2. Improve product-image resolution where a verified owner-approved higher-resolution source exists, especially the current low-resolution desinfectante artwork; preserve the image marked final in repository history until then.
-3. Strengthen another existing product page only when current search evidence supports useful, non-redundant buyer content.
+3. Strengthen another existing product page only when current search evidence supports useful, non-redundant buyer content; prioritize a page whose intent is not ambiguous.
 4. Seek owner approval before preparing any external directory or business-citation submissions; do not contact third parties autonomously.
