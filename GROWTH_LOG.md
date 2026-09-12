@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-12
+
+- Production baseline: Vercel production for `main` commit `a3a3b75` was `READY`; no open pull requests were found before editing.
+- Search observation: an individual search check for `Industria Plus B&G` surfaced the official Instagram profile ahead of the official company page, while a broader Bonaplus/company search surfaced the official homepage.
+- Shipped: strengthened internal discovery of the official `/empresa/` page from the homepage, wholesale page, buyer guide and cleaning-products hub; completed its Open Graph image details and Twitter sharing metadata.
+- Verification: the company page image was confirmed at 1320 × 1393 pixels before publishing; canonical, H1 and responsive overflow checks passed.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic or lead gain is attributed to this change.
+- Next priority: monitor official company-page discovery and improve only the remaining approved low-resolution product imagery when a verified source is available.
+
 ## 2026-09-11
 
 - Production baseline: Vercel production for `main` commit `e6e1a60` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
