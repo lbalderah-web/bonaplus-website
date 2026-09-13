@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-13
+
+- Production baseline: Vercel production for `main` commit `c39e915` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: an individual Dominican search check for `vinagre al por mayor República Dominicana` surfaced distributor and retail pages, including a dedicated wholesale catalog, rather than the official Vinagre Bonaplus page.
+- Shipped: expanded the official Vinagre Bonaplus page with visible buyer answers about its approved 150 ml presentation, approximate wholesale quantities, private pricing and nationwide distribution; added matching `FAQPage` structured data and direct links to the wholesale catalog and buyer guide.
+- Verification: canonical, product image dimensions, desktop overflow, structured data and the product-to-quotation path were checked.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic or lead gain is attributed to this change.
+- Next priority: strengthen the next under-served approved product page only where search evidence supports it; replace low-resolution imagery when an approved source becomes available.
+
 ## 2026-09-12
 
 - Production baseline: Vercel production for `main` commit `a3a3b75` was `READY`; no open pull requests were found before editing.
