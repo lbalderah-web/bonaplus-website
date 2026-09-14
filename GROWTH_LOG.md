@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-14
+
+- Production baseline: Vercel production for `main` commit `049667b` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: an individual search check for `Vainilla Bonaplus República Dominicana` surfaced a third-party product page with detailed claims, while the official Bonaplus product page was not present in the reviewed results; the official homepage did appear.
+- Shipped: expanded the official Vainilla Bonaplus page with clearly identified first-party answers about its approved 90 ml presentation, approximate wholesale quantities, private pricing and nationwide distribution; added matching `FAQPage` structured data and links to the wholesale catalog and buyer guide.
+- Verification: canonical, product image dimensions, desktop overflow, structured data and the product-to-quotation path were checked.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic or lead gain is attributed to this change.
+- Next priority: evaluate the Líquido para Calzado page against current retail and wholesale results, and replace low-resolution product imagery only when an approved source is available.
+
 ## 2026-09-13
 
 - Production baseline: Vercel production for `main` commit `c39e915` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
