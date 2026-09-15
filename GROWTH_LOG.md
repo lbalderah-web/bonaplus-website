@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-15
+
+- Production baseline: Vercel production for `main` commit `040a341` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: individual Dominican checks for `líquido para calzado al por mayor República Dominicana`, `Líquido para Calzado Bonaplus` and `betún líquido para zapatos al por mayor República Dominicana` surfaced retail catalogs and Bonaplus social posts, while the official product page was absent from the reviewed results; the official homepage did appear.
+- Shipped: expanded the official Líquido para Calzado Bonaplus page with first-party answers about its approved 90 ml presentation, approximate wholesale quantities, private pricing and nationwide distribution; added matching `FAQPage` structured data and links to the cleaning-products hub and buyer guide.
+- Verification: canonical, product image dimensions, desktop overflow, structured data and the product-to-quotation path were checked.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic or lead gain is attributed to this change.
+- Next priority: monitor official product-page discovery and replace low-resolution product imagery only when an approved source is available.
+
 ## 2026-09-14
 
 - Production baseline: Vercel production for `main` commit `049667b` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
