@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-16
+
+- Production baseline: Vercel production for `main` commit `6ec9095` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: individual Dominican searches for wholesale personal-care, shampoo and rinse suppliers surfaced retail comparison pages, specialist manufacturers, social sellers and international marketplaces, while Bonaplus had separate product pages but no official category resource for this buyer intent.
+- Shipped: created `/productos-cuidado-personal/` as the official Shampoo and Rinse wholesale hub, with verified presentations, private-pricing and nationwide-distribution guidance, direct catalog links, `ItemList`, `FAQPage`, breadcrumbs, social metadata and sitemap coverage. Linked it from the homepage, wholesale guide, wholesale page and both product pages.
+- Verification: canonical, structured data, desktop layout, internal links and the product-to-quotation path were checked.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic or lead gain is attributed to this change.
+- Next priority: monitor discovery of the new hub and improve remaining product imagery only when approved source material is available.
+
 ## 2026-09-15
 
 - Production baseline: Vercel production for `main` commit `040a341` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
