@@ -104,3 +104,10 @@ Concise record of shipped work, dated observations, available measurements and t
 2. Improve product-image resolution where a verified owner-approved higher-resolution source exists, especially the current low-resolution desinfectante artwork; preserve the image marked final in repository history until then.
 3. Strengthen another existing product page only when current search evidence supports useful, non-redundant buyer content; prioritize a page whose intent is not ambiguous.
 4. Seek owner approval before preparing any external directory or business-citation submissions; do not contact third parties autonomously.
+
+## 2026-09-17 — Modern design and catalog discovery
+
+- Added a product-led homepage and a shared responsive visual system across all 14 public pages, preserving the approved logo, brand colors, headline, catalog and commercial information.
+- Added category filters, accent-insensitive product search, useful empty results, and an itemized review before the WhatsApp form. Quantities persist when changing filters.
+- Added purchasing FAQs and reused existing imagery without new dependencies or tracking.
+- Validation: JavaScript syntax and local HTML asset/navigation paths passed. Vercel preview READY. Browser checked desktop plus 390px and 768px frames; mobile content fits without horizontal overflow. Verified mobile menu, filters, search/reset, quantity retention and a two-product 400-box order review. No WhatsApp messages sent. Removed temporary responsive QA page before production.
