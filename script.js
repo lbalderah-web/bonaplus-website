@@ -215,7 +215,7 @@ function filterProducts() {
   const empty = document.getElementById('emptyCatalog');
   if (empty) empty.hidden = count > 0;
   const status = document.getElementById('filterStatus');
-  if (status) status.textContent = `${count} presentación${count === 1 ? '' : 'es'} disponible${count === 1 ? '' : 's'} en esta vista.`;
+  if (status) status.textContent = `${count} ${count === 1 ? 'presentación' : 'presentaciones'} disponible${count === 1 ? '' : 's'} en esta vista.`;
 }
 filterButtons.forEach(button => button.addEventListener('click', () => {
   activeFilter = button.dataset.filter;
