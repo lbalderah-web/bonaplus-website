@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-17
+
+- Production baseline: Vercel production for `main` commit `59f6b64` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: individual checks did not yet surface the one-day-old personal-care hub, while a branded Shampoo Bonaplus search still surfaced a distributor before the official product resource. This is an individual observation, not a ranking trend.
+- Shipped: connected the cleaning and personal-care category hubs to each other and corrected sitemap `lastmod` dates for pages actually changed on 2026-09-16 and 2026-09-17, strengthening crawl paths without adding another URL.
+- Verification: reciprocal links, sitemap consistency, canonical routes, security headers and the product-to-quotation path were checked after publication.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic or lead gain is attributed to this change.
+- Next priority: let the new hub accumulate crawl signals and improve product imagery only when approved higher-resolution source material is available.
+
 ## 2026-09-16
 
 - Production baseline: Vercel production for `main` commit `6ec9095` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
