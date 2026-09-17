@@ -13,6 +13,7 @@ const products = [
   { id: 'shampoo90', name: 'Shampoo (Pequeño)', size: '90 ml', image: 'assets/product-art/shampoo.avif', page: '/productos/shampoo/' }
 ];
 
+const categoryFor = product => ['cloro', 'lavaplatos', 'desinfectante', 'calzado'].includes(product.id) ? 'limpieza' : /^(shampoo|rinse)/.test(product.id) ? 'personal' : 'otros';
 const quantities = Object.fromEntries(products.map(product => [product.id, 0]));
 const grid = document.getElementById('productGrid');
 const summary = document.getElementById('cartSummary');
@@ -124,6 +125,8 @@ function openOrderModal() {
   if (!orderModal || !selectedProducts().length) return;
   if (typeof orderModal.showModal === 'function') orderModal.showModal();
   else orderModal.setAttribute('open', '');
+  const review = document.getElementById('orderReview');
+  if (review) review.innerHTML = selectedProducts().map(product => `<div class="order-review-row"><span>${product.name} · ${product.size}</span><strong>${quantities[product.id]} cajas</strong></div>`).join('');
   window.setTimeout(() => document.getElementById('customerName')?.focus(), 0);
 }
 function closeOrderModal() {
@@ -194,3 +197,37 @@ if ('IntersectionObserver' in window) {
 } else {
   revealElements.forEach(element => element.classList.add('visible'));
 }
+
+// Filter existing cards so quantities and expanded controls survive category changes.
+let activeFilter = 'all';
+const searchInput = document.getElementById('productSearch');
+const filterButtons = document.querySelectorAll('[data-filter]');
+const normalizeSearch = value => value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+function filterProducts() {
+  const query = normalizeSearch(searchInput?.value.trim() || '');
+  let count = 0;
+  products.forEach(product => {
+    const visible = (activeFilter === 'all' || categoryFor(product) === activeFilter) && normalizeSearch(`${product.name} ${product.size}`).includes(query);
+    const card = document.getElementById(`card-${product.id}`);
+    if (card) card.hidden = !visible;
+    if (visible) count++;
+  });
+  const empty = document.getElementById('emptyCatalog');
+  if (empty) empty.hidden = count > 0;
+  const status = document.getElementById('filterStatus');
+  if (status) status.textContent = `${count} presentación${count === 1 ? '' : 'es'} disponible${count === 1 ? '' : 's'} en esta vista.`;
+}
+filterButtons.forEach(button => button.addEventListener('click', () => {
+  activeFilter = button.dataset.filter;
+  filterButtons.forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
+  filterProducts();
+}));
+searchInput?.addEventListener('input', filterProducts);
+document.getElementById('resetFilters')?.addEventListener('click', () => {
+  activeFilter = 'all';
+  if (searchInput) searchInput.value = '';
+  filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === 'all')));
+  filterProducts();
+  searchInput?.focus();
+});
+filterProducts();
