@@ -31,12 +31,13 @@
   <title>Bonaplus República Dominicana | Productos al por mayor</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/logo.png">
-  <link rel="preload" as="image" href="assets/truck-clean.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/products-collage-2026.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mobile-fixes.css">
+  <link rel="stylesheet" href="modern.css">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -112,6 +113,7 @@
 </head>
 <body class="home-page">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="announcement"><span>Hecho en República Dominicana. Pensado para tu negocio.</span><a href="/mayoristas/">Conoce la venta al por mayor <span aria-hidden="true">↗</span></a></div>
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Bonaplus, ir al inicio"><img src="assets/logo.png" alt="Productos Bonaplus" width="474" height="474" decoding="async"></a>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
@@ -128,14 +130,15 @@
         <h1>Calidad que se nota.<br><span>Confianza que construye.</span></h1>
         <p class="hero-text">Abastece tu negocio con productos de limpieza y cuidado personal fabricados en República Dominicana.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#productos">Ver productos <span aria-hidden="true">↗</span></a>
+          <a class="button button-primary" href="#productos">Explorar catálogo <span aria-hidden="true">↗</span></a>
           <a class="button button-secondary" href="https://wa.me/18093791396?text=Hola%20Bonaplus,%20quiero%20solicitar%20informaci%C3%B3n%20para%20realizar%20un%20pedido%20al%20por%20mayor." target="_blank" rel="noopener noreferrer">Solicitar pedido</a>
         </div>
         <div class="hero-points"><span>Venta al por mayor</span><span>Envíos a todo el país</span></div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-photo"><img src="assets/truck-clean.jpg" alt="Camión de distribución nacional de Productos Bonaplus" width="1254" height="1254" fetchpriority="high" decoding="async"></div>
-        <div class="hero-caption"><span>Fabricado aquí.</span><strong>Para negocios en todo el país.</strong></div>
+      <div class="hero-visual showcase">
+        <div class="showcase-top"><span>EL PLUS DE TU NEGOCIO</span><span aria-hidden="true">↗</span></div>
+        <div class="hero-photo"><img src="assets/products-collage-2026.webp" alt="La familia de productos Bonaplus: limpieza, cuidado personal, vinagre y vainilla" width="480" height="480" fetchpriority="high" decoding="async"></div>
+        <div class="hero-caption"><div><span>Una marca. Muchas posibilidades.</span><strong>Conoce la familia Bonaplus.</strong></div><a href="#productos" aria-label="Explorar el catálogo Bonaplus">↗</a></div>
       </div>
     </section>
 
@@ -148,19 +151,31 @@
 
     <section id="productos" class="products section-shell section-padding">
       <div class="section-heading catalog-heading">
-        <div><p class="eyebrow">Elige Bonaplus</p><h2>Un catálogo.<br>Más posibilidades para tu negocio.</h2></div>
+        <div><p class="eyebrow">Elige Bonaplus</p><h2>Productos que hacen<br><span class="heading-accent">crecer tu negocio.</span></h2></div>
         <div class="catalog-intro"><p>Elige tus productos e indica cuántas cajas necesitas. Coordinamos contigo precios, disponibilidad y entrega.</p><div class="catalog-links"><a class="text-link" href="/productos-limpieza/">Productos de limpieza al por mayor <span aria-hidden="true">↗</span></a><a class="text-link" href="/productos-cuidado-personal/">Cuidado personal al por mayor <span aria-hidden="true">↗</span></a><a class="text-link" href="/mayoristas/">Condiciones para mayoristas <span aria-hidden="true">↗</span></a></div></div>
       </div>
+      <div class="catalog-toolbar">
+        <div class="catalog-filters" role="group" aria-label="Filtrar productos por categoría">
+          <button type="button" data-filter="all" aria-pressed="true">Todos <span>10</span></button>
+          <button type="button" data-filter="limpieza" aria-pressed="false">Limpieza</button>
+          <button type="button" data-filter="personal" aria-pressed="false">Cuidado personal</button>
+          <button type="button" data-filter="otros" aria-pressed="false">Otros productos</button>
+        </div>
+        <label class="catalog-search"><span class="sr-only">Buscar productos</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input type="search" id="productSearch" placeholder="Buscar un producto…" autocomplete="off"></label>
+      </div>
+      <p id="filterStatus" class="sr-only" role="status" aria-live="polite"></p>
       <div class="cart-panel" id="cartPanel" aria-label="Resumen de tu pedido">
         <div class="cart-copy"><h3>Tu pedido</h3><p id="cartSummary" role="status" aria-live="polite" aria-atomic="true">Elige productos para comenzar.</p></div>
         <button class="button button-primary" id="sendOrder" type="button" disabled>Continuar <span aria-hidden="true">↗</span></button>
       </div>
       <div class="product-grid" id="productGrid"></div>
+      <div class="empty-catalog" id="emptyCatalog" hidden><h3>No encontramos ese producto.</h3><p>Prueba otro nombre o explora el catálogo completo.</p><button class="button button-secondary" type="button" id="resetFilters">Ver todos los productos</button></div>
+      <p class="catalog-footnote">Cotización personalizada · Pedidos habituales de aproximadamente 400 cajas o más · Entrega coordinada contigo</p>
     </section>
 
     <section id="nosotros" class="about section-padding">
       <div class="section-shell about-grid">
-        <div class="about-image"><img src="assets/products-collage.jpeg" alt="Variedad de productos Bonaplus" loading="lazy" decoding="async" width="1320" height="1393"></div>
+        <div class="about-image"><img src="assets/truck-clean.jpg" alt="Camión de distribución Bonaplus" loading="lazy" decoding="async" width="1254" height="1254"></div>
         <div class="about-copy reveal">
           <p class="eyebrow">Industria Plus B&amp;G</p><h2>Fabricamos para mover negocios.</h2>
           <p>Desde 2002 producimos artículos de limpieza y cuidado personal con enfoque en disponibilidad, servicio y relaciones comerciales de largo plazo.</p>
@@ -180,6 +195,15 @@
       </div>
     </section>
 
+    <section class="faq section-shell section-padding" aria-labelledby="faqTitle">
+      <div><p class="eyebrow">Resolvemos tus dudas</p><h2 id="faqTitle">Todo claro.<br>Desde el principio.</h2><a class="text-link" href="/guia-mayoristas/">Ver la guía de compra <span aria-hidden="true">↗</span></a></div>
+      <div class="faq-list">
+        <details><summary>¿Cómo solicito una cotización?</summary><p>Elige los productos del catálogo, indica la cantidad de cajas y pulsa Continuar. Podrás revisar tu selección y preparar un mensaje de WhatsApp para nuestro equipo.</p></details>
+        <details><summary>¿Cuántas cajas puedo pedir?</summary><p>Los pedidos habituales son de aproximadamente 400 cajas o más. Es una referencia, no un mínimo fijo: nuestro equipo confirma las condiciones de cada solicitud.</p></details>
+        <details><summary>¿Hacen entregas fuera de Santo Domingo?</summary><p>Sí, tenemos distribución en toda la República Dominicana. Coordinamos contigo disponibilidad, transporte y fecha de entrega.</p></details>
+        <details><summary>¿Dónde consulto los precios?</summary><p>Preparamos tu cotización directamente por WhatsApp según los productos, el volumen y el destino del pedido. Atendemos de lunes a viernes, de 8:00 a.m. a 6:00 p.m.</p></details>
+      </div>
+    </section>
     <section class="cta section-shell reveal">
       <div><p class="eyebrow">Haz crecer tu distribución</p><h2>Conversemos sobre tu próximo pedido.</h2><p>Un asesor te ayudará a coordinar cada detalle de tu compra al por mayor.</p></div>
       <a class="button button-light" href="https://wa.me/18093791396?text=Hola%20Bonaplus,%20quiero%20informaci%C3%B3n%20para%20hacer%20un%20pedido%20al%20por%20mayor." target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
@@ -203,6 +227,7 @@
       <button type="button" class="modal-close" aria-label="Cerrar formulario de pedido">×</button>
       <p class="eyebrow">Solicitud al por mayor</p><h2 id="orderTitle">Completa tus datos</h2>
       <p class="modal-intro" id="orderIntro">Usaremos esta información únicamente para preparar el mensaje de WhatsApp.</p>
+      <div id="orderReview" class="order-review" aria-label="Productos seleccionados"></div>
       <div class="form-grid">
         <label>Nombre y apellido<input id="customerName" name="name" autocomplete="name" required></label>
         <label>Empresa o negocio<input id="businessName" name="organization" autocomplete="organization"></label>
