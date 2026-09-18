@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-18
+
+- Production baseline: Vercel production for `main` commit `b09370a` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
+- Search observation: individual checks surfaced the official homepage and wholesale guide, while the new personal-care hub was not yet present in the reviewed results and the homepage result still reflected pre-redesign content. This is a crawl observation, not a ranking trend.
+- Shipped: corrected sitemap `lastmod` dates for all 14 public pages to the actual 2026-09-17 redesign date, giving crawlers an accurate freshness signal after the site-wide visual and catalog update. No visual or commercial content was changed.
+- Verification: all 14 sitemap routes loaded with matching canonicals, H1s, images and no desktop overflow. Search, category filters, quantity retention and a two-product 400-box WhatsApp quotation were tested without sending a message.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic or lead gain is attributed to this change.
+- Next priority: allow the redesign and personal-care hub time to be recrawled; improve product imagery only when approved higher-resolution source material is available.
+
 ## 2026-09-17
 
 - Production baseline: Vercel production for `main` commit `59f6b64` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
