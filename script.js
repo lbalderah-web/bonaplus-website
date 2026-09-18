@@ -35,7 +35,7 @@ function renderProducts() {
   if (!grid) return;
   if (grid.children.length) return;
   grid.innerHTML = products.map((product, index) => {
-    const dimensions = product.id.startsWith('shampoo') ? [360, 480]
+    const dimensions = product.id.startsWith('shampoo') ? [560, 842]
       : product.id.startsWith('rinse') ? [720, 900]
       : product.id === 'desinfectante' ? [240, 300]
       : product.id === 'calzado' ? [1086, 1448] : [1024, 1536];
