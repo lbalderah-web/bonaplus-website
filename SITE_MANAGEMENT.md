@@ -26,6 +26,7 @@ These identity rules are permanent unless the owner explicitly changes them:
 These rules must be preserved unless the owner explicitly requests a change:
 
 - Use the original Bonaplus logo with its existing blue background.
+- Display the wordmark as Bonaplus without an added + symbol. Keep product images complete, with no cover cropping, oversized corner masks or text overlays hiding the containers (owner request, 2026-09-18).
 - Keep the current clean blue, white and green visual direction.
 - Main headline: **Calidad que se nota. Confianza que construye.**
 - The website targets distributors and wholesale buyers in the Dominican Republic.
