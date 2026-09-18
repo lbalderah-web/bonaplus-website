@@ -1,20 +1,25 @@
 'use strict';
 
 const products = [
-  { id: 'cloro', name: 'Cloro (Mediano)', size: '150 ml', image: 'assets/product-art/cloro.jpg', page: '/productos/cloro/' },
-  { id: 'vinagre', name: 'Vinagre (Mediano)', size: '150 ml', image: 'assets/product-art/vinagre.jpg', page: '/productos/vinagre/' },
-  { id: 'lavaplatos', name: 'Lavaplatos', size: '150 ml', image: 'assets/product-art/lavaplatos.jpg', page: '/productos/lavaplatos/' },
-  { id: 'vainilla', name: 'Vainilla', size: '90 ml', image: 'assets/product-art/vainilla.jpg', page: '/productos/vainilla/' },
-  { id: 'calzado', name: 'Líquido para Calzado', size: '90 ml', image: 'assets/product-art/calzado.jpg', page: '/productos/calzado/' },
-  { id: 'desinfectante', name: 'Desinfectante', size: '90 ml', image: 'assets/product-art/desinfectante.jpg', page: '/productos/desinfectante/' },
-  { id: 'rinse150', name: 'Rinse (Mediano)', size: '150 ml', image: 'assets/product-art/rinse.avif', page: '/productos/rinse/' },
-  { id: 'rinse90', name: 'Rinse (Pequeño)', size: '90 ml', image: 'assets/product-art/rinse.avif', page: '/productos/rinse/' },
-  { id: 'shampoo150', name: 'Shampoo (Mediano)', size: '150 ml', image: 'assets/product-art/shampoo.avif', page: '/productos/shampoo/' },
-  { id: 'shampoo90', name: 'Shampoo (Pequeño)', size: '90 ml', image: 'assets/product-art/shampoo.avif', page: '/productos/shampoo/' }
+  { id: 'cloro', name: 'Cloro (Mediano)', size: '150 ml', image: '/assets/catalog/cloro.webp', page: '/productos/cloro/' },
+  { id: 'vinagre', name: 'Vinagre (Mediano)', size: '150 ml', image: '/assets/catalog/vinagre.webp', page: '/productos/vinagre/' },
+  { id: 'lavaplatos', name: 'Lavaplatos', size: '150 ml', image: '/assets/catalog/lavaplatos.webp', page: '/productos/lavaplatos/' },
+  { id: 'vainilla', name: 'Vainilla', size: '90 ml', image: '/assets/catalog/vainilla.webp', page: '/productos/vainilla/' },
+  { id: 'calzado', name: 'Líquido para Calzado', size: '90 ml', image: '/assets/catalog/calzado.webp', page: '/productos/calzado/' },
+  { id: 'desinfectante', name: 'Desinfectante', size: '90 ml', image: '/assets/catalog/desinfectante.webp', page: '/productos/desinfectante/' },
+  { id: 'rinse150', name: 'Rinse (Mediano)', size: '150 ml', image: '/assets/catalog/rinse.webp', page: '/productos/rinse/' },
+  { id: 'rinse90', name: 'Rinse (Pequeño)', size: '90 ml', image: '/assets/catalog/rinse.webp', page: '/productos/rinse/' },
+  { id: 'shampoo150', name: 'Shampoo (Mediano)', size: '150 ml', image: '/assets/catalog/shampoo.webp', page: '/productos/shampoo/' },
+  { id: 'shampoo90', name: 'Shampoo (Pequeño)', size: '90 ml', image: '/assets/catalog/shampoo.webp', page: '/productos/shampoo/' }
 ];
 
 const categoryFor = product => ['cloro', 'lavaplatos', 'desinfectante', 'calzado'].includes(product.id) ? 'limpieza' : /^(shampoo|rinse)/.test(product.id) ? 'personal' : 'otros';
 const quantities = Object.fromEntries(products.map(product => [product.id, 0]));
+// Keep only product selections in this tab. Customer contact details are never stored.
+try {
+  const saved = JSON.parse(sessionStorage.getItem('bonaplus-selection-v1') || '{}');
+  products.forEach(product => { quantities[product.id] = normalizeQuantity(saved[product.id]); });
+} catch { /* The catalog also works when browser storage is unavailable. */ }
 const grid = document.getElementById('productGrid');
 const summary = document.getElementById('cartSummary');
 const cartPanel = document.getElementById('cartPanel');
@@ -28,13 +33,14 @@ const nav = document.querySelector('.nav');
 
 function renderProducts() {
   if (!grid) return;
-  grid.innerHTML = products.map(product => {
+  if (grid.children.length) return;
+  grid.innerHTML = products.map((product, index) => {
     const dimensions = product.id.startsWith('shampoo') ? [360, 480]
       : product.id.startsWith('rinse') ? [720, 900]
       : product.id === 'desinfectante' ? [240, 300]
       : product.id === 'calzado' ? [1086, 1448] : [1024, 1536];
     return `
-    <article class="product-card" id="card-${product.id}">
+    <article class="product-card" id="card-${product.id}"><span class="product-index">${String(index + 1).padStart(2, '0')} / BONAPLUS</span><span class="product-selected" aria-hidden="true">✓</span>
       <a class="product-image" href="${product.page}" aria-label="Ver información de ${product.name} Bonaplus">
         <img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" decoding="async" width="${dimensions[0]}" height="${dimensions[1]}">
       </a>
@@ -46,7 +52,7 @@ function renderProducts() {
           <label class="quantity-label" for="qty-${product.id}">Cantidad de cajas</label>
           <div class="quantity" role="group" aria-label="Cantidad de cajas de ${product.name}">
             <button type="button" data-action="minus" data-id="${product.id}" aria-label="Restar una caja de ${product.name}">−</button>
-            <input id="qty-${product.id}" data-quantity="${product.id}" type="number" min="0" step="1" inputmode="numeric" value="0" aria-label="Cajas de ${product.name}">
+            <input id="qty-${product.id}" data-quantity="${product.id}" type="number" min="0" max="999999" step="1" inputmode="numeric" value="0" aria-label="Cajas de ${product.name}">
             <button type="button" data-action="plus" data-id="${product.id}" aria-label="Agregar una caja de ${product.name}">+</button>
           </div>
           <button type="button" class="add-button" data-action="add100" data-id="${product.id}" aria-label="Agregar cien cajas de ${product.name}">+100 cajas</button>
@@ -60,7 +66,7 @@ function selectedProducts() {
 }
 function normalizeQuantity(value) {
   const amount = Number(value);
-  return Number.isFinite(amount) ? Math.min(Number.MAX_SAFE_INTEGER, Math.max(0, Math.trunc(amount))) : 0;
+  return Number.isFinite(amount) ? Math.min(999999, Math.max(0, Math.trunc(amount))) : 0;
 }
 function updateCart(editingInput = null) {
   const selected = selectedProducts();
@@ -70,6 +76,9 @@ function updateCart(editingInput = null) {
     : 'Elige productos para comenzar.';
   if (sendButton) sendButton.disabled = selected.length === 0;
   cartPanel?.classList.toggle('has-items', selected.length > 0);
+  if (cartPanel) cartPanel.hidden = !selected.length;
+  document.body.classList.toggle('has-order', selected.length > 0);
+  try { sessionStorage.setItem('bonaplus-selection-v1', JSON.stringify(quantities)); } catch { /* Optional tab-local persistence. */ }
   if (orderNotice) orderNotice.textContent = total > 0 && total < 400
     ? `Tu selección suma ${total} cajas. Los pedidos habituales son de aproximadamente 400 cajas o más; nuestro equipo confirmará las condiciones aplicables.`
     : total >= 400
@@ -79,11 +88,16 @@ function updateCart(editingInput = null) {
     const input = document.getElementById(`qty-${product.id}`);
     if (input && input !== editingInput) input.value = String(amount);
     document.getElementById(`card-${product.id}`)?.classList.toggle('is-selected', amount > 0);
+    if (amount > 0) {
+      const controls = document.getElementById(`controls-${product.id}`);
+      if (controls) controls.hidden = false;
+    }
     const minus = grid?.querySelector(`button[data-action="minus"][data-id="${product.id}"]`);
     if (minus) minus.disabled = amount === 0;
     const button = grid?.querySelector(`button[data-action="toggle"][data-id="${product.id}"]`);
     if (button) {
-      button.textContent = amount > 0 ? 'En tu pedido' : 'Añadir al pedido';
+      button.textContent = amount > 0 ? `${amount.toLocaleString('es-DO')} cajas en tu pedido` : 'Añadir al pedido';
+      if (amount > 0) button.setAttribute('aria-expanded', 'true');
       button.setAttribute('aria-label', amount > 0 ? `Editar cantidad de ${product.name}` : `Añadir ${product.name} al pedido`);
     }
   });
@@ -125,15 +139,17 @@ function openOrderModal() {
   if (!orderModal || !selectedProducts().length) return;
   if (typeof orderModal.showModal === 'function') orderModal.showModal();
   else orderModal.setAttribute('open', '');
-  const review = document.getElementById('orderReview');
-  if (review) review.innerHTML = selectedProducts().map(product => `<div class="order-review-row"><span>${product.name} · ${product.size}</span><strong>${quantities[product.id]} cajas</strong></div>`).join('');
+  renderOrderReview();
+  document.body.classList.add('modal-open');
   window.setTimeout(() => document.getElementById('customerName')?.focus(), 0);
 }
 function closeOrderModal() {
   if (!orderModal) return;
   if (typeof orderModal.close === 'function' && orderModal.open) orderModal.close();
   else orderModal.removeAttribute('open');
-  sendButton?.focus();
+  document.body.classList.remove('modal-open');
+  if (selectedProducts().length) sendButton?.focus();
+  else document.getElementById('productSearch')?.focus({ preventScroll: true });
 }
 sendButton?.addEventListener('click', openOrderModal);
 modalClose?.addEventListener('click', closeOrderModal);
@@ -231,3 +247,26 @@ document.getElementById('resetFilters')?.addEventListener('click', () => {
   searchInput?.focus();
 });
 filterProducts();
+
+function renderOrderReview() {
+  const review = document.getElementById('orderReview');
+  if (!review) return;
+  review.innerHTML = selectedProducts().map(product => `<div class="order-review-row"><span>${product.name}<small>${product.size}</small></span><div class="review-quantity"><input type="number" min="0" max="999999" step="1" inputmode="numeric" data-review-quantity="${product.id}" value="${quantities[product.id]}" aria-label="Cajas de ${product.name} en el resumen"><span>cajas</span></div><button type="button" class="remove-item" data-remove="${product.id}" aria-label="Quitar ${product.name} del pedido">×</button></div>`).join('');
+}
+document.getElementById('orderReview')?.addEventListener('change', event => {
+  const input = event.target.closest('[data-review-quantity]');
+  if (!input || !(input.dataset.reviewQuantity in quantities)) return;
+  quantities[input.dataset.reviewQuantity] = normalizeQuantity(input.value);
+  input.value = String(quantities[input.dataset.reviewQuantity]);
+  updateCart();
+  if (!selectedProducts().length) closeOrderModal();
+  else if (input.value === '0') renderOrderReview();
+});
+document.getElementById('orderReview')?.addEventListener('click', event => {
+  const button = event.target.closest('[data-remove]');
+  if (!button || !(button.dataset.remove in quantities)) return;
+  quantities[button.dataset.remove] = 0;
+  updateCart();
+  if (!selectedProducts().length) closeOrderModal();
+  else { renderOrderReview(); document.querySelector('[data-review-quantity]')?.focus(); }
+});
