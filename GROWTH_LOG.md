@@ -120,3 +120,11 @@ Concise record of shipped work, dated observations, available measurements and t
 - Added category filters, accent-insensitive product search, useful empty results, and an itemized review before the WhatsApp form. Quantities persist when changing filters.
 - Added purchasing FAQs and reused existing imagery without new dependencies or tracking.
 - Validation: JavaScript syntax and local HTML asset/navigation paths passed. Vercel preview READY. Browser checked desktop plus 390px and 768px frames; mobile content fits without horizontal overflow. Verified mobile menu, filters, search/reset, quantity retention and a two-product 400-box order review. No WhatsApp messages sent. Removed temporary responsive QA page before production.
+
+## 2026-09-18 — Campaign and editorial redesign
+
+- Rebuilt the homepage around a blue product campaign, large typography, staggered category stories, an expanded company section and a clearer wholesale purchase sequence. Applied one responsive design system across all 14 public pages while preserving approved identity, URLs, commercial facts and search metadata.
+- Added an original product campaign composition based on existing catalog imagery. Delivered the hero in WebP (about 157 KB) and eight optimized catalog artworks (about 293 KB combined). Catalog content remains present in the initial HTML.
+- Improved the order builder with editable review quantities, product removal and tab-local selection persistence across product navigation. Customer contact details are not stored.
+- Validation: JavaScript syntax, HTML asset/navigation paths, unique IDs, structured-data parsing and whitespace checks passed. Vercel preview READY; reviewed the desktop homepage and a product page, plus 390px and 768px layouts without horizontal overflow. Tested mobile navigation, category filters, empty search/reset, product-page return with a retained 250-box selection, a two-product 400-box review, immediate quantity updates and removal of the final item. No site JavaScript errors observed and no WhatsApp messages sent.
+- Removed the temporary responsive QA page before production and refreshed sitemap modification dates. No traffic, conversion or ranking gains are claimed without measurement.
