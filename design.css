@@ -27,3 +27,7 @@
 @media(max-height:560px){.site-header{position:relative}.order-modal{max-height:calc(100dvh - 16px)}}
 @media(hover:none){.button:hover,.world-card:hover img,.product-image:hover img,.closing-action:hover>b{transform:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+/* Preserve the complete campaign composition at every viewport. */
+.campaign-art{min-height:0;height:auto;align-self:center;aspect-ratio:4/5}
+.campaign-image{position:relative;left:0;top:0;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media(max-width:600px){.campaign-art{min-height:0;height:auto;width:100%;max-width:430px}.campaign-image{object-position:center;border-radius:100px 100px 0 0}}

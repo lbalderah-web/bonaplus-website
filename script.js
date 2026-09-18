@@ -253,15 +253,17 @@ function renderOrderReview() {
   if (!review) return;
   review.innerHTML = selectedProducts().map(product => `<div class="order-review-row"><span>${product.name}<small>${product.size}</small></span><div class="review-quantity"><input type="number" min="0" max="999999" step="1" inputmode="numeric" data-review-quantity="${product.id}" value="${quantities[product.id]}" aria-label="Cajas de ${product.name} en el resumen"><span>cajas</span></div><button type="button" class="remove-item" data-remove="${product.id}" aria-label="Quitar ${product.name} del pedido">×</button></div>`).join('');
 }
-document.getElementById('orderReview')?.addEventListener('change', event => {
+function readReviewQuantity(event) {
   const input = event.target.closest('[data-review-quantity]');
   if (!input || !(input.dataset.reviewQuantity in quantities)) return;
   quantities[input.dataset.reviewQuantity] = normalizeQuantity(input.value);
-  input.value = String(quantities[input.dataset.reviewQuantity]);
+  if (event.type !== 'input') input.value = String(quantities[input.dataset.reviewQuantity]);
   updateCart();
+  if (event.type === 'input') return;
   if (!selectedProducts().length) closeOrderModal();
   else if (input.value === '0') renderOrderReview();
-});
+}
+['input', 'change', 'focusout'].forEach(type => document.getElementById('orderReview')?.addEventListener(type, readReviewQuantity));
 document.getElementById('orderReview')?.addEventListener('click', event => {
   const button = event.target.closest('[data-remove]');
   if (!button || !(button.dataset.remove in quantities)) return;
