@@ -128,3 +128,12 @@ Concise record of shipped work, dated observations, available measurements and t
 - Improved the order builder with editable review quantities, product removal and tab-local selection persistence across product navigation. Customer contact details are not stored.
 - Validation: JavaScript syntax, HTML asset/navigation paths, unique IDs, structured-data parsing and whitespace checks passed. Vercel preview READY; reviewed the desktop homepage and a product page, plus 390px and 768px layouts without horizontal overflow. Tested mobile navigation, category filters, empty search/reset, product-page return with a retained 250-box selection, a two-product 400-box review, immediate quantity updates and removal of the final item. No site JavaScript errors observed and no WhatsApp messages sent.
 - Removed the temporary responsive QA page before production and refreshed sitemap modification dates. No traffic, conversion or ranking gains are claimed without measurement.
+
+## 2026-09-18 — Complete imagery and cleaner branding
+
+- Removed the added + from the header and footer wordmarks and applied the same Bonaplus wordmark across all 14 pages. Recorded the owner's preference in the site management rules.
+- Reframed product artwork without cover cropping or hover zoom. Moved category captions and catalog labels outside the photos, reduced oversized corner masks, and changed mobile categories to complete cards instead of a partially visible carousel.
+- Replaced cropped collages on five inner pages with complete product galleries. Used the existing higher-resolution single-bottle shampoo photograph, delivered as an optimized WebP; aligned its product and social metadata.
+- Refined the campaign proportions and allowed the national distribution image to retain its full composition.
+- Validation: all 14 pages passed the rendered layout and image-fit audit at 320, 390, 768 and 1280 px. No horizontal page overflow, cover-fit product images or broken loaded images were observed. Header branding reads Bonaplus without an added symbol. JavaScript syntax, local navigation/assets, unique IDs, JSON-LD parsing and whitespace checks passed. Reviewed desktop and mobile screenshots of the campaign, category cards and company gallery.
+- An additional browser interaction was blocked by automatic approval review due to a usage limit after the layout audit had completed. No additional order-flow validation is claimed for this styling revision. The temporary QA page was removed before production.
