@@ -5,6 +5,76 @@
       "source": "/en(.*)",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/empresa/index.html",
+      "destination": "/empresa/",
+      "permanent": true
+    },
+    {
+      "source": "/guia-mayoristas/index.html",
+      "destination": "/guia-mayoristas/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/mayoristas/index.html",
+      "destination": "/mayoristas/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/calzado/index.html",
+      "destination": "/productos/calzado/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/cloro/index.html",
+      "destination": "/productos/cloro/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/desinfectante/index.html",
+      "destination": "/productos/desinfectante/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/lavaplatos/index.html",
+      "destination": "/productos/lavaplatos/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/rinse/index.html",
+      "destination": "/productos/rinse/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/shampoo/index.html",
+      "destination": "/productos/shampoo/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/vainilla/index.html",
+      "destination": "/productos/vainilla/",
+      "permanent": true
+    },
+    {
+      "source": "/productos/vinagre/index.html",
+      "destination": "/productos/vinagre/",
+      "permanent": true
+    },
+    {
+      "source": "/productos-cuidado-personal/index.html",
+      "destination": "/productos-cuidado-personal/",
+      "permanent": true
+    },
+    {
+      "source": "/productos-limpieza/index.html",
+      "destination": "/productos-limpieza/",
+      "permanent": true
     }
   ],
   "headers": [
@@ -33,5 +103,6 @@
         }
       ]
     }
-  ]
+  ],
+  "trailingSlash": true
 }

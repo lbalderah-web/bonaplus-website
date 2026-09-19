@@ -80,7 +80,7 @@ function updateCart(editingInput = null) {
   document.body.classList.toggle('has-order', selected.length > 0);
   try { sessionStorage.setItem('bonaplus-selection-v1', JSON.stringify(quantities)); } catch { /* Optional tab-local persistence. */ }
   if (orderNotice) orderNotice.textContent = total > 0 && total < 400
-    ? `Tu selección suma ${total} cajas. Los pedidos habituales son de aproximadamente 400 cajas o más; nuestro equipo confirmará las condiciones aplicables.`
+    ? `Tu selección suma ${total} caja${total === 1 ? '' : 's'}. Los pedidos habituales son de aproximadamente 400 cajas o más; nuestro equipo confirmará las condiciones aplicables.`
     : total >= 400
       ? `Tu selección suma ${total} cajas. El volumen está dentro del rango habitual de pedidos al por mayor.` : '';
   products.forEach(product => {
@@ -96,7 +96,7 @@ function updateCart(editingInput = null) {
     if (minus) minus.disabled = amount === 0;
     const button = grid?.querySelector(`button[data-action="toggle"][data-id="${product.id}"]`);
     if (button) {
-      button.textContent = amount > 0 ? `${amount.toLocaleString('es-DO')} cajas en tu pedido` : 'Añadir al pedido';
+      button.textContent = amount > 0 ? `${amount.toLocaleString('es-DO')} ${amount === 1 ? 'caja' : 'cajas'} en tu pedido` : 'Añadir al pedido';
       if (amount > 0) button.setAttribute('aria-expanded', 'true');
       button.setAttribute('aria-label', amount > 0 ? `Editar cantidad de ${product.name}` : `Añadir ${product.name} al pedido`);
     }
@@ -165,14 +165,14 @@ orderForm?.addEventListener('submit', event => {
   if (!orderForm.reportValidity()) return;
   const selected = selectedProducts();
   if (!selected.length) { closeOrderModal(); return; }
-  const lines = selected.map(product => `• ${product.name} (${product.size}): ${quantities[product.id]} cajas`);
+  const lines = selected.map(product => `• ${product.name} (${product.size}): ${quantities[product.id]} caja${quantities[product.id] === 1 ? '' : 's'}`);
   const total = selected.reduce((sum, product) => sum + quantities[product.id], 0);
   const name = document.getElementById('customerName')?.value.trim() || '';
   const business = document.getElementById('businessName')?.value.trim() || '';
   const phone = document.getElementById('customerPhone')?.value.trim() || '';
   const city = document.getElementById('customerCity')?.value.trim() || '';
   const notes = document.getElementById('customerNotes')?.value.trim() || '';
-  const text = `Hola Bonaplus, quiero solicitar una cotización para un pedido al por mayor.\n\nDATOS DEL CLIENTE\nNombre: ${name}\nNegocio: ${business || 'No indicado'}\nTeléfono: ${phone}\nProvincia/Ciudad: ${city}\n\nPRODUCTOS\n${lines.join('\n')}\n\nTotal aproximado: ${total} cajas\nComentarios: ${notes || 'Ninguno'}\n\nPor favor, ayúdenme a coordinar precios, disponibilidad y envío.`;
+  const text = `Hola Bonaplus, quiero solicitar una cotización para un pedido al por mayor.\n\nDATOS DEL CLIENTE\nNombre: ${name}\nNegocio: ${business || 'No indicado'}\nTeléfono: ${phone}\nProvincia/Ciudad: ${city}\n\nPRODUCTOS\n${lines.join('\n')}\n\nTotal aproximado: ${total} caja${total === 1 ? '' : 's'}\nComentarios: ${notes || 'Ninguno'}\n\nPor favor, ayúdenme a coordinar precios, disponibilidad y envío.`;
   window.open(`https://wa.me/18093791396?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   closeOrderModal();
 });
