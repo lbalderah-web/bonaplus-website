@@ -350,3 +350,117 @@ function initPremium3D() {
   });
 }
 initPremium3D();
+
+// === 2026-09-21 flagship navigation and reveal system ===
+function initFlagshipExperience() {
+  const root = document.documentElement;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // A thin progress line gives long-form pages a subtle sense of movement.
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(progress);
+
+  let scrollFrame = 0;
+  const updateScrollState = () => {
+    cancelAnimationFrame(scrollFrame);
+    scrollFrame = requestAnimationFrame(() => {
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const value = Math.max(0, Math.min(1, window.scrollY / max));
+      progress.style.setProperty('--scroll-progress', value.toFixed(4));
+    });
+  };
+  updateScrollState();
+  window.addEventListener('scroll', updateScrollState, { passive: true });
+  window.addEventListener('resize', updateScrollState, { passive: true });
+
+  // Keep the header navigation synchronized with the section currently in view.
+  const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')];
+  const sectionMap = new Map();
+  navLinks.forEach(link => {
+    const id = link.getAttribute('href')?.slice(1);
+    const section = id ? document.getElementById(id) : null;
+    if (section) sectionMap.set(section, link);
+  });
+
+  if ('IntersectionObserver' in window && sectionMap.size) {
+    const activeObserver = new IntersectionObserver(entries => {
+      const candidates = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+      if (!candidates.length) return;
+      const activeLink = sectionMap.get(candidates[0].target);
+      navLinks.forEach(link => {
+        const active = link === activeLink;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-28% 0px -58% 0px', threshold: [0, .08, .2, .45] });
+
+    sectionMap.forEach((_, section) => activeObserver.observe(section));
+  }
+
+  // Reveal complete scenes instead of animating every line of copy.
+  if (!reducedMotion && 'IntersectionObserver' in window) {
+    const sceneSelectors = [
+      '.manifesto', '.worlds', '.products', '.origin', '.buying', '.faq', '.closing'
+    ];
+    const scenes = [...document.querySelectorAll(sceneSelectors.join(','))];
+
+    const childrenByScene = [
+      '.manifesto-grid, .brand-facts',
+      '.editorial-heading, .world-grid',
+      '.catalog-heading, .catalog-toolbar, .product-grid, .catalog-footnote',
+      '.origin-image, .origin-copy',
+      '.buying-intro, .buying-steps',
+      '.faq > div, .faq-list',
+      '.closing-row'
+    ];
+
+    scenes.forEach((scene, index) => {
+      const rect = scene.getBoundingClientRect();
+      if (rect.top < window.innerHeight * .86) return;
+      scene.classList.add('premium-reveal');
+      scene.querySelectorAll(childrenByScene[index] || ':scope > *').forEach(child => {
+        child.classList.add('premium-reveal-child');
+      });
+    });
+
+    const revealScenes = [...document.querySelectorAll('.premium-reveal')];
+    if (revealScenes.length) {
+      root.classList.add('has-premium-reveal');
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+      revealScenes.forEach(scene => revealObserver.observe(scene));
+    }
+  }
+
+  // Desktop-only ambient light follows the pointer at a deliberately slow scale.
+  if (finePointer && !reducedMotion) {
+    root.classList.add('has-flagship-motion');
+    let glowFrame = 0;
+    let latestX = window.innerWidth * .5;
+    let latestY = window.innerHeight * .4;
+
+    const paintGlow = () => {
+      glowFrame = 0;
+      root.style.setProperty('--page-glow-x', latestX.toFixed(0) + 'px');
+      root.style.setProperty('--page-glow-y', latestY.toFixed(0) + 'px');
+    };
+
+    window.addEventListener('pointermove', event => {
+      latestX = event.clientX;
+      latestY = event.clientY;
+      if (!glowFrame) glowFrame = requestAnimationFrame(paintGlow);
+    }, { passive: true });
+  }
+}
+initFlagshipExperience();

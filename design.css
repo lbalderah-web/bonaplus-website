@@ -1028,3 +1028,474 @@ body{
     transform:none !important
   }
 }
+
+/* === 2026-09-21 flagship experience layer === */
+html{
+  scrollbar-gutter:stable;
+  accent-color:var(--blue)
+}
+body{
+  position:relative;
+  min-height:100%;
+  overflow-x:clip
+}
+body::before{
+  content:'';
+  position:fixed;
+  z-index:-1;
+  width:720px;
+  height:720px;
+  left:var(--page-glow-x,50vw);
+  top:var(--page-glow-y,40vh);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(75,142,233,.075),rgba(75,142,233,.025) 35%,transparent 68%);
+  filter:blur(12px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease
+}
+html.has-flagship-motion body::before{opacity:1}
+body::after{
+  content:'';
+  position:fixed;
+  z-index:999;
+  inset:0;
+  pointer-events:none;
+  opacity:.025;
+  background:
+    repeating-linear-gradient(0deg,rgba(5,39,75,.18) 0,rgba(5,39,75,.18) 1px,transparent 1px,transparent 4px);
+  mix-blend-mode:multiply
+}
+.scroll-progress{
+  position:fixed;
+  z-index:90;
+  top:0;
+  left:0;
+  width:100%;
+  height:3px;
+  transform:scaleX(var(--scroll-progress,0));
+  transform-origin:left center;
+  background:linear-gradient(90deg,#d9e9ff,#8fc0ff 45%,#fff);
+  box-shadow:0 0 18px rgba(147,194,255,.55);
+  pointer-events:none
+}
+.site-header{
+  --header-scale:1;
+  transform:translateZ(0)
+}
+.site-header.is-scrolled{
+  min-height:76px;
+  padding-block:8px
+}
+.site-header.is-scrolled .brand img{
+  width:46px;
+  height:46px
+}
+.site-header.is-scrolled .brand-word{font-size:1.72rem}
+.site-header.is-scrolled .header-cta{min-height:40px}
+.nav a{
+  opacity:.78;
+  transition:opacity .2s ease,color .2s ease,transform .2s ease
+}
+.nav a:hover,.nav a.is-active{
+  opacity:1
+}
+.nav a.is-active::after{
+  width:100%;
+  height:2px;
+  border-radius:999px
+}
+.nav a.is-active{
+  text-shadow:0 0 20px rgba(255,255,255,.18)
+}
+
+/* Better depth rhythm between major scenes. */
+.manifesto,.products,.buying,.faq{
+  position:relative
+}
+.manifesto::before,.products::before,.buying::before,.faq::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;
+  width:min(1400px,calc(100% - 100px));
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,#cddbea 18%,#cddbea 82%,transparent);
+  opacity:.7
+}
+.manifesto::after{
+  content:'';
+  position:absolute;
+  width:36vw;
+  max-width:560px;
+  aspect-ratio:1;
+  right:-13vw;
+  top:5%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(82,144,226,.09),transparent 70%);
+  filter:blur(8px);
+  pointer-events:none
+}
+.brand-facts{
+  overflow:hidden;
+  border-radius:18px;
+  border:1px solid #dde7f0;
+  padding:0;
+  background:rgba(255,255,255,.66);
+  box-shadow:0 20px 60px rgba(8,39,68,.055);
+  backdrop-filter:blur(14px)
+}
+.brand-facts>div{
+  padding:34px 42px;
+  border-left:1px solid #dde7f0
+}
+.brand-facts>div:first-child{padding-left:42px}
+.brand-facts strong{
+  color:var(--navy);
+  transition:transform .28s var(--premium-ease),color .28s ease
+}
+.brand-facts>div:hover strong{
+  transform:translateY(-3px);
+  color:var(--blue)
+}
+
+/* The catalog behaves like a premium working surface. */
+@media(min-width:881px){
+  .catalog-toolbar{
+    position:sticky;
+    top:92px;
+    z-index:20;
+    background:rgba(251,253,255,.86);
+    border-color:rgba(190,208,227,.82);
+    box-shadow:0 14px 38px rgba(8,39,68,.08);
+    backdrop-filter:blur(18px) saturate(135%)
+  }
+  .site-header.is-scrolled~main .catalog-toolbar{top:80px}
+}
+.catalog-toolbar::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:inset 0 1px rgba(255,255,255,.94);
+  pointer-events:none
+}
+.catalog-search input::placeholder{color:#8292a5}
+.catalog-filters button[aria-pressed=true]{
+  transform:translateY(-1px)
+}
+.product-card{
+  overflow:visible
+}
+.product-card .product-content{
+  position:relative;
+  z-index:3
+}
+.product-content h3 a{
+  background-image:linear-gradient(currentColor,currentColor);
+  background-repeat:no-repeat;
+  background-position:0 100%;
+  background-size:0 1px;
+  transition:background-size .25s var(--premium-ease),color .2s ease
+}
+.product-content h3 a:hover{background-size:100% 1px}
+.catalog-footnote{
+  margin-top:64px;
+  padding:30px 0;
+  border-block:1px solid var(--line)
+}
+.catalog-footnote>span{
+  font-family:var(--display);
+  font-size:clamp(1.25rem,2vw,1.8rem);
+  letter-spacing:-.04em;
+  color:var(--navy)
+}
+
+/* Editorial worlds get a stronger gallery composition without extra clutter. */
+.editorial-heading h2,.catalog-heading h2,.buying h2,.faq h2{
+  text-wrap:balance
+}
+.world-grid{
+  perspective:1600px
+}
+.world-copy{
+  background:linear-gradient(180deg,rgba(255,255,255,.015),rgba(4,32,63,.08));
+  border-top:1px solid rgba(255,255,255,.10)
+}
+.world-link{
+  opacity:.82;
+  transition:opacity .2s ease,letter-spacing .25s var(--premium-ease)
+}
+.world-card:hover .world-link{
+  opacity:1;
+  letter-spacing:.015em
+}
+
+/* FAQ becomes a calm interactive object rather than plain rows. */
+.faq-list details{
+  border-radius:14px;
+  padding-inline:18px;
+  margin-bottom:8px;
+  border:1px solid transparent;
+  background:transparent;
+  transition:background .24s ease,border-color .24s ease,box-shadow .24s ease
+}
+.faq-list details:hover{
+  border-color:#dde7f1;
+  background:#fff;
+  box-shadow:0 10px 28px rgba(8,39,68,.045)
+}
+.faq-list details[open]{
+  border-color:#d2dfed;
+  background:#fff;
+  box-shadow:0 16px 40px rgba(8,39,68,.07)
+}
+.faq-list summary{
+  font-size:.92rem;
+  padding-block:24px
+}
+.faq-list summary::after{
+  top:18px;
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#edf4ff;
+  line-height:1
+}
+.faq-list p{
+  font-size:.85rem;
+  line-height:1.75;
+  max-width:680px
+}
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  .faq-list details::details-content{
+    block-size:0;
+    overflow:hidden;
+    transition:block-size .28s var(--premium-ease),content-visibility .28s allow-discrete
+  }
+  .faq-list details[open]::details-content{block-size:auto}
+}
+
+/* Closing scene: more cinematic, still unmistakably Bonaplus. */
+.closing{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden
+}
+.closing::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  width:68vw;
+  aspect-ratio:1;
+  right:-24vw;
+  top:-55%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(210,229,255,.18),rgba(124,174,240,.08) 34%,transparent 68%);
+  filter:blur(10px)
+}
+.closing::after{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  left:-5%;
+  bottom:-.18em;
+  font-family:var(--display);
+  font-size:clamp(8rem,24vw,25rem);
+  line-height:.8;
+  font-weight:800;
+  letter-spacing:-.09em;
+  color:rgba(255,255,255,.035);
+  content:'PLUS';
+  pointer-events:none
+}
+.closing-action>b{
+  position:relative
+}
+.closing-action>b::before{
+  content:'';
+  position:absolute;
+  inset:-8px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:50%;
+  transform:scale(.86);
+  opacity:0;
+  transition:transform .32s var(--premium-ease),opacity .32s ease
+}
+.closing-action:hover>b::before{
+  transform:scale(1);
+  opacity:1
+}
+
+/* Footer as a branded destination. */
+.footer{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate
+}
+.footer::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  width:620px;
+  aspect-ratio:1;
+  left:-180px;
+  top:-330px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(64,130,211,.20),transparent 70%);
+  filter:blur(8px)
+}
+.footer-grid>div{
+  min-width:0
+}
+.footer-grid a{
+  transition:color .2s ease,opacity .2s ease
+}
+.footer-grid a:hover{opacity:1}
+.footer-wordmark{
+  transform-origin:left bottom;
+  transition:letter-spacing .5s var(--premium-ease),color .5s ease
+}
+.footer:hover .footer-wordmark{
+  letter-spacing:-.075em;
+  color:#2d4b64
+}
+
+/* Progressive page-to-page polish on supporting browsers. */
+@view-transition{navigation:auto}
+.brand img{view-transition-name:bonaplus-logo}
+::view-transition-old(root){
+  animation:180ms ease both flagshipFadeOut
+}
+::view-transition-new(root){
+  animation:280ms var(--premium-ease) both flagshipFadeIn
+}
+::view-transition-old(bonaplus-logo),
+::view-transition-new(bonaplus-logo){
+  animation-duration:300ms
+}
+@keyframes flagshipFadeOut{
+  to{opacity:.7;filter:blur(2px)}
+}
+@keyframes flagshipFadeIn{
+  from{opacity:.2;filter:blur(4px);transform:translateY(5px)}
+}
+
+/* Scroll-reveal system is enabled only by JS, so no-JS remains fully visible. */
+html.has-premium-reveal .premium-reveal{
+  opacity:0;
+  transform:translateY(26px);
+  transition:opacity .72s ease,transform .72s var(--premium-ease)
+}
+html.has-premium-reveal .premium-reveal.is-visible{
+  opacity:1;
+  transform:none
+}
+html.has-premium-reveal .premium-reveal .premium-reveal-child{
+  opacity:0;
+  transform:translateY(15px);
+  transition:opacity .55s ease,transform .55s var(--premium-ease)
+}
+html.has-premium-reveal .premium-reveal.is-visible .premium-reveal-child{
+  opacity:1;
+  transform:none
+}
+html.has-premium-reveal .premium-reveal.is-visible .premium-reveal-child:nth-child(2){transition-delay:.06s}
+html.has-premium-reveal .premium-reveal.is-visible .premium-reveal-child:nth-child(3){transition-delay:.12s}
+html.has-premium-reveal .premium-reveal.is-visible .premium-reveal-child:nth-child(4){transition-delay:.18s}
+
+/* More responsive interaction targets and cleaner touch behavior. */
+button,a,input,textarea,summary{touch-action:manipulation}
+button:disabled{cursor:not-allowed}
+input,textarea{caret-color:var(--blue)}
+a,button{-webkit-tap-highlight-color:transparent}
+
+@media(max-width:1200px){
+  .brand-facts>div,.brand-facts>div:first-child{padding-inline:28px}
+}
+@media(max-width:880px){
+  body::before{display:none}
+  body::after{opacity:.018}
+  .scroll-progress{height:2px}
+  .site-header.is-scrolled{
+    min-height:68px;
+    padding-block:7px
+  }
+  .site-header.is-scrolled .brand img{width:44px;height:44px}
+  .brand-facts{
+    border-radius:14px
+  }
+  .brand-facts>div,.brand-facts>div:first-child{
+    padding:25px 20px
+  }
+  .manifesto::before,.products::before,.buying::before,.faq::before{
+    width:calc(100% - 36px)
+  }
+}
+@media(max-width:600px){
+  body::after{display:none}
+  .brand-facts{
+    display:grid;
+    grid-template-columns:1fr
+  }
+  .brand-facts>div,.brand-facts>div:first-child{
+    border-left:0;
+    border-top:1px solid #dde7f0;
+    padding:22px 20px
+  }
+  .brand-facts>div:first-child{border-top:0}
+  .catalog-footnote{margin-top:42px}
+  .faq-list details{padding-inline:13px}
+  .faq-list summary{font-size:.86rem;padding-block:21px}
+  .closing::after{font-size:38vw}
+}
+@media(prefers-reduced-motion:reduce){
+  body::before{display:none}
+  .scroll-progress{transition:none}
+  html.has-premium-reveal .premium-reveal,
+  html.has-premium-reveal .premium-reveal .premium-reveal-child{
+    opacity:1;
+    transform:none;
+    transition:none
+  }
+  ::view-transition-old(root),::view-transition-new(root),
+  ::view-transition-old(bonaplus-logo),::view-transition-new(bonaplus-logo){
+    animation:none
+  }
+}
+@media(prefers-contrast:more){
+  .product-card,.catalog-toolbar,.brand-facts,.faq-list details[open]{
+    border-color:#7f98b3
+  }
+  .muted,.catalog-status,.product-content>p{color:#394b5d}
+}
+
+/* Flagship performance guardrails: keep the visual richness GPU-conscious. */
+body{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-synthesis:none
+}
+.campaign-image,.product-image img,.world-media img,.collection-photo img,.inner-page .hero-visual>img{
+  will-change:auto
+}
+@media(hover:hover) and (pointer:fine){
+  .campaign-art:hover .campaign-image,
+  .product-card:hover .product-image img,
+  .world-card:hover .world-media img,
+  .collection-photo:hover img,
+  .inner-page .hero-visual:hover>img{
+    will-change:transform,filter
+  }
+}
+@supports(content-visibility:auto){
+  .origin,.buying,.faq,.closing,.footer{
+    content-visibility:auto;
+    contain-intrinsic-size:800px
+  }
+}
