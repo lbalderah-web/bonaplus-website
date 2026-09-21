@@ -6,7 +6,7 @@ const products = [
   { id: 'lavaplatos', name: 'Lavaplatos', size: '150 ml', image: '/assets/catalog/lavaplatos.webp', page: '/productos/lavaplatos/' },
   { id: 'vainilla', name: 'Vainilla', size: '90 ml', image: '/assets/catalog/vainilla.webp', page: '/productos/vainilla/' },
   { id: 'calzado', name: 'Líquido para Calzado', size: '90 ml', image: '/assets/catalog/calzado.webp', page: '/productos/calzado/' },
-  { id: 'desinfectante', name: 'Desinfectante', size: '90 ml', image: '/assets/catalog/desinfectante.webp', page: '/productos/desinfectante/' },
+  { id: 'desinfectante', name: 'Desinfectante', size: '90 ml', image: '/assets/catalog/desinfectante.webp', page: '/productos/desinfectante/', available: false },
   { id: 'rinse150', name: 'Rinse (Mediano)', size: '150 ml', image: '/assets/catalog/rinse.webp', page: '/productos/rinse/' },
   { id: 'rinse90', name: 'Rinse (Pequeño)', size: '90 ml', image: '/assets/catalog/rinse.webp', page: '/productos/rinse/' },
   { id: 'shampoo150', name: 'Shampoo (Mediano)', size: '150 ml', image: '/assets/catalog/shampoo.webp', page: '/productos/shampoo/' },
@@ -18,7 +18,7 @@ const quantities = Object.fromEntries(products.map(product => [product.id, 0]));
 // Keep only product selections in this tab. Customer contact details are never stored.
 try {
   const saved = JSON.parse(sessionStorage.getItem('bonaplus-selection-v1') || '{}');
-  products.forEach(product => { quantities[product.id] = normalizeQuantity(saved[product.id]); });
+  products.forEach(product => { quantities[product.id] = product.available === false ? 0 : normalizeQuantity(saved[product.id]); });
 } catch { /* The catalog also works when browser storage is unavailable. */ }
 const grid = document.getElementById('productGrid');
 const summary = document.getElementById('cartSummary');
@@ -39,15 +39,17 @@ function renderProducts() {
       : product.id.startsWith('rinse') ? [720, 900]
       : product.id === 'desinfectante' ? [240, 300]
       : product.id === 'calzado' ? [1086, 1448] : [1024, 1536];
+    const unavailable = product.available === false;
     return `
-    <article class="product-card" id="card-${product.id}"><span class="product-index">${String(index + 1).padStart(2, '0')} / BONAPLUS</span><span class="product-selected" aria-hidden="true">✓</span>
+    <article class="product-card${unavailable ? ' is-unavailable' : ''}" id="card-${product.id}"><span class="product-index">${String(index + 1).padStart(2, '0')} / BONAPLUS</span><span class="product-selected" aria-hidden="true">✓</span>
       <a class="product-image" href="${product.page}" aria-label="Ver información de ${product.name} Bonaplus">
         <img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" decoding="async" width="${dimensions[0]}" height="${dimensions[1]}">
       </a>
       <div class="product-content">
         <h3><a href="${product.page}">${product.name}</a></h3>
         <p>${product.size}</p>
-        <button type="button" class="details-button" data-action="toggle" data-id="${product.id}" aria-expanded="false" aria-controls="controls-${product.id}" aria-label="Añadir ${product.name} al pedido">Añadir al pedido</button>
+        ${unavailable ? '<span class="product-status">No disponible temporalmente</span>' : ''}
+        <button type="button" class="details-button" data-action="toggle" data-id="${product.id}" aria-expanded="false" aria-controls="controls-${product.id}" aria-label="${unavailable ? `No disponible temporalmente: ${product.name}` : `Añadir ${product.name} al pedido`}" ${unavailable ? 'disabled aria-disabled="true"' : ''}>${unavailable ? 'No disponible temporalmente' : 'Añadir al pedido'}</button>
         <div class="quantity-row" id="controls-${product.id}" hidden>
           <label class="quantity-label" for="qty-${product.id}">Cantidad de cajas</label>
           <div class="quantity" role="group" aria-label="Cantidad de cajas de ${product.name}">
@@ -62,7 +64,7 @@ function renderProducts() {
   }).join('');
 }
 function selectedProducts() {
-  return products.filter(product => quantities[product.id] > 0);
+  return products.filter(product => product.available !== false && quantities[product.id] > 0);
 }
 function normalizeQuantity(value) {
   const amount = Number(value);
@@ -103,6 +105,8 @@ function updateCart(editingInput = null) {
   });
 }
 function openControls(id, button) {
+  const product = products.find(item => item.id === id);
+  if (product?.available === false) return;
   const controls = document.getElementById(`controls-${id}`);
   if (!controls || !button) return;
   controls.hidden = false;
@@ -199,8 +203,11 @@ renderProducts();
 updateCart();
 const requestedProductId = new URLSearchParams(window.location.search).get('producto');
 if (requestedProductId && requestedProductId in quantities) {
-  const requestedButton = grid?.querySelector(`button[data-action="toggle"][data-id="${requestedProductId}"]`);
-  openControls(requestedProductId, requestedButton);
+  const requestedProduct = products.find(product => product.id === requestedProductId);
+  if (requestedProduct?.available !== false) {
+    const requestedButton = grid?.querySelector(`button[data-action="toggle"][data-id="${requestedProductId}"]`);
+    openControls(requestedProductId, requestedButton);
+  }
 }
 const revealElements = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
@@ -231,7 +238,7 @@ function filterProducts() {
   const empty = document.getElementById('emptyCatalog');
   if (empty) empty.hidden = count > 0;
   const status = document.getElementById('filterStatus');
-  if (status) status.textContent = `${count} ${count === 1 ? 'presentación' : 'presentaciones'} disponible${count === 1 ? '' : 's'} en esta vista.`;
+  if (status) status.textContent = `${count} ${count === 1 ? 'presentación' : 'presentaciones'} en esta vista.`;
 }
 filterButtons.forEach(button => button.addEventListener('click', () => {
   activeFilter = button.dataset.filter;
