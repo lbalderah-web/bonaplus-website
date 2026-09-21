@@ -395,3 +395,144 @@ body{
 @media(prefers-reduced-motion:reduce){
   .product-card,.world-card,.buying-steps article,.faq-list details{transition:none}
 }
+
+/* === 2026-09-21 final production audit === */
+/* Remove legacy one-off tones and standardize every visual surface. */
+.world-clean .world-media,
+.world-care .world-media,
+.world-kitchen .world-media,
+.collection-photo,
+#card-cloro .product-image,
+#card-vinagre .product-image,
+#card-lavaplatos .product-image,
+#card-vainilla .product-image,
+#card-calzado .product-image,
+#card-desinfectante .product-image,
+#card-rinse150 .product-image,
+#card-rinse90 .product-image,
+#card-shampoo150 .product-image,
+#card-shampoo90 .product-image{
+  background:linear-gradient(145deg,#eef4fb 0%,#e4edf8 100%)
+}
+.about{
+  background:linear-gradient(180deg,#f1f6fc 0%,#f7f9fc 100%);
+  border-block:1px solid #e1e9f2
+}
+.collection-photo{
+  border:1px solid #dbe5ef;
+  box-shadow:0 12px 34px rgba(8,39,68,.06)
+}
+.collection-item figcaption{font-size:.78rem;color:#526477}
+.about-badges span{
+  border:1px solid #d6e2ef;
+  border-radius:999px;
+  color:#244e7d;
+  background:#fff
+}
+.related-products a{
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 8px 24px rgba(8,39,68,.04);
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease
+}
+.related-products a:hover{
+  transform:translateY(-2px);
+  border-color:#9dbce0;
+  box-shadow:0 14px 34px rgba(8,39,68,.08)
+}
+.wholesale-catalog{
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 14px 40px rgba(8,39,68,.05)
+}
+.wholesale-catalog thead th{background:linear-gradient(90deg,#0754c8,#0647a9)}
+.wholesale-catalog tbody tr:nth-child(even){background:#f7f9fc}
+.presentation-links a{border-radius:10px}
+.breadcrumbs{font-size:.8rem}
+.breadcrumbs a{text-decoration-thickness:1px;text-decoration-color:#9ebadd}
+.inner-page .hero{padding-block:64px 76px}
+.inner-page .hero h1{letter-spacing:-.055em}
+.inner-page .hero-visual>img{
+  border-radius:22px;
+  box-shadow:0 20px 60px rgba(8,39,68,.10)
+}
+.step-grid article{
+  border-top-color:#cad8e7;
+  transition:transform .2s ease,border-color .2s ease
+}
+.step-grid article:hover{transform:translateY(-3px);border-top-color:#7ea8d9}
+.cta{
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 88% 20%,rgba(190,217,255,.18),transparent 30%),
+    linear-gradient(120deg,#0754c8,#043d9d);
+  box-shadow:0 24px 70px rgba(8,39,68,.12)
+}
+.product-card.is-unavailable{
+  opacity:.82;
+  box-shadow:none
+}
+.product-card.is-unavailable:hover{
+  transform:none;
+  border-color:var(--line);
+  box-shadow:none
+}
+.product-card.is-unavailable .product-image{filter:saturate(.75)}
+.product-card.is-unavailable .details-button{
+  color:#6c7885;
+  background:#eef2f6;
+  border-color:#d8e0e8;
+  cursor:not-allowed
+}
+.product-status{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  max-width:100%;
+  margin:0 0 12px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#edf2f7;
+  color:#5c6977;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.02em
+}
+.availability-note{
+  margin:18px 0 0;
+  padding:14px 16px;
+  border:1px solid #dbe5ef;
+  border-radius:12px;
+  background:#f2f6fb;
+  color:#4f6073;
+  font-size:.9rem;
+  line-height:1.65
+}
+/* Keep utility copy readable; avoid microscopically small interface text. */
+@media(max-width:1200px) and (min-width:601px){
+  .campaign-copy .eyebrow,.campaign-rail,.campaign-rail a,
+  .world-copy>span:first-child,.world-link,.origin-tag,.origin-signature,
+  .footer h3,.footer-bottom,.header-cta{font-size:.72rem}
+}
+@media(max-width:600px){
+  .campaign-copy .eyebrow,.campaign-rail,.campaign-rail a,.eyebrow,
+  .world-copy>span:first-child,.world-link,.catalog-status,.product-index,
+  .quantity-label,.add-button,.origin-tag,.closing .eyebrow,.footer h3,
+  .footer-bottom,.cart-copy h3,.cart-copy p,.cart-panel .button,
+  .breadcrumbs,.wholesale-catalog thead th,.wholesale-catalog small{
+    font-size:.7rem
+  }
+  .product-content>p,.details-button{font-size:.72rem}
+  .collection-item figcaption{font-size:.74rem}
+  .inner-page .hero{padding-block:42px 56px}
+  .inner-page .hero-visual>img{border-radius:16px}
+  .cta{border-radius:18px}
+}
+@media(max-width:359px){
+  .details-button,.world-link,.cart-copy h3,.cart-panel .button{font-size:.68rem}
+}
+@media(hover:none){
+  .related-products a:hover,.step-grid article:hover{transform:none}
+}
