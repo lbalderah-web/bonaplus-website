@@ -173,3 +173,225 @@
  .world-copy h3{font-size:1.25rem}.world-link{font-size:.61rem}
  .details-button{font-size:.62rem;padding:9px 7px}
 }
+
+/* === 2026-09-21 visual refinement: tonal Bonaplus system === */
+:root{
+  --blue:#0754c8;
+  --deep:#043d9d;
+  --navy:#082744;
+  --ink:#132b43;
+  --green:#d7e8ff;
+  --muted:#5f6f80;
+  --paper:#f8fafc;
+  --line:#dbe5ef;
+  --white:#fff;
+  --whatsapp:#087d35;
+  --soft-blue:#edf4ff;
+  --blue-mist:#f1f6fc;
+  --shadow-soft:0 18px 50px rgba(8,39,68,.08);
+  --shadow-hover:0 24px 70px rgba(8,39,68,.14)
+}
+body{
+  background:var(--paper);
+  background-image:linear-gradient(180deg,#f8fafc 0%,#ffffff 24%,#f8fafc 100%);
+}
+::selection{background:#c6ddff;color:var(--navy)}
+:focus-visible{outline-color:#2b6ed1}
+
+/* A calmer, more premium blue-on-blue brand frame. */
+.site-header{
+  background:linear-gradient(90deg,#0754c8 0%,#064bb4 60%,#043d9d 100%);
+  border-bottom-color:#ffffff2b;
+  box-shadow:0 1px 0 rgba(255,255,255,.06)
+}
+.brand img{
+  background:rgba(255,255,255,.96);
+  padding:3px;
+  box-shadow:0 8px 24px rgba(3,31,79,.12)
+}
+.header-cta{
+  background:#fff;
+  color:var(--blue);
+  border-color:#ffffff80
+}
+.header-cta:hover{background:#eef5ff;color:var(--deep)}
+
+/* Hero: one tonal family instead of unrelated accent colors. */
+.campaign{
+  background:
+    radial-gradient(circle at 78% 18%,rgba(165,204,255,.22),transparent 30%),
+    radial-gradient(circle at 20% 80%,rgba(255,255,255,.08),transparent 32%),
+    linear-gradient(135deg,#0754c8 0%,#064bb4 52%,#043d9d 100%)
+}
+.campaign::before{
+  content:'';
+  position:absolute;
+  width:520px;
+  height:520px;
+  right:-250px;
+  bottom:-330px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50%;
+  pointer-events:none
+}
+.campaign-copy .eyebrow i{background:#d7e8ff;box-shadow:0 0 0 5px rgba(215,232,255,.12)}
+.campaign h1>span{color:#d7e8ff}
+.campaign-bottom p{color:#e7f0ff}
+.campaign-image{
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 32px 90px rgba(3,30,74,.22)
+}
+.campaign-rail{color:#dbe9ff}
+.button-lime{
+  background:#e5f0ff;
+  color:#0a315c;
+  border-color:#f5f9ff;
+  box-shadow:0 10px 30px rgba(3,31,79,.12)
+}
+.button-lime:hover{background:#fff;color:var(--deep);box-shadow:0 14px 34px rgba(3,31,79,.18)}
+.site-header :focus-visible,.campaign :focus-visible,.origin :focus-visible,.closing :focus-visible{outline-color:#e9f3ff}
+
+/* Editorial sections now use neutral/blue surfaces, not green-gray. */
+.worlds{
+  background:linear-gradient(180deg,#eff4f9 0%,#f5f8fc 100%);
+  border-block:1px solid #e2eaf3
+}
+.world-card{
+  border-radius:18px;
+  box-shadow:0 16px 42px rgba(8,39,68,.10);
+  transform:translateZ(0);
+  transition:transform .35s ease,box-shadow .35s ease
+}
+.world-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+.world-card::after{
+  background:linear-gradient(180deg,rgba(8,39,68,.02) 20%,rgba(8,39,68,.18) 52%,rgba(5,25,43,.92) 100%)
+}
+
+/* Catalog: more tactile, gallery-like cards and a quieter toolbar. */
+.catalog-toolbar{
+  padding:10px 14px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.86);
+  box-shadow:0 10px 32px rgba(8,39,68,.05);
+  backdrop-filter:blur(10px)
+}
+.catalog-filters button{border-radius:10px}
+.catalog-filters button:hover{background:#edf4ff;color:var(--blue)}
+.catalog-filters button[aria-pressed=true]{
+  background:var(--navy);
+  color:#fff;
+  box-shadow:0 6px 16px rgba(8,39,68,.14)
+}
+.catalog-search{border-bottom-color:#b8c9dc}
+.product-grid{gap:26px 20px}
+.product-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:10px;
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease
+}
+.product-card:hover{
+  transform:translateY(-5px);
+  border-color:#b9cde5;
+  box-shadow:var(--shadow-hover)
+}
+.product-card.is-selected{
+  border-color:#8bb8ee;
+  box-shadow:0 0 0 2px rgba(7,84,200,.08),var(--shadow-soft)
+}
+.product-image{
+  background:#f1f5fa;
+  border-radius:12px
+}
+.product-content{padding:17px 6px 6px}
+.product-selected{
+  background:#d7e8ff;
+  color:var(--deep);
+  box-shadow:0 5px 14px rgba(8,39,68,.12)
+}
+.quantity button{background:#f1f5fa}
+.add-button:hover{background:#edf4ff;border-color:#bed3eb}
+
+/* Story and conversion sections stay visually rich without changing hue families. */
+.origin{
+  background:
+    radial-gradient(circle at 92% 20%,rgba(64,126,207,.18),transparent 34%),
+    linear-gradient(145deg,#092b46 0%,#08243d 100%)
+}
+.origin-copy h2>span{color:#cfe2ff}
+.origin-tag{
+  border-radius:8px;
+  box-shadow:0 8px 24px rgba(5,25,43,.16)
+}
+.buying-steps article{
+  transition:padding-left .25s ease,background .25s ease
+}
+.buying-steps article:hover{
+  padding-left:14px;
+  background:linear-gradient(90deg,#f2f6fb 0%,rgba(242,246,251,0) 78%)
+}
+.faq-list details{
+  transition:background .2s ease,padding .2s ease
+}
+.faq-list details:hover{background:#f2f6fb}
+.faq-list details[open]{
+  background:#f5f8fc;
+  padding-inline:16px
+}
+.closing{
+  background:
+    radial-gradient(circle at 84% 22%,rgba(184,216,255,.18),transparent 25%),
+    linear-gradient(125deg,#0754c8 0%,#064bb4 52%,#043d9d 100%)
+}
+.closing h2>span{color:#d7e8ff}
+.closing-action>b{
+  background:#e5f0ff;
+  color:var(--deep);
+  box-shadow:0 18px 44px rgba(3,31,79,.18)
+}
+.footer a:hover{color:#cfe2ff}
+.footer :focus-visible{outline-color:#cfe2ff}
+
+/* Persistent controls: premium blue dock, green only where it actually means WhatsApp. */
+.cart-panel{
+  background:rgba(8,39,68,.96);
+  border-color:#ffffff26;
+  box-shadow:0 18px 60px rgba(5,25,43,.24);
+  backdrop-filter:blur(14px)
+}
+.cart-icon{color:#d7e8ff}
+.floating-whatsapp,.button-whatsapp{background:var(--whatsapp)}
+.floating-whatsapp:hover,.button-whatsapp:hover{background:#06672c}
+
+/* Modal surfaces match the rest of the site. */
+.order-modal{
+  background:#f9fbfd;
+  border:1px solid #dbe5ef;
+  box-shadow:0 32px 100px rgba(5,25,43,.28)
+}
+.modal-card input,.modal-card textarea{background:#fff}
+.order-notice{background:#edf4ff;color:#214c7b}
+
+/* Subtle section rhythm and more breathing room on large screens. */
+@media(min-width:1100px){
+  .manifesto{padding-block:125px 95px}
+  .products.section-padding{padding-block:130px}
+  .faq{padding-bottom:125px}
+}
+@media(max-width:880px){
+  .catalog-toolbar{border-radius:14px}
+  .product-card:hover,.world-card:hover{transform:none}
+}
+@media(max-width:600px){
+  .campaign{background:linear-gradient(155deg,#0754c8 0%,#064bb4 58%,#043d9d 100%)}
+  .world-card{border-radius:14px}
+  .product-card{border-radius:14px;padding:8px}
+  .product-image{border-radius:10px}
+  .catalog-toolbar{padding:8px 10px;background:#fff}
+  .faq-list details[open]{padding-inline:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .product-card,.world-card,.buying-steps article,.faq-list details{transition:none}
+}
