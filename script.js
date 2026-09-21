@@ -279,3 +279,74 @@ document.getElementById('orderReview')?.addEventListener('click', event => {
   if (!selectedProducts().length) closeOrderModal();
   else { renderOrderReview(); document.querySelector('[data-review-quantity]')?.focus(); }
 });
+
+// === 2026-09-21 premium 3D interaction system ===
+function initPremium3D() {
+  const header = document.querySelector('.site-header');
+  const setHeaderState = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
+  setHeaderState();
+  window.addEventListener('scroll', setHeaderState, { passive: true });
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (reducedMotion || !finePointer) return;
+
+  document.documentElement.classList.add('has-3d-motion');
+
+  const campaign = document.querySelector('.campaign');
+  let campaignFrame = 0;
+  campaign?.addEventListener('pointermove', event => {
+    const rect = campaign.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+    const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+    cancelAnimationFrame(campaignFrame);
+    campaignFrame = requestAnimationFrame(() => {
+      campaign.style.setProperty('--ambient-x', (x * 100).toFixed(1) + '%');
+      campaign.style.setProperty('--ambient-y', (y * 100).toFixed(1) + '%');
+    });
+  }, { passive: true });
+
+  const targets = document.querySelectorAll(
+    '.product-card:not(.is-unavailable), .world-card, .collection-photo, .campaign-art, .inner-page .hero-visual'
+  );
+
+  targets.forEach(target => {
+    let frame = 0;
+    const intensity = target.matches('.product-card') ? 7
+      : target.matches('.campaign-art') ? 4
+      : target.matches('.inner-page .hero-visual') ? 4.5
+      : 5;
+
+    const applyTilt = event => {
+      const rect = target.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+      const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+      const rx = (0.5 - y) * intensity;
+      const ry = (x - 0.5) * intensity * 1.25;
+
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        target.style.setProperty('--rx', rx.toFixed(2) + 'deg');
+        target.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+        target.style.setProperty('--spot-x', (x * 100).toFixed(1) + '%');
+        target.style.setProperty('--spot-y', (y * 100).toFixed(1) + '%');
+      });
+    };
+
+    const resetTilt = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        target.style.setProperty('--rx', '0deg');
+        target.style.setProperty('--ry', '0deg');
+        target.style.setProperty('--spot-x', '50%');
+        target.style.setProperty('--spot-y', '35%');
+      });
+    };
+
+    target.addEventListener('pointermove', applyTilt, { passive: true });
+    target.addEventListener('pointerleave', resetTilt, { passive: true });
+    target.addEventListener('pointercancel', resetTilt, { passive: true });
+  });
+}
+initPremium3D();
