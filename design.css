@@ -1474,3 +1474,28 @@ a,button{-webkit-tap-highlight-color:transparent}
   }
   .muted,.catalog-status,.product-content>p{color:#394b5d}
 }
+
+/* Flagship performance guardrails: keep the visual richness GPU-conscious. */
+body{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-synthesis:none
+}
+.campaign-image,.product-image img,.world-media img,.collection-photo img,.inner-page .hero-visual>img{
+  will-change:auto
+}
+@media(hover:hover) and (pointer:fine){
+  .campaign-art:hover .campaign-image,
+  .product-card:hover .product-image img,
+  .world-card:hover .world-media img,
+  .collection-photo:hover img,
+  .inner-page .hero-visual:hover>img{
+    will-change:transform,filter
+  }
+}
+@supports(content-visibility:auto){
+  .origin,.buying,.faq,.closing,.footer{
+    content-visibility:auto;
+    contain-intrinsic-size:800px
+  }
+}
