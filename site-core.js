@@ -90,9 +90,15 @@
 
   // One lightweight header scroll state for every page.
   const header = document.querySelector('.site-header');
-  const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
-  updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
+  let headerFrame = 0;
+  const paintHeader = () => {
+    headerFrame = 0;
+    header?.classList.toggle('is-scrolled', window.scrollY > 12);
+  };
+  paintHeader();
+  window.addEventListener('scroll', () => {
+    if (!headerFrame) headerFrame = requestAnimationFrame(paintHeader);
+  }, { passive: true });
 
   // Do not contact Google Maps until the visitor is close to the footer.
   const maps = document.querySelectorAll('iframe[data-map-src]');
