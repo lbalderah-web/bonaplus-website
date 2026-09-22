@@ -57,6 +57,65 @@
   }
 
   window.bonaplusTrack = send;
+
+  // Shared navigation behavior lives here so supporting pages do not duplicate inline JS.
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mainNav = document.getElementById('mainNav') || document.querySelector('.nav');
+  const isEnglish = document.documentElement.lang.toLowerCase().startsWith('en');
+  const setMenuOpen = open => {
+    if (!menuToggle || !mainNav) return;
+    mainNav.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open
+      ? (isEnglish ? 'Close menu' : 'Cerrar menú')
+      : (isEnglish ? 'Open menu' : 'Abrir menú'));
+  };
+  menuToggle?.addEventListener('click', () => setMenuOpen(!mainNav?.classList.contains('open')));
+  mainNav?.addEventListener('click', event => {
+    if (event.target.closest('a')) setMenuOpen(false);
+  });
+  document.addEventListener('click', event => {
+    if (!mainNav?.classList.contains('open') || mainNav.contains(event.target) || menuToggle?.contains(event.target)) return;
+    setMenuOpen(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && mainNav?.classList.contains('open')) {
+      setMenuOpen(false);
+      menuToggle?.focus();
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 880 && mainNav?.classList.contains('open')) setMenuOpen(false);
+  }, { passive: true });
+
+  // One lightweight header scroll state for every page.
+  const header = document.querySelector('.site-header');
+  const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  // Do not contact Google Maps until the visitor is close to the footer.
+  const maps = document.querySelectorAll('iframe[data-map-src]');
+  if (maps.length) {
+    const loadMap = frame => {
+      if (!frame.dataset.mapSrc) return;
+      frame.src = frame.dataset.mapSrc;
+      frame.removeAttribute('data-map-src');
+    };
+    if ('IntersectionObserver' in window) {
+      const mapObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          loadMap(entry.target);
+          mapObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '900px 0px' });
+      maps.forEach(frame => mapObserver.observe(frame));
+    } else {
+      maps.forEach(loadMap);
+    }
+  }
+
   const productIdFrom = el => el?.closest?.('.product-card')?.id?.replace(/^card-/, '') || '';
 
   document.addEventListener('click', event => {
