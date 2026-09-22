@@ -1,5 +1,10 @@
 (() => {
   'use strict';
+
+  // Vercel Speed Insights queue, shared across every page.
+  window.si = window.si || function () {
+    (window.siq = window.siq || []).push(arguments);
+  };
   const allowedEvents = new Set([
     'page_view','whatsapp_click','email_click','phone_click','product_open',
     'catalog_filter','catalog_search','add_to_order_opened','quantity_quick_add',
