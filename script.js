@@ -28,41 +28,7 @@ const orderModal = document.getElementById('orderModal');
 const orderForm = document.getElementById('orderForm');
 const modalClose = orderModal?.querySelector('.modal-close');
 const orderNotice = document.getElementById('orderNotice');
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav');
 
-function renderProducts() {
-  if (!grid) return;
-  if (grid.children.length) return;
-  grid.innerHTML = products.map((product, index) => {
-    const dimensions = product.id.startsWith('shampoo') ? [560, 842]
-      : product.id.startsWith('rinse') ? [720, 900]
-      : product.id === 'desinfectante' ? [240, 300]
-      : product.id === 'calzado' ? [1086, 1448] : [1024, 1536];
-    const unavailable = product.available === false;
-    return `
-    <article class="product-card${unavailable ? ' is-unavailable' : ''}" id="card-${product.id}"><span class="product-index">${String(index + 1).padStart(2, '0')} / BONAPLUS</span><span class="product-selected" aria-hidden="true">✓</span>
-      <a class="product-image" href="${product.page}" aria-label="Ver información de ${product.name} Bonaplus">
-        <img src="${product.image}" alt="${product.name} Bonaplus, presentación ${product.size}" loading="lazy" decoding="async" width="${dimensions[0]}" height="${dimensions[1]}">
-      </a>
-      <div class="product-content">
-        <h3><a href="${product.page}">${product.name}</a></h3>
-        <p>${product.size}</p>
-        ${unavailable ? '<span class="product-status">No disponible temporalmente</span>' : ''}
-        <button type="button" class="details-button" data-action="toggle" data-id="${product.id}" aria-expanded="false" aria-controls="controls-${product.id}" aria-label="${unavailable ? `No disponible temporalmente: ${product.name}` : `Añadir ${product.name} al pedido`}" ${unavailable ? 'disabled aria-disabled="true"' : ''}>${unavailable ? 'No disponible temporalmente' : 'Añadir al pedido'}</button>
-        <div class="quantity-row" id="controls-${product.id}" hidden>
-          <label class="quantity-label" for="qty-${product.id}">Cantidad de cajas</label>
-          <div class="quantity" role="group" aria-label="Cantidad de cajas de ${product.name}">
-            <button type="button" data-action="minus" data-id="${product.id}" aria-label="Restar una caja de ${product.name}">−</button>
-            <input id="qty-${product.id}" data-quantity="${product.id}" type="number" min="0" max="999999" step="1" inputmode="numeric" value="0" aria-label="Cajas de ${product.name}">
-            <button type="button" data-action="plus" data-id="${product.id}" aria-label="Agregar una caja de ${product.name}">+</button>
-          </div>
-          <button type="button" class="add-button" data-action="add100" data-id="${product.id}" aria-label="Agregar cien cajas de ${product.name}">+100 cajas</button>
-        </div>
-      </div>
-    </article>`;
-  }).join('');
-}
 function selectedProducts() {
   return products.filter(product => product.available !== false && quantities[product.id] > 0);
 }
@@ -181,25 +147,7 @@ orderForm?.addEventListener('submit', event => {
   closeOrderModal();
 });
 
-function setMenuOpen(open) {
-  if (!nav || !toggle) return;
-  nav.classList.toggle('open', open);
-  toggle.setAttribute('aria-expanded', String(open));
-  toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-}
-toggle?.addEventListener('click', () => setMenuOpen(!nav?.classList.contains('open')));
-nav?.addEventListener('click', event => { if (event.target.closest('a')) setMenuOpen(false); });
-document.addEventListener('click', event => {
-  if (!nav?.classList.contains('open') || nav.contains(event.target) || toggle?.contains(event.target)) return;
-  setMenuOpen(false);
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && nav?.classList.contains('open')) { setMenuOpen(false); toggle?.focus(); }
-});
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 880 && nav?.classList.contains('open')) setMenuOpen(false);
-});
-renderProducts();
+
 updateCart();
 const requestedProductId = new URLSearchParams(window.location.search).get('producto');
 if (requestedProductId && requestedProductId in quantities) {
@@ -209,18 +157,6 @@ if (requestedProductId && requestedProductId in quantities) {
     openControls(requestedProductId, requestedButton);
   }
 }
-const revealElements = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-    });
-  }, { threshold: .08 });
-  revealElements.forEach(element => observer.observe(element));
-} else {
-  revealElements.forEach(element => element.classList.add('visible'));
-}
-
 // Filter existing cards so quantities and expanded controls survive category changes.
 let activeFilter = 'all';
 const searchInput = document.getElementById('productSearch');
@@ -282,11 +218,6 @@ document.getElementById('orderReview')?.addEventListener('click', event => {
 
 // === 2026-09-21 premium 3D interaction system ===
 function initPremium3D() {
-  const header = document.querySelector('.site-header');
-  const setHeaderState = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
-  setHeaderState();
-  window.addEventListener('scroll', setHeaderState, { passive: true });
-
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (reducedMotion || !finePointer) return;
@@ -355,27 +286,6 @@ initPremium3D();
 function initFlagshipExperience() {
   const root = document.documentElement;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  // A thin progress line gives long-form pages a subtle sense of movement.
-  const progress = document.createElement('div');
-  progress.className = 'scroll-progress';
-  progress.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(progress);
-
-  let scrollFrame = 0;
-  const updateScrollState = () => {
-    cancelAnimationFrame(scrollFrame);
-    scrollFrame = requestAnimationFrame(() => {
-      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      const value = Math.max(0, Math.min(1, window.scrollY / max));
-      progress.style.setProperty('--scroll-progress', value.toFixed(4));
-    });
-  };
-  updateScrollState();
-  window.addEventListener('scroll', updateScrollState, { passive: true });
-  window.addEventListener('resize', updateScrollState, { passive: true });
-
   // Keep the header navigation synchronized with the section currently in view.
   const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')];
   const sectionMap = new Map();
@@ -443,24 +353,6 @@ function initFlagshipExperience() {
     }
   }
 
-  // Desktop-only ambient light follows the pointer at a deliberately slow scale.
-  if (finePointer && !reducedMotion) {
-    root.classList.add('has-flagship-motion');
-    let glowFrame = 0;
-    let latestX = window.innerWidth * .5;
-    let latestY = window.innerHeight * .4;
 
-    const paintGlow = () => {
-      glowFrame = 0;
-      root.style.setProperty('--page-glow-x', latestX.toFixed(0) + 'px');
-      root.style.setProperty('--page-glow-y', latestY.toFixed(0) + 'px');
-    };
-
-    window.addEventListener('pointermove', event => {
-      latestX = event.clientX;
-      latestY = event.clientY;
-      if (!glowFrame) glowFrame = requestAnimationFrame(paintGlow);
-    }, { passive: true });
-  }
 }
 initFlagshipExperience();
