@@ -19,7 +19,7 @@ These identity rules are permanent unless the owner explicitly changes them:
 - Keep both identities clearly connected so searches for either `Bonaplus` or `Industria Plus B&G` can lead users to the official Bonaplus website.
 - Prefer `WebSite`/site-name signals for **Bonaplus** and `Organization`/publisher/company signals for **Industria Plus B&G**.
 - Structured data may explicitly connect Industria Plus B&G to the Bonaplus brand, but should not confuse the public-facing site name.
-- The public website is Spanish-only unless the owner explicitly authorizes another language version in the future.
+- The domestic website remains Spanish-first. The owner explicitly authorized `/en/` as the English companion to `/exportaciones/` for international buyers on 2026-09-21; do not expand English to unrelated domestic pages without further authorization.
 
 ## Approved brand and business rules
 
@@ -29,10 +29,11 @@ These rules must be preserved unless the owner explicitly requests a change:
 - Display the wordmark as Bonaplus without an added + symbol. Keep product images complete, with no cover cropping, oversized corner masks or text overlays hiding the containers (owner request, 2026-09-18).
 - Keep the current clean blue, white and green visual direction.
 - Main headline: **Calidad que se nota. Confianza que construye.**
-- The website targets distributors and wholesale buyers in the Dominican Republic.
+- The primary website audience is distributors and wholesale buyers in the Dominican Republic. The authorized `/exportaciones/` and `/en/` pages also serve international importers, distributors and volume buyers.
 - Do not publish product prices.
 - Orders and quotations are coordinated through WhatsApp.
-- Typical wholesale orders are approximately 400 boxes or more.
+- Typical domestic wholesale orders are approximately 400 boxes or more; this is a reference, not a hard minimum.
+- The confirmed standard export/manufacturer case contains 80 pots and uses thermal sealing. Do not generalize these facts beyond the approved pages or add unverified logistics claims.
 - Maintain nationwide distribution messaging.
 - Phone: `(809) 379-1396`.
 - Email: `industriaplusbyg@gmail.com`.
@@ -47,7 +48,9 @@ The official site is indexed in Google. Ongoing SEO should prioritize growth rat
 - Improve non-branded Dominican wholesale rankings.
 - Improve individual product/category search visibility using the approved catalog.
 - Maintain and improve local SEO and the association between the Bonaplus brand and Industria Plus B&G.
-- Maintain `/mayoristas/` for Spanish wholesale discovery.
+- Maintain `/mayoristas/` for Spanish domestic wholesale discovery.
+- Maintain `/fabricante-productos-limpieza/` for direct-manufacturer intent, `/exportaciones/` for Spanish international buyer intent and `/en/` as its English companion.
+- Preserve the current 17 canonical public pages and the `es-DO`/`en` hreflang relationship between the two international pages.
 - Keep canonical, sitemap, structured-data and internal-link relationships correct.
 - Build useful product landing pages when they add genuine search value; use unique copy and never invent specifications or publish prices.
 - Improve page speed, Core Web Vitals, accessibility, mobile usability, security and conversion flow.
@@ -81,6 +84,12 @@ Approval is required before:
 - Transferring the domain or making risky DNS changes.
 - Removing products or changing official product specifications.
 - Publishing legal claims, certifications or testimonials that have not been verified.
+
+## Current production baseline
+
+- Build on PR #22, commit `135779132ae9536e434a96a1e4bcce91a65278ff`, unless a newer verified production release supersedes it.
+- The current sitemap contains 17 canonical public pages: 14 domestic/catalog pages plus the authorized manufacturer, export and English international pages.
+- Preserve the performance cleanup: centralized shared navigation, deferred non-critical work, lazy footer map and static-asset caching.
 
 ## Maintenance checklist
 
