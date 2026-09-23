@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-09-23
+
+- Production baseline: Vercel production for `main` commit `1357791` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found. PR #22's cleanup is live.
+- Search observation: fresh public checks did not reliably surface the new manufacturer or export pages, while broad wholesale queries continued to return noisy or unrelated results. This is an individual crawl/search observation, not a ranking trend; the release needs time and Search Console evidence.
+- Shipped: aligned the management, SEO and growth documents with the owner-authorized 17-page production scope, including the manufacturer page, Spanish export page and limited English international companion. Recorded the current performance baseline so future maintenance does not revert the newer approved scope.
+- Verification: all 17 sitemap pages returned HTTP 200 with one H1 and a matching self-canonical; 42 internal routes/assets had no broken response. HTTPS and legacy redirects preserve the product-selection query. Desktop had no horizontal overflow, all product images loaded fully, the lazy footer map loaded on approach, and a Shampoo 90 ml request for 400 boxes reached the itemized review without sending WhatsApp. No site-origin console errors were observed.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no ranking, traffic, inquiry or sales gain is attributed to recent releases.
+- Next priority: connect Search Console and compare the latest 28 days with the previous 28, separating branded/non-branded, Dominican and international traffic before choosing another SEO change.
+
 ## 2026-09-18
 
 - Production baseline: Vercel production for `main` commit `b09370a` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found.
@@ -109,7 +118,7 @@ Concise record of shipped work, dated observations, available measurements and t
 
 ## Prioritized backlog
 
-1. Measure impressions, clicks and queries for `/productos-limpieza/` and `/productos/cloro/` when Search Console access is available; use those results to choose the next content improvement.
+1. Measure impressions, clicks and queries for the domestic hubs plus `/fabricante-productos-limpieza/`, `/exportaciones/` and `/en/` when Search Console access is available; compare the latest 28 days with the previous 28 and separate branded/non-branded, Dominican and international traffic.
 2. Improve product-image resolution where a verified owner-approved higher-resolution source exists, especially the current low-resolution desinfectante artwork; preserve the image marked final in repository history until then.
 3. Strengthen another existing product page only when current search evidence supports useful, non-redundant buyer content; prioritize a page whose intent is not ambiguous.
 4. Seek owner approval before preparing any external directory or business-citation submissions; do not contact third parties autonomously.
