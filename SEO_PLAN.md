@@ -1,10 +1,10 @@
 # Bonaplus: plan de crecimiento orgánico
 
-Actualizado: 2026-09-18. Leer junto con `SITE_MANAGEMENT.md` y `GROWTH_LOG.md`.
+Actualizado: 2026-09-23. Leer junto con `SITE_MANAGEMENT.md` y `GROWTH_LOG.md`.
 
 ## Objetivo y límites de medición
 
-Conseguir solicitudes mayoristas relevantes en República Dominicana y facilitar que el comprador pase de una búsqueda a un pedido claro. La web oficial ya está indexada. Una consulta pública de búsqueda es una observación puntual, no una medición de posición, tráfico o ventas.
+Conseguir solicitudes mayoristas relevantes en República Dominicana y facilitar que el comprador pase de una búsqueda a un pedido claro. El alcance autorizado también incluye consultas de importadores y distribuidores internacionales mediante las páginas específicas de exportación. La web oficial ya está indexada. Una consulta pública de búsqueda es una observación puntual, no una medición de posición, tráfico o ventas.
 
 En esta revisión no hay acceso a Google Search Console ni a analítica propia. No hay una línea base cuantitativa de impresiones, clics, consultas o conversiones. No atribuir crecimiento a un cambio sin datos. No instalar identificadores inventados ni afirmar que se solicitó indexación en Search Console.
 
@@ -18,6 +18,9 @@ En esta revisión no hay acceso a Google Search Console ni a analítica propia. 
 | `/productos-limpieza/` | Productos de limpieza al por mayor en República Dominicana | Cloro, lavaplatos, desinfectante y líquido para calzado, con tamaños y enlaces directos |
 | `/productos-cuidado-personal/` | Cuidado personal al por mayor; shampoo y rinse | Comparar las dos líneas y sus presentaciones de 90 y 150 ml |
 | `/guia-mayoristas/` | Cómo preparar un pedido Bonaplus | Selección, cajas, ubicación y coordinación de entrega |
+| `/fabricante-productos-limpieza/` | Fabricante de productos de limpieza en República Dominicana | Relación directa con Industria Plus B&G, caja estándar de 80 potes y sellado térmico |
+| `/exportaciones/` | Bonaplus para importadores y distribuidores internacionales | Portafolio, empaque confirmado, datos necesarios y coordinación comercial |
+| `/en/` | Bonaplus wholesale and export for English-speaking international buyers | English companion to `/exportaciones/`, with matching verified facts and language links |
 | `/productos/cloro/` | Cloro Bonaplus 150 ml al por mayor | Presentación, consulta comercial y selección de cajas |
 | `/productos/lavaplatos/` | Lavaplatos líquido Bonaplus 150 ml | Aclarar que es un producto líquido y facilitar el pedido |
 | `/productos/desinfectante/` | Desinfectante Bonaplus 90 ml | Presentación y disponibilidad; sin inventar eficacia, ingredientes o certificaciones |
@@ -27,11 +30,11 @@ En esta revisión no hay acceso a Google Search Console ni a analítica propia. 
 | `/productos/vinagre/` | Vinagre Bonaplus 150 ml | Presentación y pedido; no inventar composición o usos certificados |
 | `/productos/vainilla/` | Vainilla Bonaplus 90 ml | Presentación y pedido; no inventar composición o usos certificados |
 
-No crear páginas por ciudad ni variaciones de palabras clave que repitan el mismo contenido. Ampliar primero una página existente cuando haya una necesidad concreta del comprador.
+El sitio doméstico permanece en español. `/en/` es la única versión inglesa autorizada y funciona como compañera internacional de `/exportaciones/`; mantener canonical propio y hreflang recíproco. No crear páginas por ciudad ni variaciones de palabras clave que repitan el mismo contenido. Ampliar primero una página existente cuando haya una necesidad concreta del comprador.
 
 ## Prioridades siguientes
 
-1. Cuando esté disponible Search Console, registrar por página y consulta los últimos 28 días frente a los 28 anteriores: impresiones, clics, CTR y posición media, separando marca/no marca y República Dominicana. Guardar fecha, filtros y tamaño de muestra. Permitir un nuevo rastreo antes de juzgar esta revisión.
+1. Cuando esté disponible Search Console, registrar por página y consulta los últimos 28 días frente a los 28 anteriores: impresiones, clics, CTR y posición media, separando marca/no marca, República Dominicana y tráfico internacional hacia `/exportaciones/` y `/en/`. Guardar fecha, filtros y tamaño de muestra. Permitir un nuevo rastreo antes de juzgar esta revisión.
 2. Elegir una mejora a partir de esa evidencia: páginas con impresiones relevantes y pocos clics, consultas que la página no responde, o una oportunidad comercial respaldada por datos. No cambiar títulos todos los días ni interpretar una sola búsqueda como tendencia.
 3. Mantener un registro separado de clics a WhatsApp y solicitudes recibidas cuando exista medición autorizada. Un clic no demuestra una conversación, un comprador cualificado ni una venta. No transmitir nombres, teléfonos ni textos del pedido a analítica.
 4. Sustituir la imagen de desinfectante solo cuando exista una fuente de mayor resolución aprobada por el propietario. La fuente actual es pequeña; no inventar detalles de etiqueta ni especificaciones mediante generación de imágenes.
@@ -42,7 +45,7 @@ No crear páginas por ciudad ni variaciones de palabras clave que repitan el mis
 
 - Usar el último `main` y comprobar trabajo concurrente antes de editar. Preservar el logo original, el wordmark sin + añadido y todas las imágenes completas.
 - Comprobar producción y rutas afectadas. Las URLs principales usan HTTPS, `www` y barra final; las rutas `index.html` redirigen a su URL canónica. Conservar los parámetros del pedido al redirigir.
-- Mantener las 14 URLs públicas en sitemap; actualizar `lastmod` solo tras cambios sustanciales reales. No añadir URLs de filtros, selección, pruebas ni documentos internos.
+- Mantener las 17 URLs públicas canónicas en sitemap; actualizar `lastmod` solo tras cambios sustanciales reales. No añadir URLs de filtros, selección, pruebas ni documentos internos.
 - Validar título y descripción únicos, un H1 principal, canonical propio, enlaces y anclas locales, JSON-LD legible y coherencia entre el contenido visible y los datos estructurados.
 - Verificar que los metadatos de imágenes coincidan con el archivo real. Mantener imágenes descriptivas, dimensiones reservadas y carga diferida fuera de la vista inicial.
 - `Product` describe productos de cotización privada. No añadir `Offer`, precios ficticios, disponibilidad no confirmada, reseñas ni valoraciones para obtener resultados enriquecidos. La validez semántica no garantiza elegibilidad ni aparición de resultados enriquecidos. Tampoco prometer resultados FAQ para esta web comercial.
