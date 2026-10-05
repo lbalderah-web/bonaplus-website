@@ -2,6 +2,14 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-10-05
+
+- Production baseline: Vercel production for `main` commit `5cb2385` remained `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found.
+- Search observation: the official `/exportaciones/` page surfaced in the public search results reviewed on 2026-10-05, while the manufacturer and English companion pages did not surface consistently. This is an individual discovery observation, not a ranking, traffic or conversion trend.
+- Verification: the homepage retained its canonical, single H1 and contained layout; a Lavaplatos 150 ml request for 400 boxes reached the itemized review with the expected wholesale-volume message, without opening or sending WhatsApp.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no impressions, clicks, inquiries, sales or ranking gain is attributed to the discovery.
+- Next priority: allow the manufacturer and English companion pages more crawl time and connect Search Console before changing SEO titles or page copy.
+
 ## 2026-09-23
 
 - Production baseline: Vercel production for `main` commit `1357791` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests were found. PR #22's cleanup is live.
