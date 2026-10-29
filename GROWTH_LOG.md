@@ -2,6 +2,14 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-10-29
+
+- Production baseline: Vercel production for `main` commit `0829002` remained `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found.
+- Search observation: the official English companion page `/en/` surfaced in the public search results reviewed on 2026-10-29. The homepage, company page, cleaning category, wholesale page and Spanish export page also surfaced, while the dedicated manufacturer page did not surface consistently. These are individual discovery observations, not a ranking, traffic or conversion trend.
+- Verification: the homepage, wholesale, cleaning, manufacturer, Spanish export and English pages returned HTTP 200 with one H1 and matching self-canonicals; robots and the 17-URL sitemap returned HTTP 200. HSTS, frame-ancestor protection and MIME-sniffing protection remained present.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no impressions, clicks, inquiries, sales or ranking gain is attributed to the discovery.
+- Next priority: connect Search Console and compare the latest 28 days with the previous 28 before changing SEO titles or page copy; continue allowing the manufacturer page time to be discovered.
+
 ## 2026-10-05
 
 - Production baseline: Vercel production for `main` commit `5cb2385` remained `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found.
