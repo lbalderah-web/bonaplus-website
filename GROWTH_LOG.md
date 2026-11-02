@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-11-02
+
+- Production baseline: Vercel production for `main` commit `66c0655` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found.
+- Shipped: removed the homepage's non-reciprocal English `hreflang` alternate. `/en/` is the authorized English companion to `/exportaciones/`, not a translation of the domestic homepage; the international pair retains reciprocal `es-DO`/`en` alternates and self-canonicals.
+- Search observation: the homepage, wholesale page, cleaning category, company page, buyer guide and Cloro product page surfaced in public results reviewed on 2026-11-02, while the dedicated manufacturer page did not surface consistently. This is an individual discovery observation, not a ranking, traffic or conversion trend.
+- Verification: the homepage, wholesale, cleaning, manufacturer, Spanish export and English pages returned HTTP 200; robots and the 17-URL sitemap returned HTTP 200, and security headers remained present. A Vinagre 150 ml request for 400 boxes reached the itemized review with the expected wholesale-volume message without preparing or sending WhatsApp.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no impressions, clicks, inquiries, sales or ranking gain is attributed to this correction.
+- Next priority: connect Search Console and compare the latest 28 days with the previous 28 before changing SEO titles or page copy; continue allowing the manufacturer page time to be discovered.
+
 ## 2026-10-29
 
 - Production baseline: Vercel production for `main` commit `0829002` remained `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found.
