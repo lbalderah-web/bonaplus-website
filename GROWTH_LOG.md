@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-11-10
+
+- Production baseline: Vercel production for `main` commit `6ab8eb7` was `READY`; no runtime errors were reported during the preceding 30 minutes, and no open pull requests or newer commits were found.
+- Search observation: the homepage, company page, wholesale page, cleaning category, buyer guide and Cloro product page surfaced in public results reviewed on 2026-11-10. The dedicated manufacturer page still did not surface, including in a URL-specific site search. This is an individual discovery observation, not a ranking, traffic or conversion trend.
+- Finding and shipped improvement: the manufacturer page was present in the sitemap but received no contextual links from the homepage, wholesale page, cleaning category, company page or buyer guide. Added relevant links from the homepage manufacturing section, the wholesale page and the cleaning category; completed the manufacturer page's self-referencing Spanish/x-default language signals and Open Graph URL without changing its title or business claims.
+- Verification before publication: the six priority pages returned HTTP 200 with one H1, matching self-canonicals, descriptive image alternatives and security headers. A Shampoo 90 ml request for 400 boxes reached the itemized review with the expected wholesale-volume message, without preparing or sending WhatsApp.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no impressions, clicks, inquiries, sales or ranking gain is attributed to this change.
+- Next priority: allow recrawling, then use Search Console 28-day comparisons when available before changing titles or page copy.
+
 ## 2026-11-02
 
 - Production baseline: Vercel production for `main` commit `66c0655` was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found.
