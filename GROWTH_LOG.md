@@ -2,6 +2,11 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-11-26 — Mobile-first usability
+
+- Owner-directed redesign: mobile quick navigation, touch-size catalog search and filter chips, unified two-column product cards with complete visible product images, improved order dock and mobile review sheet. Scoped to homepage; no changes to prices, product specs, SEO titles or branding.
+- Pre-release Chromium tests at 390px, 320px and 1440px: 12 product cards, zero broken loaded images, no horizontal overflow or JavaScript page errors. Category filter returned 4 personal-care presentations; 400 boxes of capped Cloro 170 ml reached the itemized review without opening WhatsApp. Production deployment to be verified; no traffic or lead gains claimed.
+
 ## 2026-11-26
 
 - Production baseline: four owner-directed releases from the evening of 2026-11-25 culminated in Vercel production commit `1511cfb`, which was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found before this documentation update.
