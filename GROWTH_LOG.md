@@ -2,6 +2,17 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-11-26
+
+- Production baseline: four owner-directed releases from the evening of 2026-11-25 culminated in Vercel production commit `1511cfb`, which was `READY`; no runtime errors were reported during the preceding 24 hours, and no open pull requests or newer commits were found before this documentation update.
+- Released scope verified: the catalog now distinguishes capped Cloro and Vinagre 170 ml presentations from their 150 ml presentations, bringing the order flow to 12 presentations. The launch selector switches accurately between Cloro and Vinagre, the case rotation controls respond, and the product CTA opens the corresponding order quantity.
+- Technical verification: all 17 canonical pages loaded with one H1, matching self-canonicals, no blank image alternatives, no loaded broken images and no horizontal overflow in the available desktop browser viewport. The legacy `/index.html?producto=cloro-tapa` route retained its selection parameter when redirecting to the canonical homepage.
+- Order verification: a 400-box Vinagre con tapa selection reached the itemized review as 170 ml and displayed the expected wholesale-volume guidance. No contact details were entered and no WhatsApp message was prepared or sent.
+- Documentation: aligned the SEO intent map with the 12 current presentations and the approved 170 ml capped Cloro and Vinagre variants. No search titles or descriptions were changed.
+- Testing limitation: the desktop launch and interaction were visually inspected. A dedicated mobile viewport was not available in this run; responsive rules and horizontal overflow were checked, but this is not a substitute for a full mobile visual review.
+- Measurement limitation: Google Search Console and first-party analytics were not available, so no impressions, clicks, inquiries, sales or ranking gain is attributed to the release.
+- Next priority: complete a dedicated mobile visual check when a mobile viewport is available, allow recrawling, and use Search Console 28-day comparisons before changing SEO titles or page copy.
+
 ## 2026-11-10
 
 - Production baseline: Vercel production for `main` commit `6ab8eb7` was `READY`; no runtime errors were reported during the preceding 30 minutes, and no open pull requests or newer commits were found.

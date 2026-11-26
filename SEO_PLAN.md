@@ -1,6 +1,6 @@
 # Bonaplus: plan de crecimiento orgánico
 
-Actualizado: 2026-09-23. Leer junto con `SITE_MANAGEMENT.md` y `GROWTH_LOG.md`.
+Actualizado: 2026-11-26. Leer junto con `SITE_MANAGEMENT.md` y `GROWTH_LOG.md`.
 
 ## Objetivo y límites de medición
 
@@ -14,20 +14,20 @@ En esta revisión no hay acceso a Google Search Console ni a analítica propia. 
 | --- | --- | --- |
 | `/` | Bonaplus y catálogo oficial | Identidad de marca, categorías y selección por cajas |
 | `/empresa/` | Industria Plus B&G y relación con Bonaplus | Empresa, contacto y datos comerciales aprobados |
-| `/mayoristas/` | Comprar Bonaplus al por mayor; proveedor para distribuidores | Comparar las 10 presentaciones, elegir tamaño y preparar cotización |
+| `/mayoristas/` | Comprar Bonaplus al por mayor; proveedor para distribuidores | Comparar las 12 presentaciones, elegir tamaño y preparar cotización |
 | `/productos-limpieza/` | Productos de limpieza al por mayor en República Dominicana | Cloro, lavaplatos, desinfectante y líquido para calzado, con tamaños y enlaces directos |
 | `/productos-cuidado-personal/` | Cuidado personal al por mayor; shampoo y rinse | Comparar las dos líneas y sus presentaciones de 90 y 150 ml |
 | `/guia-mayoristas/` | Cómo preparar un pedido Bonaplus | Selección, cajas, ubicación y coordinación de entrega |
 | `/fabricante-productos-limpieza/` | Fabricante de productos de limpieza en República Dominicana | Relación directa con Industria Plus B&G, caja estándar de 80 potes y sellado térmico |
 | `/exportaciones/` | Bonaplus para importadores y distribuidores internacionales | Portafolio, empaque confirmado, datos necesarios y coordinación comercial |
 | `/en/` | Bonaplus wholesale and export for English-speaking international buyers | English companion to `/exportaciones/`, with matching verified facts and language links |
-| `/productos/cloro/` | Cloro Bonaplus 150 ml al por mayor | Presentación, consulta comercial y selección de cajas |
+| `/productos/cloro/` | Cloro Bonaplus 150 ml y 170 ml con tapa al por mayor | Distinguir ambas presentaciones y facilitar su selección independiente por cajas |
 | `/productos/lavaplatos/` | Lavaplatos líquido Bonaplus 150 ml | Aclarar que es un producto líquido y facilitar el pedido |
 | `/productos/desinfectante/` | Desinfectante Bonaplus 90 ml | Presentación y disponibilidad; sin inventar eficacia, ingredientes o certificaciones |
 | `/productos/calzado/` | Líquido para calzado Bonaplus 90 ml | Presentación y cotización; no añadir materiales compatibles no confirmados |
 | `/productos/rinse/` | Rinse Bonaplus 90 y 150 ml | Acceso independiente a cada presentación en el pedido |
 | `/productos/shampoo/` | Shampoo Bonaplus 90 y 150 ml | Acceso independiente a cada presentación en el pedido |
-| `/productos/vinagre/` | Vinagre Bonaplus 150 ml | Presentación y pedido; no inventar composición o usos certificados |
+| `/productos/vinagre/` | Vinagre Bonaplus 150 ml y 170 ml con tapa | Distinguir ambas presentaciones y facilitar su selección independiente por cajas; no inventar composición o usos certificados |
 | `/productos/vainilla/` | Vainilla Bonaplus 90 ml | Presentación y pedido; no inventar composición o usos certificados |
 
 El sitio doméstico permanece en español. `/en/` es la única versión inglesa autorizada y funciona como compañera internacional de `/exportaciones/`; mantener canonical propio y hreflang recíproco. No crear páginas por ciudad ni variaciones de palabras clave que repitan el mismo contenido. Ampliar primero una página existente cuando haya una necesidad concreta del comprador.
