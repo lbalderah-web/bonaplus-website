@@ -231,8 +231,7 @@
   <div class="stage-layout">
     <div class="stage-title">
       <p class="stage-kicker">Nuevo en Bonaplus</p>
-      <h1 id="launch-title">Ahora con tapa.</h1>
-      <p class="stage-names">Vinagre y cloro Bonaplus</p>
+      <h1 id="launch-title">Cloro y vinagre,<br><span>ahora con tapa.</span></h1>
     </div>
     <picture class="stage-art">
       <source media="(max-width: 720px)" srcset="/assets/lanzamiento/bonaplus-estudio-movil.webp">
@@ -241,28 +240,37 @@
     <div class="stage-details">
       <p class="stage-spec">170 ml por pote <span aria-hidden="true">/</span> 80 potes por caja</p>
       <div class="stage-actions">
-        <a class="button stage-primary" href="#cajas-con-tapa">Elegir mis cajas</a>
-        <a class="stage-watch" href="#video-lanzamiento"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg> Ver el anuncio</a>
+        <a class="button stage-primary" href="#cajas-con-tapa">Explorar las cajas <span aria-hidden="true">↓</span></a>
       </div>
     </div>
   </div>
 </section>
-<section class="launch-showcase section-shell" aria-label="Anuncio y presentaciones con tapa">
-  <div class="showcase-video" id="video-lanzamiento">
-    <div class="film-caption"><p class="edition-label">El anuncio</p><h2>Cloro con tapa<br>en acción.</h2><p class="film-length">Video · 23 segundos</p></div>
-    <video controls playsinline preload="none" width="512" height="910" poster="/assets/lanzamiento/cloro-video.webp" aria-label="Anuncio completo del cloro Bonaplus con tapa" src="/assets/lanzamiento/cloro-con-tapa.mp4"></video>
+<section class="box-studio section-shell" id="cajas-con-tapa" aria-labelledby="studio-title" data-product="cloro">
+  <div class="studio-copy">
+    <p class="edition-label">Presentaciones mayoristas</p>
+    <h2 id="studio-title">La caja de <br><span id="studio-product">cloro con tapa.</span></h2>
+    <div class="studio-picker" role="group" aria-label="Elige una presentación">
+      <button type="button" data-pack="cloro" aria-pressed="true">Cloro</button>
+      <button type="button" data-pack="vinagre" aria-pressed="false">Vinagre</button>
+    </div>
   </div>
-  <div class="showcase-boxes" id="cajas-con-tapa">
-    <p class="edition-label">Pedidos al por mayor</p><h2>Elige tus cajas.</h2>
-    <p>Selecciona tu presentación y ajusta la cantidad para cotizar por WhatsApp.</p>
-    <div class="launch-pair"><a class="launch-card" data-launch-product="vinagre-tapa" href="#card-vinagre-tapa">
-      <img src="/assets/lanzamiento/vinagre-con-tapa.webp" loading="lazy" width="1100" height="821" alt="Caja y potes de vinagre Bonaplus con tapa" >
-      <div class="box-caption"><h3>Vinagre con tapa</h3><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 18 12-12M8 6h10v10"/></svg></div>
-    </a>
-    <a class="launch-card" data-launch-product="cloro-tapa" href="#card-cloro-tapa">
-      <img src="/assets/lanzamiento/cloro-con-tapa.webp" loading="lazy" width="1100" height="821" alt="Caja y potes de cloro Bonaplus con tapa" >
-      <div class="box-caption"><h3>Cloro con tapa</h3><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 18 12-12M8 6h10v10"/></svg></div>
-    </a></div>
+  <div class="studio-view">
+    <div class="pack-scene" aria-label="Vista tridimensional de la caja de cloro" role="img">
+      <div class="carton" aria-hidden="true">
+        <div class="carton-face carton-front"></div><div class="carton-face carton-back"></div>
+        <div class="carton-face carton-left"></div><div class="carton-face carton-right"></div>
+        <div class="carton-face carton-top"></div>
+      </div>
+    </div>
+    <div class="spin-controls" role="group" aria-label="Rotar la caja">
+      <button type="button" data-turn="-35" aria-label="Girar hacia la izquierda">←</button>
+      <span>Desliza para girar</span>
+      <button type="button" data-turn="35" aria-label="Girar hacia la derecha">→</button>
+    </div>
+  </div>
+  <div class="studio-order">
+    <p>80 potes por caja <span aria-hidden="true">/</span> 170 ml por pote</p>
+    <a class="button stage-primary" id="studio-order" data-launch-product="cloro-tapa" href="#card-cloro-tapa">Elegir cloro para mi pedido</a>
   </div>
 </section>
 </div>

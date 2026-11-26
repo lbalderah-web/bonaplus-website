@@ -362,12 +362,6 @@ function initFlagshipExperience() {
 }
 initFlagshipExperience();
 
-// The launch video only downloads when a visitor chooses to watch.
-const launchVideo = document.querySelector('#video-lanzamiento video');
-document.querySelector('.stage-watch')?.addEventListener('click', () => {
-  launchVideo?.play().catch(() => { /* Native playback controls remain available. */ });
-});
-
 document.querySelectorAll('[data-launch-product]').forEach(link => {
   link.addEventListener('click', event => {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
@@ -377,3 +371,45 @@ document.querySelectorAll('[data-launch-product]').forEach(link => {
     openControls(id, card?.querySelector('[data-action="toggle"]'));
   });
 });
+
+const studio = document.querySelector('.box-studio');
+if (studio) {
+  const scene = studio.querySelector('.pack-scene');
+  const order = studio.querySelector('#studio-order');
+  let angle = -22;
+  let drag = null;
+
+  function rotate(value) {
+    angle = value;
+    scene.style.setProperty('--angle', angle + 'deg');
+  }
+
+  studio.querySelectorAll('[data-pack]').forEach(button => {
+    button.addEventListener('click', () => {
+      const name = button.dataset.pack;
+      studio.dataset.product = name;
+      studio.querySelectorAll('[data-pack]').forEach(choice => {
+        choice.setAttribute('aria-pressed', String(choice === button));
+      });
+      studio.querySelector('#studio-product').textContent = name + ' con tapa.';
+      scene.setAttribute('aria-label', 'Vista tridimensional de la caja de ' + name);
+      order.dataset.launchProduct = name + '-tapa';
+      order.href = '#card-' + name + '-tapa';
+      order.textContent = 'Elegir ' + name + ' para mi pedido';
+      rotate(-22);
+    });
+  });
+
+  studio.querySelectorAll('[data-turn]').forEach(button => {
+    button.addEventListener('click', () => rotate(angle + Number(button.dataset.turn)));
+  });
+  scene.addEventListener('pointerdown', event => {
+    if (!event.isPrimary || event.button !== 0) return;
+    drag = { id: event.pointerId, x: event.clientX, angle };
+    scene.setPointerCapture(event.pointerId);
+  });
+  scene.addEventListener('pointermove', event => {
+    if (drag?.id === event.pointerId) rotate(drag.angle + (event.clientX - drag.x) * .7);
+  });
+  scene.addEventListener('lostpointercapture', () => { drag = null; });
+}

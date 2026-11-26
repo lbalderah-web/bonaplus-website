@@ -1738,9 +1738,6 @@ img,svg,iframe{
 .launch-card > span { display: flex; align-items: center; justify-content: space-between; padding: 12px clamp(8px, 1.2vw, 18px); font-weight: 700; }
 .launch-card:hover > span { text-decoration: underline; }
 .launch-pack { max-width: 660px; overflow: hidden; border-radius: 8px; }
-.launch-film { margin-top: 20px; }
-.launch-film summary { cursor: pointer; text-decoration: underline; }
-.launch-film video { display: block; margin-top: 14px; width: min(240px, 100%); aspect-ratio: 512/910; background: #082333; }
 #card-cloro-tapa .product-image img, #card-vinagre-tapa .product-image img { width: 100%; height: 100%; object-fit: contain; }
 @media (max-width: 800px) {
   .launch-inner { grid-template-columns: 1fr; gap: 26px; padding-block: 36px; }
@@ -1785,26 +1782,6 @@ img,svg,iframe{
 .stage-spec span { color: #ff7884; margin-inline: 5px; }
 .stage-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 22px; }
 .stage-primary { background: white; color: #083578; border-radius: 999px; min-height: 48px; padding: 12px 23px; }
-.stage-watch { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; font-size: .9rem; font-weight: 650; }
-.stage-watch svg { width: 29px; height: 29px; padding: 6px; border-radius: 50%; border: 1px solid #adcaff; }
-.stage-watch:hover { text-decoration: underline; }
-.launch-showcase {
-  display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(25px, 4vw, 72px);
-  align-items: center; border-top: 1px solid #7999d780; padding-block: clamp(28px, 4vw, 64px);
-}
-.showcase-video { display: grid; grid-template-columns: minmax(0,.95fr) 1fr; gap: clamp(17px, 2vw, 35px); align-items: center; }
-.showcase-video video {
-  grid-column: 1; grid-row: 1; width: 100%; max-width: 265px; height: auto; aspect-ratio: 512/910;
-  border-radius: 14px; background: #04103a; box-shadow: 0 12px 26px #00123d60;
-}
-.film-caption { grid-column: 2; grid-row: 1; }
-.launch-showcase h2 { color: white; font-weight: 750; font-size: clamp(1.9rem, 3.4vw, 4rem); line-height: 1.03; margin: 0 0 12px; }
-.film-length, .showcase-boxes > p:not(.edition-label) { color: #dce9ff; font-size: .94rem; margin: 0 0 18px; }
-.showcase-boxes .launch-card { background: #123568; color: white; border: 1px solid #759ad4; border-radius: 11px; }
-.box-caption { display: flex; align-items: center; justify-content: space-between; gap: 5px; padding: 13px; }
-.box-caption h3 { color: #fff; font-size: clamp(.9rem,1.3vw,1.25rem); letter-spacing: -.035em; margin: 0; }
-.box-caption svg { width: 17px; height: 17px; }
-.launch-card:hover h3 { text-decoration: underline; }
 @media (prefers-reduced-motion: no-preference) {
   .stage-art img { animation: bottle-arrival .8s ease-out both; }
   @keyframes bottle-arrival { from { transform: translateY(7px) scale(.98); } to { transform: none; } }
@@ -1820,13 +1797,7 @@ img,svg,iframe{
   .stage-art img { height: auto; }
   .stage-spec { margin: 0 0 10px; font-size: .83rem; }
   .stage-actions { gap: 16px; }
-  .launch-showcase { grid-template-columns: 1fr; gap: 22px; padding-block: 21px 32px; }
-  .showcase-video { grid-template-columns: minmax(0,.78fr) minmax(0,1fr); gap: 20px; }
-  .showcase-video video { max-width: 205px; justify-self: center; }
-  .showcase-boxes { border-top: 1px solid #759ad485; padding-top: 20px; }
   .edition-label { margin-bottom: 8px; font-size: .63rem; }
-  .box-caption { padding: 11px 8px; }
-  .box-caption svg { width: 14px; height: 14px; }
 }
 .home-page .worlds, .home-page .manufacturing { background: #0d3772; border-color: #345990; }
 .home-page :is(.manifesto,.products,.worlds,.manufacturing,.faq) h2,
@@ -1851,3 +1822,58 @@ img,svg,iframe{
 .home-page .brand-facts > div { border-color: #51739a; }
 .home-page .brand-facts strong, .home-page .brand-facts strong span { color: white; }
 .home-page .brand-facts > div > span { color: #dce9ff; }
+
+/* The front uses the photographed panel from each case. */
+.stage-title h1 { font-size: clamp(3.25rem, 5.7vw, 6.8rem); }
+.stage-title h1 span { color: #a9d9ff; background: linear-gradient(110deg,#fff 5%,#a1daff 44%,#65a6ff); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.launch-edition .stage-primary { background: #c91e3d; color: white; box-shadow: 0 6px 20px #00143f45; }
+.box-studio {
+  --glow: #2479fb; --box-art: url('/assets/lanzamiento/cloro-con-tapa.webp');
+  position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr);
+  grid-template-rows: 1fr auto auto 1fr; align-items: center; padding: clamp(22px,4vw,65px);
+  overflow: hidden; border-radius: 24px 24px 0 0; border: 1px solid #819eed5e;
+  background: radial-gradient(ellipse at 75% 47%,#174ca2 0%,#072963 45%,#051e52 90%);
+}
+.box-studio[data-product="vinagre"] { --glow: #dc984e; --box-art: url('/assets/lanzamiento/vinagre-con-tapa.webp'); }
+.studio-copy { grid-area: 2/1; }
+.studio-copy h2 { font-size: clamp(2.2rem,4.3vw,4.9rem); color: white; line-height: 1.02; margin-bottom: 20px; }
+.studio-copy h2 span { color: #a8d8ff; }
+.box-studio[data-product="vinagre"] h2 span { color: #ffd09f; }
+.studio-picker { display: inline-flex; padding: 4px; gap: 4px; border: 1px solid #88a8d5; border-radius: 30px; background: #071e49; }
+.studio-picker button, .spin-controls button { background: none; border: 0; color: white; min-height: 44px; font-weight: 650; }
+.studio-picker button { padding: 7px 20px; border-radius: 30px; }
+.studio-picker [aria-pressed="true"] { background: white; color: #072453; }
+.studio-order { grid-area: 3/1; }
+.studio-order p { color: #d2e4ff; font-size: .9rem; margin: 18px 0 12px; }
+.studio-order p span { color: #ff7884; margin: 0 3px; }
+.studio-view { grid-area: 1/2/5/3; min-width: 0; }
+.pack-scene { --w: clamp(160px,18vw,280px); --h: calc(var(--w)*.65); --d: calc(var(--w)*.55);
+  height: calc(var(--w)*1.24); position: relative; perspective: 950px; touch-action: pan-y; cursor: grab; user-select: none; }
+.pack-scene:active { cursor: grabbing; }
+.pack-scene::before { content:""; position:absolute; width:76%; left:12%; height:15%; bottom:10%; border-radius:50%;
+  background:radial-gradient(ellipse,#000e35 12%,#132e77 47%,var(--glow) 71%,transparent 74%); box-shadow:0 4px 24px #000c3855; }
+.carton { width:var(--w); height:var(--h); position:absolute; top:46%; left:50%; transform-style:preserve-3d;
+  transform:translate(-50%,-50%) rotateX(-12deg) rotateY(var(--angle,-22deg)); }
+.carton-face { position:absolute; backface-visibility:hidden; border:1px solid #aa7445; }
+.carton-front,.carton-back { width:100%; height:100%; }
+.carton-front { transform:translateZ(calc(var(--d)/2)); background:var(--box-art) 9% 65% / 174% 196%; }
+.box-studio[data-product="vinagre"] .carton-front { background-position:8% 71%; background-size:166% 190%; }
+.carton-back { transform:rotateY(180deg) translateZ(calc(var(--d)/2)); background:linear-gradient(100deg,#a47548,#d2a575 65%,#ba8953); }
+.carton-left,.carton-right { left:calc((var(--w) - var(--d))/2); width:var(--d); height:100%; background:linear-gradient(90deg,#a16c40,#cd9e67); }
+.carton-left { transform:rotateY(-90deg) translateZ(calc(var(--w)/2)); }
+.carton-right { transform:rotateY(90deg) translateZ(calc(var(--w)/2)); }
+.carton-top { width:100%; height:var(--d); top:calc((var(--h) - var(--d))/2); transform:rotateX(90deg) translateZ(calc(var(--h)/2)); background:linear-gradient(to right,#d5aa76 44%,#ebc897 44% 50%,#ab7c4f 50% 50.6%,#ebc897 50.6% 56%,#cea06f 56%); }
+.spin-controls { display:flex; align-items:center; justify-content:center; gap:14px; font-size:.8rem; color:#e2edff; }
+.spin-controls button { width:44px; border-radius:50%; border:1px solid #93add5; font-size:1.2rem; }
+@media (prefers-reduced-motion:no-preference) { .carton { transition:transform .28s ease-out; } .pack-scene:active .carton { transition:none; } }
+@media (max-width:760px) {
+  .stage-title h1 { font-size:clamp(2.8rem,10.4vw,4.4rem); }
+  .box-studio { grid-template-columns:1fr; grid-template-rows:auto; gap:10px; }
+  .studio-copy,.studio-view,.studio-order { grid-area:auto; }
+  .studio-copy h2 { margin-bottom:12px; }
+  .studio-copy h2 br { display:none; }
+  .studio-copy h2 br::after { content:" "; }
+  .pack-scene { --w:clamp(150px,49vw,235px); }
+  .studio-order { text-align:center; }
+  .studio-order p { margin-top:6px; }
+}
