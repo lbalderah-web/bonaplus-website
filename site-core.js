@@ -93,6 +93,24 @@
     if (window.innerWidth > 880 && mainNav?.classList.contains('open')) setMenuOpen(false);
   }, { passive: true });
 
+  // Track the visible quick-link section without continuous scroll work.
+  const quick = document.querySelector('.mobile-quicknav');
+  if (quick && 'IntersectionObserver' in window) {
+    const items = [...quick.querySelectorAll('a[href^="#"]')].map(link => ({
+      link, section: document.getElementById(link.hash.slice(1))
+    })).filter(item => item.section);
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      items.forEach(item => {
+        if (item.section === visible.target) item.link.setAttribute('aria-current', 'location');
+        else item.link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-18% 0px -48% 0px', threshold: [0, .15, .4] });
+    items.forEach(item => observer.observe(item.section));
+  }
+
   // One lightweight header scroll state for every page.
   const header = document.querySelector('.site-header');
   let headerFrame = 0;
