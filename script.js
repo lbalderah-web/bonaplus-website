@@ -184,11 +184,14 @@ filterButtons.forEach(button => button.addEventListener('click', () => {
   filterProducts();
 }));
 searchInput?.addEventListener('input', filterProducts);
-document.getElementById('resetFilters')?.addEventListener('click', () => {
+function resetCatalogFilters() {
   activeFilter = 'all';
   if (searchInput) searchInput.value = '';
   filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === 'all')));
   filterProducts();
+}
+document.getElementById('resetFilters')?.addEventListener('click', () => {
+  resetCatalogFilters();
   searchInput?.focus();
 });
 filterProducts();
@@ -358,3 +361,19 @@ function initFlagshipExperience() {
 
 }
 initFlagshipExperience();
+
+// The launch video only downloads when a visitor chooses to watch.
+const launchVideo = document.querySelector('#video-lanzamiento video');
+document.querySelector('.stage-watch')?.addEventListener('click', () => {
+  launchVideo?.play().catch(() => { /* Native playback controls remain available. */ });
+});
+
+document.querySelectorAll('[data-launch-product]').forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const id = link.dataset.launchProduct;
+    const card = document.getElementById('card-' + id);
+    if (card?.hidden) resetCatalogFilters();
+    openControls(id, card?.querySelector('[data-action="toggle"]'));
+  });
+});

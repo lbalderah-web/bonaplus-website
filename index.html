@@ -226,21 +226,40 @@
   <a class="button button-light header-cta" href="https://wa.me/18093791396?text=Hola%20Bonaplus,%20quiero%20cotizar%20un%20pedido%20al%20por%20mayor." target="_blank" rel="noopener noreferrer">Hablemos de tu negocio <span class="icon-arrow-inline" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span></a>
 </header>
 <main id="contenido">
-<section class="launch" id="con-tapa" aria-labelledby="launch-title">
-  <div class="launch-inner section-shell">
-    <div class="launch-copy">
-      <p class="eyebrow">Lanzamiento Bonaplus</p>
-      <h2 id="launch-title">Vinagre y cloro,<br><em>ahora con tapa.</em></h2>
-      <p>Tapa roja para nuestro vinagre. Tapa azul para nuestro cloro. Pídelos para tu negocio en cajas de 80 potes de 170 ml.</p>
-      <a class="button button-lime" href="#card-cloro-tapa">Elegir mis cajas <span aria-hidden="true">↓</span></a>
+<section class="bottle-stage" id="con-tapa" aria-labelledby="launch-title">
+  <div class="stage-layout">
+    <div class="stage-title">
+      <p class="stage-kicker">Lanzamiento Bonaplus</p>
+      <h1 id="launch-title">Vinagre y cloro.<br><em>Ahora con tapa.</em></h1>
     </div>
-    <div class="launch-pair"><a class="launch-card" href="/productos/vinagre/#con-tapa">
-      <img src="/assets/lanzamiento/vinagre-con-tapa.webp" width="1100" height="821" alt="Caja y potes de vinagre Bonaplus con tapa" >
-      <span>Vinagre con tapa <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 18 12-12M8 6h10v10"/></svg></span>
+    <picture class="stage-art">
+      <source media="(max-width: 720px)" srcset="/assets/lanzamiento/bonaplus-estudio-movil.webp">
+      <img src="/assets/lanzamiento/bonaplus-estudio.webp" width="1536" height="1024" alt="Pote amarillo de vinagre con tapa roja y pote blanco de cloro con tapa azul, con Bonaplus en relieve" fetchpriority="high">
+    </picture>
+    <div class="stage-details">
+      <p>Dos nuevas presentaciones para tu negocio.<br><strong>170 ml por pote · 80 potes por caja</strong></p>
+      <div class="stage-actions">
+        <a class="button stage-primary" href="#cajas-con-tapa">Elegir mis cajas</a>
+        <a class="stage-watch" href="#video-lanzamiento"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg> Ver el anuncio</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="launch-showcase section-shell" aria-label="Anuncio y presentaciones con tapa">
+  <div class="showcase-video" id="video-lanzamiento">
+    <div><p class="eyebrow">El anuncio · 23 segundos</p><h2>Cloro con tapa,<br><em>en acción.</em></h2></div>
+    <video controls playsinline preload="none" width="512" height="910" poster="/assets/lanzamiento/cloro-video.webp" aria-label="Anuncio completo del cloro Bonaplus con tapa" src="/assets/lanzamiento/cloro-con-tapa.mp4"></video>
+  </div>
+  <div class="showcase-boxes" id="cajas-con-tapa">
+    <p class="eyebrow">Pedidos al por mayor</p><h2>Elige tus cajas.</h2>
+    <p>Selecciona tu presentación y ajusta la cantidad para cotizar por WhatsApp.</p>
+    <div class="launch-pair"><a class="launch-card" data-launch-product="vinagre-tapa" href="#card-vinagre-tapa">
+      <img src="/assets/lanzamiento/vinagre-con-tapa.webp" loading="lazy" width="1100" height="821" alt="Caja y potes de vinagre Bonaplus con tapa" >
+      <span>Elegir vinagre con tapa <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 18 12-12M8 6h10v10"/></svg></span>
     </a>
-    <a class="launch-card" href="/productos/cloro/#con-tapa">
-      <img src="/assets/lanzamiento/cloro-con-tapa.webp" width="1100" height="821" alt="Caja y potes de cloro Bonaplus con tapa" >
-      <span>Cloro con tapa <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 18 12-12M8 6h10v10"/></svg></span>
+    <a class="launch-card" data-launch-product="cloro-tapa" href="#card-cloro-tapa">
+      <img src="/assets/lanzamiento/cloro-con-tapa.webp" loading="lazy" width="1100" height="821" alt="Caja y potes de cloro Bonaplus con tapa" >
+      <span>Elegir cloro con tapa <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 18 12-12M8 6h10v10"/></svg></span>
     </a></div>
   </div>
 </section>
@@ -248,7 +267,7 @@
   <div class="campaign-inner section-shell">
     <div class="campaign-copy">
       <p class="eyebrow light"><i aria-hidden="true"></i> FABRICACIÓN DOMINICANA · DESDE 2002</p>
-      <h1>Calidad que<br>se nota.<br><span>Confianza que<br>construye.</span></h1>
+      <h2 class="brand-headline">Calidad que<br>se nota.<br><span>Confianza que<br>construye.</span></h2>
       <div class="campaign-bottom"><p>El plus que tu negocio necesita.<br>Productos para el día a día,<br>hechos aquí, para llegar más lejos.</p><a class="button button-lime" href="#productos">Explorar productos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
     </div>
     <div class="campaign-art">
