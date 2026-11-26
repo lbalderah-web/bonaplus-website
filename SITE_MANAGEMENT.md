@@ -34,6 +34,7 @@ These rules must be preserved unless the owner explicitly requests a change:
 - Orders and quotations are coordinated through WhatsApp.
 - Typical domestic wholesale orders are approximately 400 boxes or more; this is a reference, not a hard minimum.
 - The confirmed standard export/manufacturer case contains 80 pots and uses thermal sealing. Do not generalize these facts beyond the approved pages or add unverified logistics claims.
+- Vinagre and cloro each also have a capped 170 ml presentation, sold in cases of 80. Keep these orderable separately from the heat-sealed 150 ml presentations.
 - Maintain nationwide distribution messaging.
 - Phone: `(809) 379-1396`.
 - Email: `industriaplusbyg@gmail.com`.

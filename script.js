@@ -1,6 +1,8 @@
 'use strict';
 
 const products = [
+  { id: 'cloro-tapa', name: 'Cloro con tapa', size: '170 ml', image: '/assets/lanzamiento/cloro-con-tapa.webp', page: '/productos/cloro/#con-tapa' },
+  { id: 'vinagre-tapa', name: 'Vinagre con tapa', size: '170 ml', image: '/assets/lanzamiento/vinagre-con-tapa.webp', page: '/productos/vinagre/#con-tapa' },
   { id: 'cloro', name: 'Cloro (Mediano)', size: '150 ml', image: '/assets/catalog/cloro.webp', page: '/productos/cloro/' },
   { id: 'vinagre', name: 'Vinagre (Mediano)', size: '150 ml', image: '/assets/catalog/vinagre.webp', page: '/productos/vinagre/' },
   { id: 'lavaplatos', name: 'Lavaplatos', size: '150 ml', image: '/assets/catalog/lavaplatos.webp', page: '/productos/lavaplatos/' },
@@ -13,7 +15,7 @@ const products = [
   { id: 'shampoo90', name: 'Shampoo (Pequeño)', size: '90 ml', image: '/assets/catalog/shampoo.webp', page: '/productos/shampoo/' }
 ];
 
-const categoryFor = product => ['cloro', 'lavaplatos', 'desinfectante', 'calzado'].includes(product.id) ? 'limpieza' : /^(shampoo|rinse)/.test(product.id) ? 'personal' : 'otros';
+const categoryFor = product => ['cloro', 'cloro-tapa', 'lavaplatos', 'desinfectante', 'calzado'].includes(product.id) ? 'limpieza' : /^(shampoo|rinse)/.test(product.id) ? 'personal' : 'otros';
 const quantities = Object.fromEntries(products.map(product => [product.id, 0]));
 // Keep only product selections in this tab. Customer contact details are never stored.
 try {
