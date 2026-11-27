@@ -2,6 +2,14 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-11-27 — Production verification and event-delivery resilience
+
+- Confirmed Vercel production commit `22dcef0` is `READY`; all 17 sitemap URLs returned HTTP 200, the legacy homepage redirect retained `producto=cloro-tapa`, required security headers were present and Vercel reported no runtime errors in the preceding 24 hours.
+- Production browser check at 1363 px found 12 product cards, complete product images using `object-fit: contain`, no broken loaded images, one H1, the correct self-canonical and no horizontal overflow. The personal-care filter returned the four approved presentations. A 400-box capped Cloro selection reached the itemized review and stayed on-site; no WhatsApp message was opened or sent.
+- Code review found that rejected `sendBeacon` queues could silently drop first-party events. Added a `fetch` fallback only when the browser returns `false`; no analytics identifier, cookie, customer field or new event was added. JavaScript syntax passed and the Vercel preview was `READY`.
+- Measurement limitation: Search Console and first-party analytics reporting were unavailable, so no ranking, traffic, inquiry or sales gain is claimed.
+- Next priority: allow recrawling and obtain Search Console 28-day comparisons before changing titles or adding new SEO copy.
+
 ## 2026-11-26 — Mobile-first usability
 
 - Owner-directed redesign: mobile quick navigation, touch-size catalog search and filter chips, unified two-column product cards with complete visible product images, improved order dock and mobile review sheet. Scoped to homepage; no changes to prices, product specs, SEO titles or branding.
