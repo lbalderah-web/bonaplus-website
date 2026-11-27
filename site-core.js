@@ -47,8 +47,8 @@
     const body = JSON.stringify(payload);
     try {
       if (navigator.sendBeacon) {
-        navigator.sendBeacon('/api/event', new Blob([body], { type: 'application/json' }));
-        return;
+        const queued = navigator.sendBeacon('/api/event', new Blob([body], { type: 'application/json' }));
+        if (queued) return;
       }
     } catch (_) {}
 
