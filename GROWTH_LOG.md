@@ -2,6 +2,15 @@
 
 Concise record of shipped work, dated observations, available measurements and the next highest-value action. Ranking observations are individual checks unless Search Console data confirms a trend.
 
+## 2026-11-28 — Complete wholesale presentation comparison
+
+- Production health before editing: Vercel production commit `c2eb248` was `READY`, no open pull requests or newer commits were present, all 17 sitemap URLs and 45 discovered internal URLs/assets passed, required security headers remained present and Vercel reported no runtime errors in the preceding 24 hours.
+- Dated search observation: public results reviewed on 2026-11-28 surfaced the official wholesale, cleaning, company, manufacturer and homepage resources. The wholesale result still reflected the pre-launch 10-presentation comparison; this is a crawl observation, not a ranking or traffic trend.
+- Improvement: updated `/mayoristas/` from 10 to the approved 12 presentations and added direct, parameter-preserving selection links for capped Cloro and Vinagre 170 ml alongside their 150 ml versions. The page remains focused on distributor comparison and private quotation.
+- Verification: production showed 12 complete product cards with no broken loaded images or horizontal overflow; a 400-box capped Vinagre selection reached the itemized review without opening WhatsApp. The Vercel preview was `READY`; at 1363 px the revised wholesale page had no horizontal overflow, one H1, no broken loaded images and both 170 ml links opened the correct editable capped-product selection. Mobile CSS and layout were unchanged; a dedicated mobile viewport was not available in this run. No inquiry or sales gain is claimed.
+- Measurement limitation: Search Console and first-party analytics reporting were unavailable. Vercel Hobby runtime-log retention did not provide a useful 24-hour event report.
+- Next priority: allow recrawling and compare Search Console 28-day periods when access becomes available before changing titles or adding new SEO copy.
+
 ## 2026-11-27 — Production verification and event-delivery resilience
 
 - Confirmed Vercel production commit `22dcef0` is `READY`; all 17 sitemap URLs returned HTTP 200, the legacy homepage redirect retained `producto=cloro-tapa`, required security headers were present and Vercel reported no runtime errors in the preceding 24 hours.
